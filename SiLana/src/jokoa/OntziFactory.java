@@ -12,6 +12,6 @@ public class OntziFactory {
 	}
 	
 	//public Ontzi createOntzi (int mota){
-
+		//Ontzi emaitza;
 	//}
 }
