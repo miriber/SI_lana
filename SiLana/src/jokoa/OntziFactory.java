@@ -11,7 +11,13 @@ public class OntziFactory {
 		} return nOntziFact;
 	}
 	
-	//public Ontzi createOntzi (int mota){
-		//Ontzi emaitza;
-	//}
+	public Ontzi createOntzi (int mota){
+		switch(mota) {
+			case 1: return new FragataOntzi();
+			case 2: return new SuntsitzaileOntzi();
+			case 3: return new ItsaspekoOntzi();
+			case 4: return new HegazkinOntzi();
+			default: return null;
+		}
+	}
 }
