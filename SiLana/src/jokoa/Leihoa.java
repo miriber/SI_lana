@@ -14,8 +14,8 @@ public class Leihoa extends JFrame implements ActionListener{
 	JButton botoia1;		//jokoa hasteko
 	JButton nTableroa[][];	//neure tableroa
 	JButton aTableroa[][];	//jokalariaren tableroa
-	//String jok1,jok2;
-	//int turno=-1;
+	//Jokalari1 jok1;
+	//PC jok2;
 	JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
 	JLabel mezua2;
 	Color kolorea;			
@@ -69,8 +69,8 @@ public class Leihoa extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {	//botoia klikatuz gero, gertatuko dena
 		// TODO Auto-generated method stub
 		if (e.getSource()==botoia1)	{	//non klikatu den adierazten du (hau itzuliz) 
-		
+				JOptionPane.showMessageDialog(this, "Jokoa hasiko da");	//Mezua inprimatu
+				
+			} 
 		}
-		//} if ()
-	}
 }
