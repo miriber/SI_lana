@@ -5,5 +5,6 @@ import java.util.ArrayList;
 public class Flota {
 	private int dirua;
 	private ArrayList<Ontzi> ontziZer;
-	
+	private ArrayList<String> armamentuZer;
+	private Tablero taula;
 }

@@ -1,11 +1,11 @@
 package jokoa;
 
-public class Jokalari {
+public abstract class Jokalari {
 	private Flota neureFlota ;
 	private Flota aurkariarenFlota;
-	private String izena;
+	//private String izena;
 	
-	public Jokalari(String pIzena) {
-		izena=pIzena;
+	public Jokalari(/*String pIzena*/) {
+		//izena=pIzena;
 	}
 }
