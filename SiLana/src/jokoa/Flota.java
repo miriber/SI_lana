@@ -25,7 +25,29 @@ public class Flota {
 		return ontziZer.iterator();
 	}
 	
+	private void ontziakSortu() {
+		OntziFactory nFact = OntziFactory.getNireOntziFact();
+		Ontzi berria= nFact.createOntzi(4);
+		//hegazkin ontzi bat
+		ontziZer.add(berria);
+		//4 Fragata izango ditugu
+		for (int i=0;i<4;i++) {
+			berria= nFact.createOntzi(1);
+			ontziZer.add(berria);
+		} 
+		// hiru suntsitzaile
+		for (int i=0;i<3;i++) {
+			berria= nFact.createOntzi(2);
+			ontziZer.add(berria);
+		}
+		//bi itsaspeko
+		for (int i=0;i<2;i++) {
+			berria= nFact.createOntzi(3);
+			ontziZer.add(berria);
+		}
+	}
 	public void ontziakKokatu() {
-
+		ontziakSortu();
+		
 	}
 }

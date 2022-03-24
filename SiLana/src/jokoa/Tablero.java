@@ -16,6 +16,13 @@ public class Tablero {
 	}
 	
 	//gainerako metodoak
+	private void sortuTableroa() {
+		for (int i=0;i<10;i++) {
+			for (int j=0; i<10;i++) {
+				taula[i][j]= new Gelaxka(i,j);
+			}
+		}
+	}
 	
 	
 }
