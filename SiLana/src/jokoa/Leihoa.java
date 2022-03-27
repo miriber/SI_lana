@@ -1,4 +1,4 @@
-package jokoa;
+/*package jokoa;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -73,4 +73,4 @@ public class Leihoa extends JFrame implements ActionListener{
 				
 			} 
 		}
-}
+}*/
