@@ -13,7 +13,17 @@ public class Gelaxka {
 		tiroJaso=false;
 	}
 	
-	public void egoeraAldatu() {
-		
+	public void ontziaJarri() {
+		uraDa=false;
 	}
+	
+	
+	public boolean getTiroJaso() {
+		return tiroJaso;
+	}
+	
+	public boolean getUraDa() {
+		return uraDa;
+	}
+	
 }

@@ -6,5 +6,6 @@ public class PC extends Jokalari {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 
 }

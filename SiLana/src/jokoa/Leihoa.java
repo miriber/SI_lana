@@ -71,6 +71,6 @@ public class Leihoa extends JFrame implements ActionListener{
 		if (e.getSource()==botoia1)	{	//non klikatu den adierazten du (hau itzuliz) 
 				JOptionPane.showMessageDialog(this, "Jokoa hasiko da");	//Mezua inprimatu
 				
-			} 
-		}
+		} 
+	}
 }*/

@@ -26,12 +26,12 @@ public class Tableroa extends JFrame implements ActionListener {
 			public void run() {
 				try {
 					Tableroa frame = new Tableroa();
-					frame.setVisible(true);
-					frame.setDefaultCloseOperation(3);
-					frame.setResizable(false);
-					frame.setSize(1200, 750);
+					frame.setVisible(true); //leihoa ikusteko
+					frame.setDefaultCloseOperation(3); //Leihoa ixteko
+					frame.setResizable(false); //leihoa handiagoa egiteko aukerarik ez
+					frame.setSize(1200, 750); //leihoaren tamaina zehaztu
 					frame.setTitle("Flota Urperatu");
-					frame.setLocationRelativeTo(null);
+					frame.setLocationRelativeTo(null); //pantailaren erdian jartzeko
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,6 +55,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	public Tableroa() {
 		initialize();
 	}
+	
 	private void initialize() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -98,8 +99,8 @@ public class Tableroa extends JFrame implements ActionListener {
 	private JButton getBtnNewButton() {
 		if (botoia1 == null) {
 			botoia1 = new JButton("Partida hasi");
-			botoia1.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			botoia1.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
+				public void actionPerformed(ActionEvent e) { //botoia klikatuz gero, gertatuko dena
 					if (e.getSource()==botoia1)	{	//non klikatu den adierazten du (hau itzuliz) 
 						JOptionPane.showMessageDialog(botoia1, "Jokoa hasiko da");	//Mezua inprimatu
 				}
@@ -107,8 +108,10 @@ public class Tableroa extends JFrame implements ActionListener {
 		}
 		return botoia1;
 	}
+	
+	//public 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { 
 		// TODO Auto-generated method stub
 		
 		

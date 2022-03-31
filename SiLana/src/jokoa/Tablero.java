@@ -24,5 +24,38 @@ public class Tablero {
 		}
 	}
 	
+	public void ontziaJarri(int x, int y, int tamaina, String norabidea) {
+		boolean jadaBesteOntzi=false;
+		if (norabidea.contentEquals("Horizontala") ){
+			if (x+tamaina<10) {
+				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
+					jadaBesteOntzi=taula[x+i][y].getUraDa();
+				} if (!jadaBesteOntzi) {
+					for (int i=0; i<tamaina; i++) {
+						taula[x+i][y].ontziaJarri();
+					}
+				}else {
+					//ERROR: JADA BESTE ONTZI BAT
+				}
+			}else {
+				//ERROR: MATRIZETIK AT GELDITU
+			}
+		}else {
+			if (y+tamaina<10) {
+				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
+					jadaBesteOntzi=taula[x][y+i].getUraDa();
+				} if (!jadaBesteOntzi) {
+					for (int i=0; i<tamaina; i++) {
+						taula[x][y+i].ontziaJarri();
+					}
+				}else {
+					//ERROR: JADA BESTE ONTZI BAT
+					//aukeratu beste matrize botoi bat
+				}
+			}else {
+				//ERROR: MATRIZETIK AT GELDITU
+			}
+		}
+	}
 	
 }
