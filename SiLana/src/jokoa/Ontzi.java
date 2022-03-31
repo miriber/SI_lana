@@ -2,6 +2,7 @@ package jokoa;
 
 public abstract class Ontzi {
 	private String norabidea;
+	//TODO El norabidea es necesario guardarlo?
 	private int zenbatFalta; //Hondoratua izan dadin, falta diren gelaxka kopurua adierazten du
 	private Egoera egoera;
 	
@@ -16,6 +17,7 @@ public abstract class Ontzi {
 	}
 	
 	public void aldatuEg() {
+		boolean jadaKlik;
 		if (!jadaKlik) {
 			jadaKlik=true;
 			if (egoera==Egoera.UKITU_GABEA) {
