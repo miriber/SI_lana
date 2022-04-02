@@ -6,20 +6,32 @@ public abstract class Ontzi {
 	private int zenbatFalta; //Hondoratua izan dadin, falta diren gelaxka kopurua adierazten du
 	private Egoera egoera;
 	
-	public Ontzi(String pNorabidea, int pFalta) {
-		norabidea=pNorabidea;
+	public Ontzi (int pFalta) {
+		norabidea="Horizontal";
 		zenbatFalta=pFalta;
 		egoera=Egoera.UKITU_GABEA;
+	}
+	
+	public void aldatuNorab() {
+		norabidea="Bertikal";
 	}
 	
 	public boolean getEgoera(Egoera pEgo) {
 		return egoera==pEgo;
 	}
 	
+	public Egoera getIzena() {
+		return egoera;
+	}
+	
+	public boolean oraindikGuztiakEz() {
+		return zenbatFalta==0;
+	}
 	public void aldatuEg() {
-		boolean jadaKlik;
-		if (!jadaKlik) {
-			jadaKlik=true;
+		//boolean jadaKlik;
+		//if (!jadaKlik) {
+			//jadaKlik=true;
+		//FLOTAN EGIN
 			if (egoera==Egoera.UKITU_GABEA) {
 				zenbatFalta--;
 				if (zenbatFalta==0) {
@@ -30,6 +42,6 @@ public abstract class Ontzi {
 			}else if (egoera==Egoera.UKITUTA) {
 				zenbatFalta--;
 			}
-		}
 	}
+	
 }

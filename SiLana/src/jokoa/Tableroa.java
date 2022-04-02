@@ -13,6 +13,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Tableroa extends JFrame implements ActionListener {
 
@@ -50,7 +51,6 @@ public class Tableroa extends JFrame implements ActionListener {
 	JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
 	JLabel mezua2;
 	Color kolorea;	
-	
 	
 	public Tableroa() {
 		initialize();
@@ -93,7 +93,6 @@ public class Tableroa extends JFrame implements ActionListener {
 			}
 		}
 		kolorea= nTableroa[0][0].getBackground();
-		
 	}
 
 	private JButton getBtnNewButton() {
@@ -109,7 +108,19 @@ public class Tableroa extends JFrame implements ActionListener {
 		return botoia1;
 	}
 	
-	//public 
+	//TODO public Ontzi  ontziaAukeratu(){
+		// aukerakHauekInprima() erabili
+		//gelditzen diren ontzi motak agertu--> 
+		//eta hauetako bat aukeratu
+		// OntziFact erabiliz sortu
+		// aukeratutako botoiaren arabera ontzi hori sortu 
+		//gehituOntz (Ontzi pOntzi): Flotako ontziZer gehitu
+	//}
+	
+	//TODO public String ontziarenNorabidea()
+		//Horizontal eta bertikal aukerak dituen test
+		//test honen emaitza return
+	//}
 	@Override
 	public void actionPerformed(ActionEvent e) { 
 		// TODO Auto-generated method stub

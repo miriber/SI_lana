@@ -29,33 +29,44 @@ public class Tablero {
 		if (norabidea.contentEquals("Horizontala") ){
 			if (x+tamaina<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					jadaBesteOntzi=taula[x+i][y].getUraDa();
+					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x+i][y].ontziaJarri();
 					}
 				}else {
-					//ERROR: JADA BESTE ONTZI BAT
+					System.out.println("Ontzi jarri nahi duzun gelaxkaren bat jada beste ontzi batengatik okupatuta dago");
+					//3 aukera:
+					//ontziaNonKokatu
+				// Bestela
+					// modu random baten gu aukeratu
 				}
 			}else {
 				//ERROR: MATRIZETIK AT GELDITU
+				//3 aukera:
+					//ontziaNonKokatu
+				// Bestela
+					// modu random baten gu aukeratu
 			}
 		}else {
 			if (y+tamaina<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					jadaBesteOntzi=taula[x][y+i].getUraDa();
+					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x][y+i].ontziaJarri();
 					}
 				}else {
 					//ERROR: JADA BESTE ONTZI BAT
-					//aukeratu beste matrize botoi bat
+					//3 aukera:
+					//ontziaNonKokatu
+				// Bestela
+					// modu random baten gu aukeratu
 				}
 			}else {
 				//ERROR: MATRIZETIK AT GELDITU
 			}
-		}
+		} //EXCEPTION IGUAL KANPOAN TRATATU BEHAR?? BOOLEAN BAT RETURN?
 	}
 	
 }
