@@ -103,6 +103,6 @@ public class Flota {
 		int x;
 		int y;
 		taula.ontziaJarri(x, y, tamaina, norabidea);
-		
+		// era berean kolorea aldatu behar interf graf
 	}
 }
