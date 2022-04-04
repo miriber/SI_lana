@@ -2,7 +2,7 @@ package jokoa;
 
 public class Tablero {
 	private Gelaxka[][] taula;
-	public static Tablero nireTableroa= null;	//EMA
+	private static Tablero nireTableroa= null;	//EMA
 	
 	//metodo eraikitzaileak 
 	private Tablero() {

@@ -10,6 +10,7 @@ public class Flota {
 	private ArrayList<Ontzi> ontziZer;
 	private ArrayList<Ontzi> ontziDesb;
 	Map<Ontzi,  Integer> zenbat;
+	//TODO OntziLista klasea sortu?
 	private ArrayList<String> armamentuZer;
 	private static Tablero taula;
 	// ontzi kopuru egokia daudela ziurtatu
@@ -19,8 +20,10 @@ public class Flota {
 		ontziZer= new ArrayList<Ontzi>();
 		ontziDesb= new ArrayList<Ontzi>();
 		zenbat= new HashMap <Ontzi, Integer>();
+		ontziakSortu();
 		armamentuZer= new ArrayList<String>();
-		taula= taula.getNireTablero();
+		armamentuaGehitu();
+		taula= Tablero.getNireTablero();
 		ontziakSortu();
 	}
 	
@@ -28,10 +31,13 @@ public class Flota {
 		return armamentuZer.iterator();
 	}
 	
-	private Iterator<Ontzi> getIteratorO(){
+	private Iterator<Ontzi> getIteradoreaO(){
 		return ontziZer.iterator();
 	}
 	
+	private Iterator<Ontzi> getIteradoreaDesb(){
+		return ontziDesb.iterator();
+	}
 	/* public void inprimatuZenbat()
 	 * 
 	 */
@@ -52,13 +58,17 @@ public class Flota {
 		zenbat.put(berria, 2);
 	}
 	
+	private void armamentuaGehitu() {
+		
+	}
+	
 	public void gehituOntz(Ontzi pOntzi) {
 		ontziZer.add(pOntzi);
 	}
 	private boolean motaHonetakoOntzirikBadagoKokatuGabe (Ontzi pOntzi) {
 		int kont=0;
 		int limite=zenbat.get(pOntzi);
-		Iterator<Ontzi> itr= getIteratorO();
+		Iterator<Ontzi> itr= getIteradoreaO();
 		Ontzi o;
 		boolean inprima=true;
 		while (kont< limite && itr.hasNext()) {
@@ -73,7 +83,7 @@ public class Flota {
 	}
 	
 	public ArrayList<Ontzi> aukeraHauekInprima(){
-		Iterator<Ontzi> itr= ontziDesb.iterator();
+		Iterator<Ontzi> itr= getIteradoreaDesb();
 		Ontzi o;
 		while (itr.hasNext()) {
 			o=itr.next();
