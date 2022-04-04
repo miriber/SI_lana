@@ -4,7 +4,6 @@ public class PC extends Jokalari {
 
 	private PC() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static Jokalari getNeureJok() {
