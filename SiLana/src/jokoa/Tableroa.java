@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -50,8 +51,14 @@ public class Tableroa extends JFrame implements ActionListener {
 	//PC jok2;
 	JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
 	JLabel mezua2;
+	JLabel xKoor;
+    JLabel yKoor;
 	Color kolorea;	
 	
+	private JButton biltegiB;
+	private JTextField XTextField;
+	private JTextField YTextField;
+	    
 	public Tableroa() {
 		initialize();
 	}
@@ -74,25 +81,62 @@ public class Tableroa extends JFrame implements ActionListener {
 		nTableroa =new JButton[10][10];
 		aTableroa= new JButton[10][10];
 		
+		xKoor = new JLabel("X:");
+        yKoor = new JLabel("Y:");
+
+        xKoor.setBounds(800, 640, 100, 50);
+        getContentPane().add(xKoor);
+        yKoor.setBounds(900, 640, 100, 50);
+        getContentPane().add(yKoor);
+
+        XTextField = new JTextField();
+        contentPane.add(XTextField);
+        XTextField.setColumns(10);
+        XTextField.setBounds(820, 650, 40, 30);
+
+        YTextField = new JTextField();
+        contentPane.add(YTextField);
+        YTextField.setColumns(10);
+        YTextField.setBounds(920, 650, 40, 30);
+		
 		//gure taula
 		for (int i=0;i<10;i++) {
 			for (int j=0;j<10;j++) {
 				nTableroa[i][j]=new JButton();
 				nTableroa[i][j].setBounds((i+1)*50+40, (j+1)*50+30, 50, 50);
 				getContentPane().add(nTableroa[i][j]);
-				nTableroa[i][j].addActionListener(this);
-			}
-		}
+				nTableroa[i][j].addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==nTableroa) {
+                            XTextField.setText(Integer.toString(getX));
+                            YTextField.setText(Integer.toString(y));
+
+
+                        }
+                    }
+                });
+            }
+        }
 		//aurkariaren taula
 		for (int i=0;i<10;i++) {
-			for (int j=0;j<10;j++) {
-				aTableroa[i][j]=new JButton();
-				aTableroa[i][j].setBounds((i+1)*50+600, (j+1)*50+30,50,50);
-				getContentPane().add(aTableroa[i][j]);
-				aTableroa[i][j].addActionListener(this);
-			}
-		}
+            for (int j=0;j<10;j++) {
+                aTableroa[i][j]=new JButton();
+                aTableroa[i][j].setBounds((i+1)50+600, (j+1)50+30,50,50);
+                getContentPane().add(aTableroa[i][j]);
+                aTableroa[i][j].addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource()==nTableroa) {
+                            XTextField.setText(Integer.toString(x));
+                            YTextField.setText(Integer.toString(y));
+
+
+                        }
+                    }
+                });
+            }
+        }
 		kolorea= nTableroa[0][0].getBackground();
+	
 	}
 
 	private JButton getBtnNewButton() {
