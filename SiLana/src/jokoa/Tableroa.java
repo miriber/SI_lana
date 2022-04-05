@@ -107,12 +107,22 @@ public class Tableroa extends JFrame implements ActionListener {
 				getContentPane().add(nTableroa[i][j]);
 				nTableroa[i][j].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        if (e.getSource()==nTableroa) {
-                            XTextField.setText(Integer.toString(getX()));
-                            YTextField.setText(Integer.toString(getY()));
-
-
+                    	boolean aurkitu= false;
+                        int x=0;
+                        int y=0;
+                        while(x<=8 && y<=8 && aurkitu==false) {
+                            if(nTableroa[x][y]==e.getSource()) {
+                                aurkitu=true;
+                            }else{
+                                x++;
+                                if(x==9) {
+                                    x=0;
+                                    y++;
+                                }
+                            }
                         }
+                        XTextField.setText(Integer.toString(x+1));
+                        YTextField.setText(Integer.toString(y+1));
                     }
                 });
             }
@@ -125,12 +135,23 @@ public class Tableroa extends JFrame implements ActionListener {
                 getContentPane().add(aTableroa[i][j]);
                 aTableroa[i][j].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
-                        if (e.getSource()==nTableroa) {
-                            XTextField.setText(Integer.toString(x));
-                            YTextField.setText(Integer.toString(y));
-
-
+                    	boolean aurkitu= false;
+                        int x=0;
+                        int y=0;
+                        while(x<=8 && y<=8 && aurkitu==false) {
+                            if(aTableroa[x][y]==e.getSource()) {
+                                aurkitu=true;
+                            }
+                            else{
+                                x++;
+                                if(x==9) {
+                                    x=0;
+                                    y++;
+                                }
+                            }
                         }
+                        XTextField.setText(Integer.toString(x+1));
+                        YTextField.setText(Integer.toString(y+1));
                     }
                 });
             }
