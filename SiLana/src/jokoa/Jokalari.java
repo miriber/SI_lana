@@ -26,11 +26,12 @@ public abstract class Jokalari {
 		return neureFlota;
 	}
 	
-	protected void neureOntziakKokatu(int x, int y, String norabidea) {
+	protected void neureOntziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
 		// ontziaAukeratu metodotik lortuko dugu tamaina
 		//String norabidea= ontziarenNorabidea
 		//x, y--> Buttonetik atera--> ontziaNonKokatu
-		neureFlota.ontziakKokatu(x,y,norabidea);
+		//pOntzi agian hobe tamaina itzultzen badu Tableroa
+		neureFlota.ontziakKokatu(x,y,norabidea,pOntzi);
 	}
 	
 	public abstract void ontziakKokatu();

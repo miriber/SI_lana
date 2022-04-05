@@ -37,9 +37,6 @@ public class Flota {
 	private Iterator<Ontzi> getIteradoreaDesb(){
 		return ontziDesb.iterator();
 	}
-	/* public void inprimatuZenbat()
-	 * 
-	 */
 	
 	private void ontziakSortu() {
 		OntziFactory nFact = OntziFactory.getNireOntziFact();
@@ -106,8 +103,23 @@ public class Flota {
 		return ontziDesb.size()==0;
 	}
 	
-	public void ontziakKokatu(int x, int y, String norabidea) {
-		// ontziaAukeratu metodotik lortuko dugu tamaina
+	//TODO Hau tableroan edo hemen?
+	private int getOntziTamaina (Ontzi pOntzi) {
+		int tamaina;	
+		if (pOntzi instanceof SuntsitzaileOntzi) {
+			tamaina=2;
+		}else if (pOntzi instanceof ItsaspekoOntzi) {
+			tamaina=3;
+		}else if (pOntzi instanceof HegazkinOntzi) {
+			tamaina=4;
+		}else {
+			tamaina=1;	//pOntzi instanceof FragataOntzi
+		}
+		return tamaina;
+	}
+	
+	public void ontziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
+		int tamaina= getOntziTamaina(pOntzi);
 		taula.ontziaJarri(x, y, tamaina, norabidea);
 		// era berean kolorea aldatu behar interf graf
 	}

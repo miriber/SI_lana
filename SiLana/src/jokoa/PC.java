@@ -24,11 +24,13 @@ public class PC extends Jokalari {
 	}
 	
 	public void ontziakKokatu() {
-		int x,y;
+		int x,y,z;
+		char norabidea;
 		while (PC.getNeureJok().badagoKokatuGabekoOntzirik()) {
 			x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
 			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
-			norabidea=chars[]
+			x=x/10;
+			norabidea=norabideAukerak[random.nextInt(2)];
 			neureOntziakKokatu(x,y,norabidea);
 			aurkariarenFlota=Jokalari1.getNeureJok().getAurkariarenFlota();
 		}

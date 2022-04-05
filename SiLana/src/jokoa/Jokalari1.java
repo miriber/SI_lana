@@ -18,10 +18,12 @@ public class Jokalari1 extends Jokalari {
 		//x Tableroa-tik lortu
 		//y Tableroa-tik lortu
 		// norabidea Tablerotik lortu
+		//ontzia ere
 		int x;
 		int y;
-		String norabidea;
-		neureOntziakKokatu(x, y, norabidea);
+		char norabidea;
+		Ontzi pOntzi;
+		neureOntziakKokatu(x, y, norabidea, pOntzi);
 		aurkariarenFlota=PC.getNeureJok().getAurkariarenFlota();
 		
 	}

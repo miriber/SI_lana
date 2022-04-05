@@ -162,8 +162,8 @@ public class Tableroa extends JFrame implements ActionListener {
 		//gehituOntz (Ontzi pOntzi): Flotako ontziZer gehitu
 	//}
 	
-	//TODO public String ontziarenNorabidea()
-		//Horizontal eta bertikal aukerak dituen test
+	//TODO public Char ontziarenNorabidea()
+		//Horizontal (H) eta bertikal (B) aukerak dituen test
 		//test honen emaitza return
 	//}
 	@Override
