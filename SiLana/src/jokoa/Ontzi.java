@@ -5,11 +5,13 @@ public abstract class Ontzi {
 	//TODO El norabidea es necesario guardarlo?
 	private int zenbatFalta; //Hondoratua izan dadin, falta diren gelaxka kopurua adierazten du
 	private Egoera egoera;
+	private String mota;
 	
-	public Ontzi (int pFalta) {
+	public Ontzi (int pFalta, String pMota) {
 		norabidea='H';
 		zenbatFalta=pFalta;
 		egoera=Egoera.UKITU_GABEA;
+		mota=pMota;
 	}
 	
 	public void aldatuNorab() {
@@ -22,6 +24,14 @@ public abstract class Ontzi {
 	
 	public Egoera getIzena() {
 		return egoera;
+	}
+	
+	public boolean getMotaBera (String pMota) {
+		return mota.equals(pMota);
+	}
+	
+	public String getMota() {
+		return mota;
 	}
 	
 	public boolean oraindikGuztiakEz() {

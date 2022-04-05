@@ -7,6 +7,7 @@ public class Tablero {
 	//metodo eraikitzaileak 
 	private Tablero() {
 		taula= new Gelaxka[10][10];
+		sortuTableroa();
 	}
 	
 	public static Tablero getNireTablero() {
@@ -24,6 +25,7 @@ public class Tablero {
 		}
 	}
 	
+	//TODO Exception tratatu behar
 	public void ontziaJarri(int x, int y, int tamaina, char norabidea) {
 		boolean jadaBesteOntzi=false;
 		if (norabidea=='H'){

@@ -7,17 +7,17 @@ import java.util.Map;
 
 public class Flota {
 	private int dirua;
-	private ArrayList<Ontzi> ontziZer;
+	private ArrayList<Ontzi> unekoOntziZer;
 	private ArrayList<Ontzi> ontziDesb;
-	Map<Ontzi,  Integer> zenbat;
-	//TODO OntziLista klasea sortu?
+	//Ez da hobeto OntziZer klasea sortzea?
+	private Map<Ontzi,  Integer> zenbat;
 	private ArrayList<String> armamentuZer;
 	private static Tablero taula;
-	// ontzi kopuru egokia daudela ziurtatu
+
 	
 	public Flota() {
 		dirua=25;
-		ontziZer= new ArrayList<Ontzi>();
+		unekoOntziZer= new ArrayList<Ontzi>();
 		ontziDesb= new ArrayList<Ontzi>();
 		zenbat= new HashMap <Ontzi, Integer>();
 		ontziakSortu();
@@ -31,7 +31,7 @@ public class Flota {
 	}*/
 	
 	private Iterator<Ontzi> getIteradoreaO(){
-		return ontziZer.iterator();
+		return unekoOntziZer.iterator();
 	}
 	
 	private Iterator<Ontzi> getIteradoreaDesb(){
@@ -67,8 +67,8 @@ public class Flota {
 		}
 	}
 	
-	public void gehituOntz(Ontzi pOntzi) {
-		ontziZer.add(pOntzi);
+	private void gehituOntzi(Ontzi pOntzi) {
+		unekoOntziZer.add(pOntzi);
 	}
 	private boolean motaHonetakoOntzirikBadagoKokatuGabe (Ontzi pOntzi) {
 		int kont=0;
@@ -78,10 +78,10 @@ public class Flota {
 		boolean inprima=true;
 		while (kont< limite && itr.hasNext()) {
 			o= itr.next();
-			if (o.getEgoera(pOntzi.getIzena())) {
+			if (o.getMotaBera(pOntzi.getMota())) { //pOntziren eta o-ren egoera bera
 				kont++;
 			}
-		} if (kont==limite) {
+		} if (kont==limite) {	//jada ontzi nahiko mota horretakoak
 			inprima=false;
 		}
 		return inprima;
@@ -121,6 +121,7 @@ public class Flota {
 	public void ontziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
 		int tamaina= getOntziTamaina(pOntzi);
 		taula.ontziaJarri(x, y, tamaina, norabidea);
+		gehituOntzi (pOntzi);
 		// era berean kolorea aldatu behar interf graf
 	}
 }

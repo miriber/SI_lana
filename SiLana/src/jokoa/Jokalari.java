@@ -1,7 +1,9 @@
 package jokoa;
 
+import java.util.ArrayList;
+
 public abstract class Jokalari {
-	private Flota neureFlota ;
+	protected Flota neureFlota ;
 	protected Flota aurkariarenFlota;
 	protected static Jokalari nJok=null;
 	private boolean bereTxandaBuk;
@@ -22,9 +24,9 @@ public abstract class Jokalari {
 		return nJok;
 	}*/
 	
-	public Flota getNeureFlota() {
+	/*public Flota getNeureFlota() {
 		return neureFlota;
-	}
+	}*/
 	
 	protected void neureOntziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
 		// ontziaAukeratu metodotik lortuko dugu tamaina
@@ -36,23 +38,30 @@ public abstract class Jokalari {
 	
 	public abstract void ontziakKokatu();
 	
-	public Flota getAurkariarenFlota() {
+	/*public Flota getAurkariarenFlota() {
 		return aurkariarenFlota;
-	}
+	}*/
 	
-	public void txandaBuk() {
+	protected void txandaBuk() {
 		bereTxandaBuk=false;
 	}
 	
-	public void txandaHasi() {
+	protected void txandaHasi() {
 		bereTxandaBuk=true;
 	}
+	
+	public  abstract void besteJokTxanda();
 	
 	public boolean getTxanda() {
 		return bereTxandaBuk;
 	}
 	
-	protected boolean badagoKokatuGabekoOntzirik() {
+	public boolean badagoKokatuGabekoOntzirik() {
 		return !neureFlota.ontziDenakKokatuta();
 	}
+
+	public ArrayList<Ontzi> ontziPosibleakInprima() {
+		return neureFlota.aukeraHauekInprima();
+	}
+	
 }

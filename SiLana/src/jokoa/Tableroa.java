@@ -15,14 +15,23 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Tableroa extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	private JButton botoia1;		//jokoa hasteko
+	private JButton nTableroa[][];	//neure tableroa
+	private JButton aTableroa[][];	//jokalariaren tableroa
+	private Jokalari jok1, jokPC;
+	private Ontzi aukeratutakoOntzia;
+	private JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
+	private JLabel mezua2,xKoor, yKoor;
+	private Color kolorea;	
+	private JButton biltegiB;
+	private JTextField XTextField, YTextField;
+	
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,23 +50,6 @@ public class Tableroa extends JFrame implements ActionListener {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	JButton botoia1;		//jokoa hasteko
-	JButton nTableroa[][];	//neure tableroa
-	JButton aTableroa[][];	//jokalariaren tableroa
-	//Jokalari1 jok1;
-	//PC jok2;
-	JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
-	JLabel mezua2;
-	JLabel xKoor;
-    JLabel yKoor;
-	Color kolorea;	
-	
-	private JButton biltegiB;
-	private JTextField XTextField;
-	private JTextField YTextField;
 	    
 	public Tableroa() {
 		initialize();
@@ -80,6 +72,9 @@ public class Tableroa extends JFrame implements ActionListener {
 		/*botoia1.addActionListener(this);*/ //klik egiten bada botoia jakinarazi
 		nTableroa =new JButton[10][10];
 		aTableroa= new JButton[10][10];
+		
+		jok1=Jokalari1.getNeureJok();
+		jokPC=PC.getNeureJok();
 		
 		xKoor = new JLabel("X:");
         yKoor = new JLabel("Y:");
@@ -105,26 +100,29 @@ public class Tableroa extends JFrame implements ActionListener {
 				nTableroa[i][j]=new JButton();
 				nTableroa[i][j].setBounds((i+1)*50+40, (j+1)*50+30, 50, 50);
 				getContentPane().add(nTableroa[i][j]);
-				nTableroa[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    	boolean aurkitu= false;
-                        int x=0;
-                        int y=0;
-                        while(x<=8 && y<=8 && aurkitu==false) {
-                            if(nTableroa[x][y]==e.getSource()) {
-                                aurkitu=true;
-                            }else{
-                                x++;
-                                if(x==9) {
-                                    x=0;
-                                    y++;
-                                }
-                            }
-                        }
-                        XTextField.setText(Integer.toString(x+1));
-                        YTextField.setText(Integer.toString(y+1));
-                    }
-                });
+				while (jok1.badagoKokatuGabekoOntzirik()) {
+					nTableroa[i][j].addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							boolean aurkitu= false;
+	                        int x=0;
+	                        int y=0;
+	                        while(x<=8 && y<=8 && aurkitu==false) {
+	                            if(nTableroa[x][y]==e.getSource()) {
+	                                aurkitu=true;
+	                            }else{
+	                                x++;
+	                                if(x==9) {
+	                                    x=0;
+	                                    y++;
+	                                }
+	                            }
+	                        }
+	                        XTextField.setText(Integer.toString(x));
+	                        YTextField.setText(Integer.toString(y));
+	                        ontziaAukeratu();
+	                    }
+	                });
+				}
             }
         }
 		//aurkariaren taula
@@ -134,8 +132,9 @@ public class Tableroa extends JFrame implements ActionListener {
                 aTableroa[i][j].setBounds((i+1)*50+600, (j+1)*50+30,50,50);
                 getContentPane().add(aTableroa[i][j]);
                 aTableroa[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    	boolean aurkitu= false;
+                	//TODO Hau egin aurretik beste jokalariaren ontziak kokatu
+                	public void actionPerformed(ActionEvent e) {
+                        boolean aurkitu= false;
                         int x=0;
                         int y=0;
                         while(x<=8 && y<=8 && aurkitu==false) {
@@ -148,12 +147,17 @@ public class Tableroa extends JFrame implements ActionListener {
                                     x=0;
                                     y++;
                                 }
+
                             }
+
                         }
-                        XTextField.setText(Integer.toString(x+1));
-                        YTextField.setText(Integer.toString(y+1));
+                        XTextField.setText(Integer.toString(x));
+                        YTextField.setText(Integer.toString(y));
+                        
                     }
+
                 });
+            
             }
         }
 		kolorea= nTableroa[0][0].getBackground();
@@ -167,14 +171,34 @@ public class Tableroa extends JFrame implements ActionListener {
 				public void actionPerformed(ActionEvent e) { //botoia klikatuz gero, gertatuko dena
 					if (e.getSource()==botoia1)	{	//non klikatu den adierazten du (hau itzuliz) 
 						JOptionPane.showMessageDialog(botoia1, "Jokoa hasiko da");	//Mezua inprimatu
-				}
+					}
 				}});
 		}
 		return botoia1;
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	/*public int getNeureTablerotikOntziX(){
+		System.out.println(Integer.parseInt(XTextField.getText());
+		return Integer.parseInt(XTextField.getText());
+	// sakatutako x itzuli, beti ere geure tablerokoa bada eta honako hau ez bdago ontziz okupatuta
+	}*/
+	//TODO public int getNeureTablerotikOntziY(){
+	// sakatutako y
 	
-	//TODO public Ontzi  ontziaAukeratu(){
+	public void ontziaAukeratu(){
+		ArrayList<Ontzi> ontziAukerak=jok1.ontziPosibleakInprima();
+		Iterator<Ontzi> itr= ontziAukerak.iterator();
+		
+		while (itr.hasNext()) {
+			
+		}
+	}
 		// aukerakHauekInprima() erabili
 		//gelditzen diren ontzi motak agertu--> 
 		//eta hauetako bat aukeratu
@@ -183,15 +207,12 @@ public class Tableroa extends JFrame implements ActionListener {
 		//gehituOntz (Ontzi pOntzi): Flotako ontziZer gehitu
 	//}
 	
-	//TODO public Char ontziarenNorabidea()
+	//private void btn
+	//public Char ontziarenNorabidea() {
 		//Horizontal (H) eta bertikal (B) aukerak dituen test
 		//test honen emaitza return
 	//}
-	@Override
-	public void actionPerformed(ActionEvent e) { 
-		// TODO Auto-generated method stub
-		
-		
-	}
+
+	
 	
 }

@@ -1,5 +1,7 @@
 package jokoa;
 
+import java.util.ArrayList;
+
 public class Jokalari1 extends Jokalari {
 	
 	private Jokalari1() {
@@ -14,7 +16,7 @@ public class Jokalari1 extends Jokalari {
 	}
 	
 	@Override
-	public void ontziakKokatu() {
+	/*public void ontziakKokatu() {
 		//x Tableroa-tik lortu
 		//y Tableroa-tik lortu
 		// norabidea Tablerotik lortu
@@ -26,5 +28,16 @@ public class Jokalari1 extends Jokalari {
 		neureOntziakKokatu(x, y, norabidea, pOntzi);
 		aurkariarenFlota=PC.getNeureJok().getAurkariarenFlota();
 		
+	}*/
+	
+	public void ontziakKokatu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void besteJokTxanda() {
+		txandaBuk();
+		PC.getNeureJok().txandaHasi();		
 	}
 }
