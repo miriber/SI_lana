@@ -24,9 +24,9 @@ public class Tablero {
 		}
 	}
 	
-	public void ontziaJarri(int x, int y, int tamaina, String norabidea) {
+	public void ontziaJarri(int x, int y, int tamaina, char norabidea) {
 		boolean jadaBesteOntzi=false;
-		if (norabidea.contentEquals("Horizontala") ){
+		if (norabidea=='H'){
 			if (x+tamaina<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());

@@ -15,7 +15,13 @@ public class Jokalari1 extends Jokalari {
 	
 	@Override
 	public void ontziakKokatu() {
-		neureOntziakKokatu();
+		//x Tableroa-tik lortu
+		//y Tableroa-tik lortu
+		// norabidea Tablerotik lortu
+		int x;
+		int y;
+		String norabidea;
+		neureOntziakKokatu(x, y, norabidea);
 		aurkariarenFlota=PC.getNeureJok().getAurkariarenFlota();
 		
 	}

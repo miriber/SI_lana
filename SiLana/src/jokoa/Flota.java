@@ -24,12 +24,11 @@ public class Flota {
 		armamentuZer= new ArrayList<String>();
 		armamentuaGehitu();
 		taula= Tablero.getNireTablero();
-		ontziakSortu();
 	}
 	
-	private Iterator<String> getIteradoreA(){
+	/*private Iterator<String> getIteradoreA(){
 		return armamentuZer.iterator();
-	}
+	}*/
 	
 	private Iterator<Ontzi> getIteradoreaO(){
 		return ontziZer.iterator();
@@ -47,19 +46,28 @@ public class Flota {
 		Ontzi berria= nFact.createOntzi(4);
 		//hegazkin ontzi bat
 		zenbat.put(berria, 1);
+		ontziDesb.add(berria);
 		//4 Fragata izango ditugu
 		berria= nFact.createOntzi(1);
 		zenbat.put(berria, 4);
+		ontziDesb.add(berria);
 		// hiru suntsitzaile
 		berria= nFact.createOntzi(2);
 		zenbat.put(berria, 3);
+		ontziDesb.add(berria);
 		//bi itsaspeko
 		berria= nFact.createOntzi(3);
 		zenbat.put(berria, 2);
+		ontziDesb.add(berria);
 	}
 	
 	private void armamentuaGehitu() {
-		
+		for (int i=0; i<3; i++) {
+			armamentuZer.add("Radarra");
+			armamentuZer.add("Bonbak");
+			armamentuZer.add("Misilak");
+			armamentuZer.add("Ezkutuak");
+		}
 	}
 	
 	public void gehituOntz(Ontzi pOntzi) {
@@ -94,14 +102,12 @@ public class Flota {
 		return ontziDesb;
 	}
 	
+	public boolean ontziDenakKokatuta () {
+		return ontziDesb.size()==0;
+	}
 	
-	
-	public void ontziakKokatu() {
+	public void ontziakKokatu(int x, int y, String norabidea) {
 		// ontziaAukeratu metodotik lortuko dugu tamaina
-		//String norabidea= ontziarenNorabidea
-		//x, y--> Buttonetik atera--> ontziaNonKokatu
-		int x;
-		int y;
 		taula.ontziaJarri(x, y, tamaina, norabidea);
 		// era berean kolorea aldatu behar interf graf
 	}

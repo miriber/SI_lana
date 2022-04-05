@@ -108,8 +108,8 @@ public class Tableroa extends JFrame implements ActionListener {
 				nTableroa[i][j].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource()==nTableroa) {
-                            XTextField.setText(Integer.toString(getX));
-                            YTextField.setText(Integer.toString(y));
+                            XTextField.setText(Integer.toString(getX()));
+                            YTextField.setText(Integer.toString(getY()));
 
 
                         }
@@ -121,7 +121,7 @@ public class Tableroa extends JFrame implements ActionListener {
 		for (int i=0;i<10;i++) {
             for (int j=0;j<10;j++) {
                 aTableroa[i][j]=new JButton();
-                aTableroa[i][j].setBounds((i+1)50+600, (j+1)50+30,50,50);
+                aTableroa[i][j].setBounds((i+1)*50+600, (j+1)*50+30,50,50);
                 getContentPane().add(aTableroa[i][j]);
                 aTableroa[i][j].addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
@@ -136,7 +136,7 @@ public class Tableroa extends JFrame implements ActionListener {
             }
         }
 		kolorea= nTableroa[0][0].getBackground();
-	
+		
 	}
 
 	private JButton getBtnNewButton() {
@@ -151,6 +151,7 @@ public class Tableroa extends JFrame implements ActionListener {
 		}
 		return botoia1;
 	}
+	
 	
 	//TODO public Ontzi  ontziaAukeratu(){
 		// aukerakHauekInprima() erabili
