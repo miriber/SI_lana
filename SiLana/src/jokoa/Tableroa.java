@@ -142,9 +142,11 @@ public class Tableroa extends JFrame implements ActionListener {
 	
 	public void partidaJokatu() {
 		tableroaIkusi();
-	//	while () --> koloreak begiratu
+	//	while () --> koloreak begiratu 
 		botoia1=null;
 		JButton has=getBtnNewButton();
+		//else
+		//guztiaEzabatu--> berriro jolasteko prest
 	}
 		
 	private void neureTaulanOntziakKokatu() {
