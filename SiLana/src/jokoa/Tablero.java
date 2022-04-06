@@ -31,9 +31,11 @@ public class Tablero {
 		if (norabidea=='H'){
 			if (x+tamaina<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
+					System.out.println(i+"Tablero");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
+						System.out.println(i+"Tablero2");
 						taula[x+i][y].ontziaJarri();
 					}
 				}else {

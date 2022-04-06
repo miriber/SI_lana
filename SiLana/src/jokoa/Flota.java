@@ -87,17 +87,31 @@ public class Flota {
 		return inprima;
 	}
 	
-	public ArrayList<Ontzi> aukeraHauekInprima(){
+	public Ontzi[] aukeraHauekInprima(){
 		Iterator<Ontzi> itr= getIteradoreaDesb();
 		Ontzi o;
+		Ontzi[] emaitza= new Ontzi[4];	//gehienez 4 ontzi mota egongo dira
+		int i=0;
 		while (itr.hasNext()) {
 			o=itr.next();
 			if (!motaHonetakoOntzirikBadagoKokatuGabe (o)) {
 				ontziDesb.remove(o);
+			}else {
+				emaitza[i]=o;
+				i++;
 			}
 		}
-		return ontziDesb;
+		return emaitza;
 	}
+	
+/*	public Ontzi lehenOntziDesb() {
+		ArrayList<Ontzi> ontziMota= aukeraHauekInprima();
+		Iterator<Ontzi> itr= getIteradoreaDesb();
+		Ontzi emaitza=null;
+		if (!ontziMota.isEmpty()) {
+			emaitza= itr.next();
+		}return emaitza;
+	}*/
 	
 	public boolean ontziDenakKokatuta () {
 		return ontziDesb.size()==0;
@@ -107,21 +121,24 @@ public class Flota {
 	private int getOntziTamaina (Ontzi pOntzi) {
 		int tamaina;	
 		if (pOntzi instanceof SuntsitzaileOntzi) {
-			tamaina=2;
+			tamaina=1;
 		}else if (pOntzi instanceof ItsaspekoOntzi) {
-			tamaina=3;
+			tamaina=2;
 		}else if (pOntzi instanceof HegazkinOntzi) {
-			tamaina=4;
+			tamaina=3;
 		}else {
-			tamaina=1;	//pOntzi instanceof FragataOntzi
+			tamaina=0;	//pOntzi instanceof FragataOntzi
 		}
 		return tamaina;
 	}
 	
 	public void ontziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
 		int tamaina= getOntziTamaina(pOntzi);
+		System.out.println(tamaina+" tamaina");
 		taula.ontziaJarri(x, y, tamaina, norabidea);
+		System.out.println(tamaina+" tamaina");
 		gehituOntzi (pOntzi);
+		System.out.println(unekoOntziZer.size());
 		// era berean kolorea aldatu behar interf graf
 	}
 }

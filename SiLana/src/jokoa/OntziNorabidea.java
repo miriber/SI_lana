@@ -21,14 +21,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.JList;
 
-public class OntziKokapena extends JFrame {
+public class OntziNorabidea extends JFrame {
 
 	private JPanel contentPane;
 	private ButtonGroup group;
 	private JButton botoia;
 	private JRadioButton btn1,btn2;
 	private char orientazioa;
-	
 	/**
 	 * Launch the application.
 	 */
@@ -36,7 +35,7 @@ public class OntziKokapena extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OntziKokapena frame = new OntziKokapena();
+					OntziNorabidea frame = new OntziNorabidea();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,10 +44,11 @@ public class OntziKokapena extends JFrame {
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
-	public OntziKokapena() {
+	public OntziNorabidea() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -80,15 +80,21 @@ public class OntziKokapena extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if (e.getSource()==botoia) {
-					if (btn1.isSelected()) {
-						orientazioa='H';
-					}else {
-						orientazioa= 'B';
-					}
+				if (btn1.isSelected()) {
+					orientazioa='H';
+				}else if (btn2.isSelected()) {
+					orientazioa= 'B';
 				}
-				.neureOntziakKokatu(x, y, orientazioa, pOntzi);
+				System.out.println(orientazioa);
+				Jokalari jok1= Jokalari1.getNeureJok();
+				OntziaErabaki erabikitakoOntzi= new OntziaErabaki();
+				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
+				Tableroa tab=new Tableroa();
+				int x= tab.getTablerotikOntziX();
+				int y= tab.getTablerotikOntziY();
+				//TODO EXCEPTION 
+				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
+				System.out.println(orientazioa);
 			}
 		});
 

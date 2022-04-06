@@ -28,7 +28,7 @@ public abstract class Jokalari {
 		return neureFlota;
 	}*/
 	
-	protected void neureOntziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
+	protected void neureOntziakKokatu(int x, int y, char norabidea,Ontzi pOntzi) {
 		// ontziaAukeratu metodotik lortuko dugu tamaina
 		//String norabidea= ontziarenNorabidea
 		//x, y--> Buttonetik atera--> ontziaNonKokatu
@@ -38,15 +38,15 @@ public abstract class Jokalari {
 	
 	public abstract void ontziakKokatu();
 	
-	/*public Flota getAurkariarenFlota() {
+	public Flota getAurkariarenFlota() {
 		return aurkariarenFlota;
-	}*/
+	}
 	
 	protected void txandaBuk() {
 		bereTxandaBuk=false;
 	}
 	
-	protected void txandaHasi() {
+	public void txandaHasi() {
 		bereTxandaBuk=true;
 	}
 	
@@ -60,7 +60,7 @@ public abstract class Jokalari {
 		return !neureFlota.ontziDenakKokatuta();
 	}
 
-	public ArrayList<Ontzi> ontziPosibleakInprima() {
+	public Ontzi[] ontziPosibleakItzuli() {
 		return neureFlota.aukeraHauekInprima();
 	}
 	

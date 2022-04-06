@@ -1,22 +1,21 @@
 package jokoa;
 
 public abstract class Ontzi {
-	private char norabidea;
-	//TODO El norabidea es necesario guardarlo?
+	//private char norabidea;
 	private int zenbatFalta; //Hondoratua izan dadin, falta diren gelaxka kopurua adierazten du
 	private Egoera egoera;
 	private String mota;
 	
 	public Ontzi (int pFalta, String pMota) {
-		norabidea='H';
+	//	norabidea='H';
 		zenbatFalta=pFalta;
 		egoera=Egoera.UKITU_GABEA;
 		mota=pMota;
 	}
 	
-	public void aldatuNorab() {
+	/*public void aldatuNorab() {
 		norabidea='B';
-	}
+	}*/
 	
 	public boolean getEgoera(Egoera pEgo) {
 		return egoera==pEgo;
