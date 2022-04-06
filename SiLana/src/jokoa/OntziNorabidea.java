@@ -94,7 +94,9 @@ public class OntziNorabidea extends JFrame {
 				int y= tab.getTablerotikOntziY();
 				//TODO EXCEPTION 
 				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
-				System.out.println(orientazioa);
+				System.out.println(orientazioa);	
+				tab.partidaJokatu();
+				setVisible(false);
 			}
 		});
 

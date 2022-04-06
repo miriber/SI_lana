@@ -5,6 +5,7 @@ public class Gelaxka {
 	private int j;	//zutabea adierazten du: 
 	private boolean uraDa;
 	private boolean tiroJaso;
+	//private ArrayList<Observador> observadores= new ArrayList<Observador>();
 
 	public Gelaxka (int x, int y) {
 		i=x;

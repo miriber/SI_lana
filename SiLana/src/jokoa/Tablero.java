@@ -73,4 +73,6 @@ public class Tablero {
 		} //EXCEPTION IGUAL KANPOAN TRATATU BEHAR?? BOOLEAN BAT RETURN?
 	}
 	
+	//---------- Observablearekin zerikusia
+	
 }
