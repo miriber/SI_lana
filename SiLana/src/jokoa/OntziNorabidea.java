@@ -85,16 +85,15 @@ public class OntziNorabidea extends JFrame {
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';
 				}
-				System.out.println(orientazioa);
 				Jokalari jok1= Jokalari1.getNeureJok();
 				OntziaErabaki erabikitakoOntzi= new OntziaErabaki();
 				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
+				System.out.println(pOntzi);
 				Tableroa tab=new Tableroa();
 				int x= tab.getTablerotikOntziX();
 				int y= tab.getTablerotikOntziY();
 				//TODO EXCEPTION 
 				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
-				System.out.println(orientazioa);	
 				tab.partidaJokatu();
 				setVisible(false);
 			}

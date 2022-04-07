@@ -30,6 +30,8 @@ public class Tableroa extends JFrame implements ActionListener {
 	private JButton biltegiaB;
 	private JTextField XTextField, YTextField;
 	private int klikatutakoX, klikatutakoY;
+	private JButton biltegiButton;
+    private JButton flotaKokatuButton;
 	
 	
 	public static void main(String[] args) {
@@ -59,6 +61,17 @@ public class Tableroa extends JFrame implements ActionListener {
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		biltegiButton = new JButton("Biltegia");
+        contentPane.add(biltegiButton);              //Biltegiaren botoia
+        biltegiButton.setBounds(50, 600, 150, 50);
+        biltegiButton.setVisible(false);
+
+        flotaKokatuButton = new JButton("FlotaKokatu");
+        contentPane.add(flotaKokatuButton);
+        flotaKokatuButton.setBounds(250, 600, 150, 50);
+        flotaKokatuButton.setVisible(false);
+        
 		contentPane.add(getBtnNewButton());
 		getContentPane().setLayout(null); //elem kokapena gure menpe
 		mezua1=new JLabel ("Zure tableroa");
@@ -116,23 +129,19 @@ public class Tableroa extends JFrame implements ActionListener {
 	}
 
 	private JButton getBtnNewButton() {
-		System.out.println("TABLEROA"+botoia1);
 		if (botoia1 == null) {
 			botoia1 = new JButton("Partida hasi");
-			System.out.println("TABLEROA"+botoia1);
 			botoia1.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
 				public void actionPerformed(ActionEvent e) { //botoia klikatuz gero, gertatuko dena
-					System.out.println("TABLEROA"+botoia1);
-					if (e.getSource()==botoia1)	{	//non klikatu den adierazten du (hau itzuliz) 
-						System.out.println(jok1.ontziPosibleakItzuli()[0].getMota()); //TODO GERO HAU EZABATU
-						System.out.println("TABLEROA"+botoia1);
-						if (jok1.badagoKokatuGabekoOntzirik()) {	//TODO IF EDO WHILE
-							JOptionPane.showMessageDialog(botoia1, "Zeure ontziak kokatzeko momentua, aukeratu neure flotatik gelaxka bat. Bertan, aukeratutako ontzia ezarriko da");	//Mezua inprimatu
-							neureTaulanOntziakKokatu();
-						}else {
-							JOptionPane.showMessageDialog(botoia1, "Jokoa hasiko da, aurkariaren flotatik gelaxka bat aukeratu");
-							jokoaHasi();
-						}
+					botoia1.setVisible(false);
+                    biltegiButton.setVisible(true);
+                    flotaKokatuButton.setVisible(true);
+					if (jok1.badagoKokatuGabekoOntzirik()) {	//TODO IF EDO WHILE
+						JOptionPane.showMessageDialog(flotaKokatuButton, "Zeure ontziak kokatzeko momentua, aukeratu neure flotatik gelaxka bat. Bertan, aukeratutako ontzia ezarriko da");	//Mezua inprimatu
+						neureTaulanOntziakKokatu();
+					}else {
+						JOptionPane.showMessageDialog(flotaKokatuButton, "Jokoa hasiko da, aurkariaren flotatik gelaxka bat aukeratu");
+						jokoaHasi();
 					}
 				}
 			});
@@ -171,10 +180,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	                        XTextField.setText(Integer.toString(x));	                
 	                        YTextField.setText(Integer.toString(y));            
 	                        klikatutakoX=x;
-	                        System.out.println("x:"+klikatutakoX);
 	                        klikatutakoY=y; 
-	                        System.out.println("y:"+klikatutakoY);
-	                      //  neureTablerokoa=true;
 	                        OntziaErabaki erabikitakoOntzi= new OntziaErabaki();
 	                        erabikitakoOntzi.setVisible(true);
 	                        setVisible (false);
@@ -212,10 +218,17 @@ public class Tableroa extends JFrame implements ActionListener {
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void actionPerformed(ActionEvent e) { 
+        if(e.getSource()==flotaKokatuButton) {
+            Jokalari1.getNeureJok().neureOntziakKokatu(Integer.parseInt(XTextField.getText()), Integer.parseInt(YTextField.getText()), 0, null);
+
+        }
+        if(e.getSource()==biltegiButton) {
+
+        }
+
+
+    }
 	
 	public int getTablerotikOntziX(){
 	// sakatutako x itzuli, beti ere geure tablerokoa bada eta honako hau ez bdago ontziz okupatuta
@@ -233,6 +246,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	public int getTablerotikOntziY(){
 		return klikatutakoY;
 	}
+	
 	
 /*	public void ontziaAukeratu(){
 		ArrayList<Ontzi> ontziAukerak=jok1.ontziPosibleakInprima();

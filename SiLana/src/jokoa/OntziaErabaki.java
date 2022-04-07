@@ -62,7 +62,6 @@ public class OntziaErabaki extends JFrame {
 		group=new ButtonGroup();
 		Ontzi[] ontziPosibleak=Jokalari1.getNeureJok().ontziPosibleakItzuli();
 		for (int i =0;i<ontziPosibleak.length;i++) {
-			System.out.println(ontziPosibleak[i].getMota());
 			if (ontziPosibleak[i].getMotaBera("Fragata")) {
 				ontzi1 = new JRadioButton("Fragata (1)");
 				ontzi1.setBounds(145, 63, 127, 25);
@@ -97,6 +96,7 @@ public class OntziaErabaki extends JFrame {
 					aukeratutakoOntzi=nFact.createOntzi(3);
 				} else {
 					aukeratutakoOntzi=nFact.createOntzi(4);
+					System.out.println(aukeratutakoOntzi+"aukeratutako ontzi");
 				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);

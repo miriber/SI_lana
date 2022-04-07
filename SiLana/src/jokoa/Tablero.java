@@ -29,13 +29,11 @@ public class Tablero {
 	public void ontziaJarri(int x, int y, int tamaina, char norabidea) {
 		boolean jadaBesteOntzi=false;
 		if (norabidea=='H'){
-			if (x+tamaina<10) {
+			if (x+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					System.out.println(i+"Tablero");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
-						System.out.println(i+"Tablero2");
 						taula[x+i][y].ontziaJarri();
 					}
 				}else {
@@ -72,6 +70,8 @@ public class Tablero {
 			}
 		} //EXCEPTION IGUAL KANPOAN TRATATU BEHAR?? BOOLEAN BAT RETURN?
 	}
+	
+//	public 
 	
 	//---------- Observablearekin zerikusia
 	

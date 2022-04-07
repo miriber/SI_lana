@@ -16,9 +16,11 @@ public class Gelaxka {
 	
 	public void ontziaJarri() {
 		uraDa=false;
-		System.out.println(uraDa+"ontzia jarri");
 	}
 	
+	public void tiroJaso() {
+		tiroJaso=false;
+	}
 	
 	public boolean getTiroJaso() {
 		return tiroJaso;
