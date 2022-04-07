@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 
 public class OntziaErabaki extends JFrame {
 
+	private static OntziaErabaki nOntziaErabaki=null;
 	private JPanel contentPane;
 	private ButtonGroup group;	//horrela JRadioButton bakarra aukeratu ahal da
 	private JButton botoia;
@@ -41,10 +42,13 @@ public class OntziaErabaki extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public OntziaErabaki() {
+	public static OntziaErabaki getNireOntziaErabaki() {
+		if (nOntziaErabaki==null) {
+			nOntziaErabaki=new OntziaErabaki();
+		}
+		return nOntziaErabaki;
+	}
+	private OntziaErabaki() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -90,6 +94,7 @@ public class OntziaErabaki extends JFrame {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
 				if (ontzi1.isSelected()) {
 					aukeratutakoOntzi= nFact.createOntzi(1);
+					System.out.println(aukeratutakoOntzi);
 				} else if (ontzi2.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(2);
 				} else if (ontzi3.isSelected()) {

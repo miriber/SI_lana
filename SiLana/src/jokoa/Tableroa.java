@@ -18,7 +18,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Tableroa extends JFrame implements ActionListener {
-
+	
+	private static Tableroa neureTableroa=null;
 	private JPanel contentPane;
 	private JButton botoia1;		//jokoa hasteko
 	private JButton nTableroa[][];	//neure tableroa
@@ -47,7 +48,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	}
 	
 	public static void tableroaIkusi() {
-		Tableroa frame = new Tableroa();
+		Tableroa frame = getNireTableroa();
 		frame.setVisible(true); //leihoa ikusteko
 		frame.setDefaultCloseOperation(3); //Leihoa ixteko
 		frame.setResizable(false); //leihoa handiagoa egiteko aukerarik ez
@@ -55,8 +56,15 @@ public class Tableroa extends JFrame implements ActionListener {
 		frame.setTitle("Flota Urperatu");
 		frame.setLocationRelativeTo(null); //pantailaren erdian jartzeko
 	}
+	
+	public static Tableroa getNireTableroa() {
+		if (neureTableroa==null) {
+			neureTableroa=new Tableroa();
+		}
+		return neureTableroa;
+	}
 	    
-	public Tableroa() {
+	private Tableroa() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
@@ -131,14 +139,28 @@ public class Tableroa extends JFrame implements ActionListener {
 	private JButton getBtnNewButton() {
 		if (botoia1 == null) {
 			botoia1 = new JButton("Partida hasi");
+			flotaKokatuButton.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                    if(e.getSource()==flotaKokatuButton) {
+                        if (jok1.badagoKokatuGabekoOntzirik()) {
+                            neureTaulanOntziakKokatu();
+                        }
+
+                    }
+
+                }
+            });
 			botoia1.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
 				public void actionPerformed(ActionEvent e) { //botoia klikatuz gero, gertatuko dena
 					botoia1.setVisible(false);
-                    biltegiButton.setVisible(true);
-                    flotaKokatuButton.setVisible(true);
+					biltegiButton.setVisible(true);
+					flotaKokatuButton.setVisible(true);
 					if (jok1.badagoKokatuGabekoOntzirik()) {	//TODO IF EDO WHILE
 						JOptionPane.showMessageDialog(flotaKokatuButton, "Zeure ontziak kokatzeko momentua, aukeratu neure flotatik gelaxka bat. Bertan, aukeratutako ontzia ezarriko da");	//Mezua inprimatu
-						neureTaulanOntziakKokatu();
+						//neureTaulanOntziakKokatu();
 					}else {
 						JOptionPane.showMessageDialog(flotaKokatuButton, "Jokoa hasiko da, aurkariaren flotatik gelaxka bat aukeratu");
 						jokoaHasi();
@@ -181,7 +203,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	                        YTextField.setText(Integer.toString(y));            
 	                        klikatutakoX=x;
 	                        klikatutakoY=y; 
-	                        OntziaErabaki erabikitakoOntzi= new OntziaErabaki();
+	                        OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
 	                        erabikitakoOntzi.setVisible(true);
 	                        setVisible (false);
 					}
@@ -217,8 +239,8 @@ public class Tableroa extends JFrame implements ActionListener {
 		}
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) { 
+	
+/*	public void actionPerformed(ActionEvent e) { 
         if(e.getSource()==flotaKokatuButton) {
             Jokalari1.getNeureJok().neureOntziakKokatu(Integer.parseInt(XTextField.getText()), Integer.parseInt(YTextField.getText()), 0, null);
 
@@ -228,7 +250,7 @@ public class Tableroa extends JFrame implements ActionListener {
         }
 
 
-    }
+    }*/
 	
 	public int getTablerotikOntziX(){
 	// sakatutako x itzuli, beti ere geure tablerokoa bada eta honako hau ez bdago ontziz okupatuta
@@ -245,6 +267,12 @@ public class Tableroa extends JFrame implements ActionListener {
 	
 	public int getTablerotikOntziY(){
 		return klikatutakoY;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

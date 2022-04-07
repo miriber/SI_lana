@@ -76,7 +76,7 @@ public class Flota {
 		Iterator<Ontzi> itr= getIteradoreaO();
 		Ontzi o;
 		boolean inprima=true;
-		while ( itr.hasNext()&& kont< limite) {
+		while (itr.hasNext()&& kont< limite) {
 			o= itr.next();
 			System.out.println(o+"mota");
 			System.out.println(pOntzi.getMota()+"mota2");

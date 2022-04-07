@@ -8,6 +8,7 @@ public class Tablero {
 	private Tablero() {
 		taula= new Gelaxka[10][10];
 		sortuTableroa();
+	//	System.out.println(taula[9][9].getUraDa());
 	}
 	
 	public static Tablero getNireTablero() {
@@ -31,8 +32,12 @@ public class Tablero {
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
+					//System.out.println("X:"+x+"Y:"+y+"i"+i);
+					///System.out.println(taula[x+i][y]);
+				//	System.out.println(taula[x+i][y].getUraDa()+"ONTZIAJARRI");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
-				} if (!jadaBesteOntzi) {
+				} 
+				if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x+i][y].ontziaJarri();
 					}
@@ -51,7 +56,7 @@ public class Tablero {
 					// modu random baten gu aukeratu
 			}
 		}else {
-			if (y+tamaina<10) {
+			if (y+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
 					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
 				} if (!jadaBesteOntzi) {
