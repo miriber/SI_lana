@@ -1,21 +1,29 @@
 package jokoa;
 
 public class Jokoa {
-	//atributuak
-	private static Jokoa nireJokoa=null;
+	private boolean PCTxanda;
+	private Jokalari jokPC;
+	private Jokalari jok1;
+	private static Jokoa nJoko=null;
 	
-	//metodo eraikitzaileak
-	private Jokoa() {}
-	public static Jokoa getNireJokoa() {
-		if (nireJokoa==null) {
-			nireJokoa= new Jokoa();
-		}return nireJokoa;
-	}
-	
-	//gainerako metodoak
-	public static void main(String[] args) {
-		//arauak inprimatu (oraindik ez dugu egingo!)
+	private Jokoa() {
+		PCTxanda=false;
+		jokPC= PC.getNeureJok();
+		jok1=Jokalari1.getNeureJok();
 		
 	}
 	
+	public static Jokoa getNireJoko() {
+		if (nJoko==null) {
+			nJoko=new Jokoa();
+		}return nJoko;
+	}
+	
+	public static void main(String args[]) {
+		//PARTIDA NOIZ HASTEN DEN
+		
+		//TXANDAK KONTROLATU
+		
+		//PARTIDA NOIZ BUKATU
+	}
 }

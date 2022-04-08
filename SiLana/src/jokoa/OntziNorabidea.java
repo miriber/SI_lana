@@ -87,11 +87,11 @@ public class OntziNorabidea extends JFrame {
 				}
 				Tableroa tab=Tableroa.getNireTableroa();
 				int x= tab.getTablerotikOntziX();
-				System.out.println(x);
+				//System.out.println(x);
 				Jokalari jok1= Jokalari1.getNeureJok();
 				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
 				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
-				System.out.println(pOntzi+"NORABIDEA");
+				//System.out.println(pOntzi+"NORABIDEA");
 				int y= tab.getTablerotikOntziY();
 				//TODO EXCEPTION 
 				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);

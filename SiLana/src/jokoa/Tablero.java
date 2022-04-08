@@ -2,21 +2,14 @@ package jokoa;
 
 public class Tablero {
 	private Gelaxka[][] taula;
-	private static Tablero nireTableroa= null;	//EMA
 	
 	//metodo eraikitzaileak 
-	private Tablero() {
+	public Tablero() {
 		taula= new Gelaxka[10][10];
 		sortuTableroa();
 	//	System.out.println(taula[9][9].getUraDa());
 	}
-	
-	public static Tablero getNireTablero() {
-		if (nireTableroa==null) {
-			nireTableroa= new Tablero();
-		}return nireTableroa;
-	}
-	
+		
 	//gainerako metodoak
 	private void sortuTableroa() {
 		for (int i=0;i<10;i++) {
@@ -26,9 +19,13 @@ public class Tablero {
 		}
 	}
 	
+	public void tiroJaso(int x, int y, Ontzi pOntzi) {
+		taula[x][y].tiroJaso();
+	}
 	//TODO Exception tratatu behar
-	public void ontziaJarri(int x, int y, int tamaina, char norabidea) {
+	public void ontziaJarri(int x, int y, Ontzi pOntzi, char norabidea) {
 		boolean jadaBesteOntzi=false;
+		int tamaina=pOntzi.getOntziTamaina();
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
@@ -39,7 +36,7 @@ public class Tablero {
 				} 
 				if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
-						taula[x+i][y].ontziaJarri();
+						taula[x+i][y].ontziaJarri(pOntzi);
 					}
 				}else {
 					System.out.println("Ontzi jarri nahi duzun gelaxkaren bat jada beste ontzi batengatik okupatuta dago");
@@ -61,7 +58,7 @@ public class Tablero {
 					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
-						taula[x][y+i].ontziaJarri();
+						taula[x][y+i].ontziaJarri(pOntzi);
 					}
 				}else {
 					//ERROR: JADA BESTE ONTZI BAT

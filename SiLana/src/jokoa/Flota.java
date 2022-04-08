@@ -11,8 +11,7 @@ public class Flota {
 	private ArrayList<Ontzi> ontziDesb;
 	//Ez da hobeto OntziZer klasea sortzea?
 	private Map<Ontzi,  Integer> zenbat;
-	private ArrayList<String> armamentuZer;
-	private static Tablero taula;
+	private ArrayList<Arma> armamentuZer;
 
 	
 	public Flota() {
@@ -21,9 +20,8 @@ public class Flota {
 		ontziDesb= new ArrayList<Ontzi>();
 		zenbat= new HashMap <Ontzi, Integer>();
 		ontziakSortu();
-		armamentuZer= new ArrayList<String>();
+		armamentuZer= new ArrayList<Arma>();
 		armamentuaGehitu();
-		taula= Tablero.getNireTablero();
 	}
 	
 	/*private Iterator<String> getIteradoreA(){
@@ -59,11 +57,16 @@ public class Flota {
 	}
 	
 	private void armamentuaGehitu() {
+		Arma a;
 		for (int i=0; i<3; i++) {
-			armamentuZer.add("Radarra");
-			armamentuZer.add("Bonbak");
-			armamentuZer.add("Misilak");
-			armamentuZer.add("Ezkutuak");
+			a=new Radarra();
+			armamentuZer.add(a);
+			a= new Bonba();
+			armamentuZer.add(a);
+			a= new Misila();
+			armamentuZer.add(a);
+			a=new Ezkutua();
+			armamentuZer.add(a);
 		}
 	}
 	
@@ -110,24 +113,8 @@ public class Flota {
 		return ontziDesb.size()==0;
 	}
 	
-	//TODO Hau tableroan edo hemen?
-	private int getOntziTamaina (Ontzi pOntzi) {
-		int tamaina;	
-		if (pOntzi instanceof SuntsitzaileOntzi) {
-			tamaina=2;
-		}else if (pOntzi instanceof ItsaspekoOntzi) {
-			tamaina=3;
-		}else if (pOntzi instanceof HegazkinOntzi) {
-			tamaina=4;
-		}else {
-			tamaina=1;	//pOntzi instanceof FragataOntzi
-		}
-		return tamaina;
-	}
 	
-	public void ontziakKokatu(int x, int y, char norabidea, Ontzi pOntzi) {
-		int tamaina= getOntziTamaina(pOntzi);
-		taula.ontziaJarri(x, y, tamaina, norabidea);
+	public void ontziakKokatu(Ontzi pOntzi) {
 		gehituOntzi (pOntzi);
 		// era berean kolorea aldatu behar interf graf
 	}

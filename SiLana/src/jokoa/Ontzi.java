@@ -12,6 +12,20 @@ public abstract class Ontzi {
 		mota=pMota;
 	}
 	
+	//TODO Hau tableroan edo hemen?
+	public int getOntziTamaina () {
+		int tamaina;	
+		if (this instanceof SuntsitzaileOntzi) {
+			tamaina=2;
+		}else if (this instanceof ItsaspekoOntzi) {
+			tamaina=3;
+		}else if (this instanceof HegazkinOntzi) {
+			tamaina=4;
+		}else {
+			tamaina=1;	//this instanceof FragataOntzi
+		}
+		return tamaina;
+	}
 	
 	public boolean getEgoera(Egoera pEgo) {
 		return egoera==pEgo;

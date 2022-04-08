@@ -35,7 +35,7 @@ public class PC extends Jokalari {
 			norabidea=norabideAukerak[random.nextInt(2)];
 			Ontzi[] ontziPosibleak=neureFlota.aukeraHauekInprima();
 			neureOntziakKokatu(x,y,norabidea, ontziPosibleak[0]);
-			aurkariarenFlota=Jokalari1.getNeureJok().getAurkariarenFlota();
+			aurkariarenTableroa=Jokalari1.getNeureJok().getAurkariarenTablero();
 		}
 	}
 

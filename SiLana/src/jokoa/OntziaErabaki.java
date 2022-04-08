@@ -94,13 +94,14 @@ public class OntziaErabaki extends JFrame {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
 				if (ontzi1.isSelected()) {
 					aukeratutakoOntzi= nFact.createOntzi(1);
-					System.out.println(aukeratutakoOntzi);
+					//System.out.println(aukeratutakoOntzi);
 				} else if (ontzi2.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(2);
 				} else if (ontzi3.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(3);
 				} else {
 					aukeratutakoOntzi=nFact.createOntzi(4);
+					//
 					System.out.println(aukeratutakoOntzi+"aukeratutako ontzi");
 				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
 					Tableroa tab= new Tableroa();
