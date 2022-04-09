@@ -10,7 +10,6 @@ public class Jokoa {
 		PCTxanda=false;
 		jokPC= PC.getNeureJok();
 		jok1=Jokalari1.getNeureJok();
-		
 	}
 	
 	public static Jokoa getNireJoko() {
@@ -20,10 +19,17 @@ public class Jokoa {
 	}
 	
 	public static void main(String args[]) {
+	//	Jokoa jokoa= Jokoa.getNireJoko();
+	//	jokoa.jok1.ontziakKokatu();
+	//	jokoa.jokPC.ontziakKokatu();
+		//Partida hasi: jok1 hasiko da
+		//boolean jok1Bukatu= jokoa.jok1.
+		//while ()
 		//PARTIDA NOIZ HASTEN DEN
-		
 		//TXANDAK KONTROLATU
 		
 		//PARTIDA NOIZ BUKATU
 	}
+	
+
 }

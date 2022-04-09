@@ -30,14 +30,36 @@ public class Jokalari1 extends Jokalari {
 		
 	}*/
 	
-	public void ontziakKokatu() {
-		// TODO Auto-generated method stub
+/*	public void ontziakKokatu() {
+		while (badagoKokatuGabekoOntzirik()) {	//ontzi guztiak kokatuta ez dauden bitartean
+			//Tableroan sakatutako gelaxkaren x eta y lortu
+			Tableroa tab=Tableroa.getNireTableroa();	
+			int x= tab.getTablerotikOntziX();
+			int y= tab.getTablerotikOntziY();
+			System.out.println(x+"JOKOLARI1");
+			//Aukeratutako ontzia lortu
+			OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
+			Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
+			System.out.println(pOntzi+"JOKOLARI1");
+			//System.out.println(pOntzi+"NORABIDEA");
+			OntziNorabidea ontziNorab= OntziNorabidea.getNireOntziNorabidea();
+			char orientazioa= ontziNorab.getOrientazioa();
+			System.out.println(orientazioa+"JOKOLARI1");
+			neureOntziakKokatu(x, y, orientazioa, pOntzi);
+		}
+		//TODO EXCEPTION 
 		
-	}
+	}*/
 
-	@Override
+
 	public void besteJokTxanda() {
 		txandaBuk();
 		PC.getNeureJok().txandaHasi();		
+	}
+
+	@Override
+	public void ontziakKokatu() {
+		// TODO Auto-generated method stub
+		//this.neureOntziakKokatu(x, y, norabidea, pOntzi);
 	}
 }

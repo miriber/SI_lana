@@ -107,7 +107,7 @@ public class OntziaErabaki extends JFrame {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);
 				}else{*/
-				OntziNorabidea norabidea = new OntziNorabidea();
+				OntziNorabidea norabidea = OntziNorabidea.getNireOntziNorabidea();
 				norabidea.setVisible(true);
 				//}	
 				setVisible(false);

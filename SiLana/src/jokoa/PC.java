@@ -33,7 +33,7 @@ public class PC extends Jokalari {
 			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
 			x=x/10;
 			norabidea=norabideAukerak[random.nextInt(2)];
-			Ontzi[] ontziPosibleak=neureFlota.aukeraHauekInprima();
+			Ontzi[] ontziPosibleak=neureFlota.lortuOntziPosibleak();
 			neureOntziakKokatu(x,y,norabidea, ontziPosibleak[0]);
 			aurkariarenTableroa=Jokalari1.getNeureJok().getAurkariarenTablero();
 		}

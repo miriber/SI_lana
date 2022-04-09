@@ -28,6 +28,7 @@ public class OntziNorabidea extends JFrame {
 	private JButton botoia;
 	private JRadioButton btn1,btn2;
 	private char orientazioa;
+	private static OntziNorabidea nOntziNorabidea=null;
 	/**
 	 * Launch the application.
 	 */
@@ -45,10 +46,16 @@ public class OntziNorabidea extends JFrame {
 	}
 
 	
+	public static OntziNorabidea getNireOntziNorabidea() {
+		if (nOntziNorabidea==null) {
+			nOntziNorabidea=new OntziNorabidea();
+		}
+		return nOntziNorabidea;
+	}
 	/**
 	 * Create the frame.
 	 */
-	public OntziNorabidea() {
+	private OntziNorabidea() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -85,21 +92,33 @@ public class OntziNorabidea extends JFrame {
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';
 				}
-				Tableroa tab=Tableroa.getNireTableroa();
+				//KENDUTAKOA
+				Tableroa tab=Tableroa.getNireTableroa();	
 				int x= tab.getTablerotikOntziX();
-				//System.out.println(x);
-				Jokalari jok1= Jokalari1.getNeureJok();
+				int y= tab.getTablerotikOntziY();
+				System.out.println(x+"ONTZIN1");
+				//Aukeratutako ontzia lortu
 				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
 				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
-				//System.out.println(pOntzi+"NORABIDEA");
-				int y= tab.getTablerotikOntziY();
-				//TODO EXCEPTION 
+				System.out.println(pOntzi+"ONTZIN1");
+				System.out.println(orientazioa+"ONTZIN1");
+				Jokalari jok1= Jokalari1.getNeureJok();
 				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
+				/*
+				//GEHITUTAKOA
+				
+				jok1.ontziakKokatu();*/
+				/*///ZER UTSI
+				Tableroa tab= Tableroa.getNireTableroa();*/
 				tab.partidaJokatu();
 				setVisible(false);
 			}
 		});
 
+	}
+	
+	public char getOrientazioa() {
+		return orientazioa;
 	}
 			
 	

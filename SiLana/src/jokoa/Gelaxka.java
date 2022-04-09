@@ -3,8 +3,8 @@ package jokoa;
 public class Gelaxka {
 	private int i; //errenkada adierazten du
 	private int j;	//zutabea adierazten du: 
-	private boolean tiroJaso;
-	private Ontzi ontziMota; //TODO STATE PATROIA ERABILI
+	private boolean tiroJaso;//TODO STATE PATROIA ERABILI
+	private Ontzi ontziMota; 
 	//private ArrayList<Observador> observadores= new ArrayList<Observador>();
 
 	public Gelaxka (int x, int y) {

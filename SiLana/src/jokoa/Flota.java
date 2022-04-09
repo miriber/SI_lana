@@ -92,7 +92,7 @@ public class Flota {
 		return inprima;
 	}
 	
-	public Ontzi[] aukeraHauekInprima(){
+	public Ontzi[] lortuOntziPosibleak(){
 		Iterator<Ontzi> itr= getIteradoreaDesb();
 		Ontzi o;
 		Ontzi[] emaitza= new Ontzi[4];	//gehienez 4 ontzi mota egongo dira

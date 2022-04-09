@@ -7,13 +7,12 @@ public class Tablero {
 	public Tablero() {
 		taula= new Gelaxka[10][10];
 		sortuTableroa();
-	//	System.out.println(taula[9][9].getUraDa());
 	}
 		
 	//gainerako metodoak
 	private void sortuTableroa() {
 		for (int i=0;i<10;i++) {
-			for (int j=0; i<10;i++) {
+			for (int j=0; j<10;j++) {
 				taula[i][j]= new Gelaxka(i,j);
 			}
 		}
@@ -29,9 +28,9 @@ public class Tablero {
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					//System.out.println("X:"+x+"Y:"+y+"i"+i);
-					///System.out.println(taula[x+i][y]);
-				//	System.out.println(taula[x+i][y].getUraDa()+"ONTZIAJARRI");
+					System.out.println("X:"+x+"Y:"+y+"i"+i);
+					System.out.println(taula[x+i][y]);
+					//System.out.println(taula[x+i][y].getUraDa()+"ONTZIAJARRI");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} 
 				if (!jadaBesteOntzi) {

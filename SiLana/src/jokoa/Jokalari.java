@@ -47,12 +47,12 @@ public abstract class Jokalari {
 		return bereTxandaBuk;
 	}
 	
-	public boolean badagoKokatuGabekoOntzirik() {
+	protected boolean badagoKokatuGabekoOntzirik() {
 		return !neureFlota.ontziDenakKokatuta();
 	}
 
 	public Ontzi[] ontziPosibleakItzuli() {
-		return neureFlota.aukeraHauekInprima();
+		return neureFlota.lortuOntziPosibleak();
 	}
 	
 }
