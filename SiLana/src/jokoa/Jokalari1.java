@@ -15,27 +15,14 @@ public class Jokalari1 extends Jokalari {
 		return nJok;
 	}
 	
-	@Override
-	/*public void ontziakKokatu() {
-		//x Tableroa-tik lortu
-		//y Tableroa-tik lortu
-		// norabidea Tablerotik lortu
-		//ontzia ere
-		int x;
-		int y;
-		char norabidea;
-		Ontzi pOntzi;
-		neureOntziakKokatu(x, y, norabidea, pOntzi);
-		aurkariarenFlota=PC.getNeureJok().getAurkariarenFlota();
-		
-	}*/
 	
-/*	public void ontziakKokatu() {
+	/*public void ontziakKokatu() {
+		Tableroa tab=Tableroa.getNireTableroa();
+		int x, y;
 		while (badagoKokatuGabekoOntzirik()) {	//ontzi guztiak kokatuta ez dauden bitartean
-			//Tableroan sakatutako gelaxkaren x eta y lortu
-			Tableroa tab=Tableroa.getNireTableroa();	
-			int x= tab.getTablerotikOntziX();
-			int y= tab.getTablerotikOntziY();
+			//Tableroan sakatutako gelaxkaren x eta y lortu	
+			x= tab.getTablerotikOntziX();
+			y= tab.getTablerotikOntziY();
 			System.out.println(x+"JOKOLARI1");
 			//Aukeratutako ontzia lortu
 			OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
@@ -49,7 +36,8 @@ public class Jokalari1 extends Jokalari {
 		}
 		//TODO EXCEPTION 
 		
-	}*/
+	}
+	*/
 
 
 	public void besteJokTxanda() {
@@ -57,7 +45,7 @@ public class Jokalari1 extends Jokalari {
 		PC.getNeureJok().txandaHasi();		
 	}
 
-	@Override
+	
 	public void ontziakKokatu() {
 		// TODO Auto-generated method stub
 		//this.neureOntziakKokatu(x, y, norabidea, pOntzi);

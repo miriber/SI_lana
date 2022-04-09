@@ -28,7 +28,7 @@ public class PC extends Jokalari {
 	public void ontziakKokatu() {
 		int x,y;
 		char norabidea;
-		while (super.badagoKokatuGabekoOntzirik()) {
+		while (badagoKokatuGabekoOntzirik()) {
 			x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
 			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
 			x=x/10;

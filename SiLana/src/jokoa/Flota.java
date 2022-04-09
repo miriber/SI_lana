@@ -72,6 +72,10 @@ public class Flota {
 	
 	private void gehituOntzi(Ontzi pOntzi) {
 		unekoOntziZer.add(pOntzi);
+		Iterator<Ontzi> itr = getIteradoreaO();
+		while (itr.hasNext()) {
+			System.out.println(itr.next());
+		}
 	}
 	private boolean motaHonetakoOntzirikBadagoKokatuGabe (Ontzi pOntzi) {
 		int kont=0;
@@ -115,6 +119,7 @@ public class Flota {
 	
 	
 	public void ontziakKokatu(Ontzi pOntzi) {
+		// TODO metodo hau agian ez da behar
 		gehituOntzi (pOntzi);
 		// era berean kolorea aldatu behar interf graf
 	}

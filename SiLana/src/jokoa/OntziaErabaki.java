@@ -48,6 +48,7 @@ public class OntziaErabaki extends JFrame {
 		}
 		return nOntziaErabaki;
 	}
+	
 	private OntziaErabaki() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -66,6 +67,7 @@ public class OntziaErabaki extends JFrame {
 		group=new ButtonGroup();
 		Ontzi[] ontziPosibleak=Jokalari1.getNeureJok().ontziPosibleakItzuli();
 		for (int i =0;i<ontziPosibleak.length;i++) {
+			//gelditzen diren ontzi motak agertu
 			if (ontziPosibleak[i].getMotaBera("Fragata")) {
 				ontzi1 = new JRadioButton("Fragata (1)");
 				ontzi1.setBounds(145, 63, 127, 25);
@@ -92,9 +94,9 @@ public class OntziaErabaki extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
+				//gelditzen diren ontzietatik bat aukeratu
 				if (ontzi1.isSelected()) {
-					aukeratutakoOntzi= nFact.createOntzi(1);
-					//System.out.println(aukeratutakoOntzi);
+					aukeratutakoOntzi= nFact.createOntzi(1); // OntziFact erabiliz sortu aukeratutako ontzia
 				} else if (ontzi2.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(2);
 				} else if (ontzi3.isSelected()) {
@@ -107,6 +109,7 @@ public class OntziaErabaki extends JFrame {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);
 				}else{*/
+				
 				OntziNorabidea norabidea = OntziNorabidea.getNireOntziNorabidea();
 				norabidea.setVisible(true);
 				//}	

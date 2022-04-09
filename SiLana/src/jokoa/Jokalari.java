@@ -23,7 +23,7 @@ public abstract class Jokalari {
 		//x, y--> Buttonetik atera--> ontziaNonKokatu
 		//pOntzi agian hobe tamaina itzultzen badu Tableroa
 		neureTablero.ontziaJarri(x, y, pOntzi, norabidea);
-		neureFlota.ontziakKokatu(pOntzi);
+		neureFlota.ontziakKokatu(pOntzi);	//behin tableroan jarrita dagoela, unekoZer gehitu pOntzi
 	}
 	
 
@@ -47,7 +47,7 @@ public abstract class Jokalari {
 		return bereTxandaBuk;
 	}
 	
-	protected boolean badagoKokatuGabekoOntzirik() {
+	public boolean badagoKokatuGabekoOntzirik() {
 		return !neureFlota.ontziDenakKokatuta();
 	}
 

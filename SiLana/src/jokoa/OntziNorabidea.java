@@ -88,9 +88,9 @@ public class OntziNorabidea extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (btn1.isSelected()) {
-					orientazioa='H';
+					orientazioa='H';	//Horizontala
 				}else if (btn2.isSelected()) {
-					orientazioa= 'B';
+					orientazioa= 'B';	// Bertikala aukeratzen bada
 				}
 				//KENDUTAKOA
 				Tableroa tab=Tableroa.getNireTableroa();	
