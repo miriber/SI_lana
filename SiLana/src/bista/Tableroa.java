@@ -1,4 +1,4 @@
-package jokoa;
+package bista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import jokoa.Jokalari;
+import jokoa.Jokalari1;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

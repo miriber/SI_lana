@@ -101,7 +101,6 @@ public class Flota {
 		int i=0;
 		while (itr.hasNext()) {
 			o=itr.next();
-			System.out.println(o
 			if (!motaHonetakoOntzirikBadagoKokatuGabe (o)) {
 				ontziDesb.remove(o);
 			}else {
@@ -115,7 +114,7 @@ public class Flota {
 	public boolean ontziDenakKokatuta () {
 		return ontziDesb.size()==0;
 	}
-	
+
 	
 	public void ontziakKokatu(Ontzi pOntzi) {
 		// TODO metodo hau agian ez da behar

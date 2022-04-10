@@ -1,5 +1,9 @@
 package jokoa;
 
+import bista.OntziNorabidea;
+import bista.OntziaErabaki;
+import bista.Tableroa;
+
 public class Jokalari1 extends Jokalari {
 	
 	private Jokalari1() {

@@ -1,5 +1,8 @@
 package jokoa;
 
+import bista.Irabazlea;
+import bista.Tableroa;
+
 public class Jokoa {
 	private boolean PCTxanda;
 	private Jokalari jokPC;
@@ -18,8 +21,14 @@ public class Jokoa {
 		}return nJoko;
 	}
 	
+	public boolean getNorIrabazi() {	//Irabazi jFrame erabili
+		return PCTxanda;
+	}
+	
 	public static void main(String args[]) {
 		Jokoa jokoa= Jokoa.getNireJoko();
+		Tableroa tab= Tableroa.getNireTableroa();
+		tab.partidaJokatu();
 		int i=0;
 		//Ontziak Kokatu
 		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
@@ -45,11 +54,12 @@ public class Jokoa {
 				}
 		}
 		if (jok1Bukatu) {
-			System.out.println("JOK1 IRABAZLE"); //JFrame bat egin honetarako
+			jokoa.PCTxanda=false;
 		}else {
-			System.out.println("JOKPC IRABAZLE"); //JFrame bat egin honetarako
+			jokoa.PCTxanda=true;
 		}
-		
+		Irabazlea irabazle= new Irabazlea();
+		//irabazle visible egin behar
 	}
 	
 

@@ -1,4 +1,4 @@
-package jokoa;
+package bista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.html.HTMLDocument.Iterator;
+
+import jokoa.Jokalari1;
+import jokoa.Ontzi;
+import jokoa.OntziFactory;
+
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
