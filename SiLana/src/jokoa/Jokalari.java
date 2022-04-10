@@ -6,7 +6,7 @@ public abstract class Jokalari {
 	protected Tablero aurkariarenTableroa;
 	protected static Jokalari nJok=null;
 	
-	public  Jokalari() {
+	public Jokalari() {
 		neureFlota= new Flota();
 		neureTablero= new Tablero();
 		aurkariarenTableroa= new Tablero();
@@ -15,7 +15,7 @@ public abstract class Jokalari {
 	
 	protected void neureOntziakKokatu(int x, int y, char norabidea,Ontzi pOntzi) {
 		neureTablero.ontziaJarri(x, y, pOntzi, norabidea);
-		neureFlota.ontziakKokatu(pOntzi);	//behin tableroan jarrita dagoela, unekoZer gehitu pOntzi
+		neureFlota.gehituOntzi(pOntzi);	//behin tableroan jarrita dagoela, unekoZer gehitu pOntzi
 	}
 	
 

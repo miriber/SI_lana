@@ -1,5 +1,7 @@
 package jokoa;
 
+import bista.ArazoOntziKokatu;
+
 public class Tablero {
 	private Gelaxka[][] taula;
 	
@@ -29,12 +31,12 @@ public class Tablero {
 		System.out.println(x+"X"+y+"y");
 		System.out.println(tamaina+"tamaina, TABLERO ");
 		System.out.println(norabidea);
+		ArazoOntziKokatu arazo= new ArazoOntziKokatu();
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
-				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					System.out.println("X:"+x+"Y:"+y+"i"+i);
-					System.out.println(taula[x+i][y].getUraDa());
-					//System.out.println(taula[x+i][y].getUraDa()+"ONTZIAJARRI");
+				for (int i=0;!jadaBesteOntzi && i<tamaina ;i++) {
+					//System.out.println("X:"+x+"Y:"+y+"i"+i);
+					//System.out.println(taula[x+i][y].getUraDa()+"TABLERO2");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} 
 				if (!jadaBesteOntzi) {
@@ -43,12 +45,14 @@ public class Tablero {
 					}
 				}else {
 					System.out.println("Ontzi jarri nahi duzun gelaxkaren bat jada beste ontzi batengatik okupatuta dago");
+					arazo.setVisible(true);
 					//3 aukera:
 					//ontziaNonKokatu
 				// Bestela
 					// modu random baten gu aukeratu
 				}
 			}else {
+				arazo.setVisible(true);
 				//ERROR: MATRIZETIK AT GELDITU
 				//3 aukera:
 					//ontziaNonKokatu
@@ -57,15 +61,15 @@ public class Tablero {
 			}
 		}else {
 			if (y+tamaina-1<10) {
-				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
-					System.out.println(taula[0][10].getUraDa());
+				for (int i=0; !jadaBesteOntzi && i<tamaina ;i++) {
+					//System.out.println(taula[x][y+i].getUraDa()+"TABLERO2");
 					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
-					System.out.println(jadaBesteOntzi);
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x][y+i].ontziaJarri(pOntzi);
 					}
 				}else {
+					arazo.setVisible(true);
 					//ERROR: JADA BESTE ONTZI BAT
 					//3 aukera:
 					//ontziaNonKokatu
@@ -73,6 +77,7 @@ public class Tablero {
 					// modu random baten gu aukeratu
 				}
 			}else {
+				arazo.setVisible(true);
 				System.out.println("Matrizetik at");
 				//ERROR: MATRIZETIK AT GELDITU
 			}

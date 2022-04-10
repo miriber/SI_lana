@@ -28,7 +28,7 @@ public class Jokoa {
 	public static void main(String args[]) {
 		Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
-		tab.partidaJokatu();
+		tab.setVisible(true);
 		int i=0;
 		//Ontziak Kokatu
 		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean

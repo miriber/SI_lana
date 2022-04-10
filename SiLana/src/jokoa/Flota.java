@@ -12,16 +12,18 @@ public class Flota {
 	//Ez da hobeto OntziZer klasea sortzea?
 	private Map<Ontzi,  Integer> zenbat;
 	private ArrayList<Arma> armamentuZer;
-
+	//private boolean lehena;
 	
 	public Flota() {
 		dirua=25;
 		unekoOntziZer= new ArrayList<Ontzi>();
 		ontziDesb= new ArrayList<Ontzi>();
-		zenbat= new HashMap <Ontzi, Integer>();
+		//zenbat= new HashMap <String, Integer>();
+		zenbat= new HashMap<Ontzi, Integer>();
 		ontziakSortu();
 		armamentuZer= new ArrayList<Arma>();
 		armamentuaGehitu();
+		//lehena=true;
 	}
 	
 	/*private Iterator<String> getIteradoreA(){
@@ -40,10 +42,12 @@ public class Flota {
 		OntziFactory nFact = OntziFactory.getNireOntziFact();
 		Ontzi berria= nFact.createOntzi(4);
 		//hegazkin ontzi bat
+		//zenbat.put(berria.getMota(), 1);
 		zenbat.put(berria, 1);
 		ontziDesb.add(berria);
 		//4 Fragata izango ditugu
 		berria= nFact.createOntzi(1);
+		//zenbat.put(berria.getMota(), 4);
 		zenbat.put(berria, 4);
 		ontziDesb.add(berria);
 		// hiru suntsitzaile
@@ -70,58 +74,62 @@ public class Flota {
 		}
 	}
 	
-	private void gehituOntzi(Ontzi pOntzi) {
-		System.out.println(unekoOntziZer.size()+" unekoOntziTamaina, FLOTA");
+	public void gehituOntzi(Ontzi pOntzi) {
 		unekoOntziZer.add(pOntzi);
 		System.out.println(unekoOntziZer.size()+" unekoOntziTamaina, FLOTA");
 	}
-	private boolean motaHonetakoOntzirikBadagoKokatuGabe (Ontzi pOntzi) {
+	private boolean motaHonetakoOntzirikInprima (Ontzi pOntzi) {
 		int kont=0;
 		int limite=zenbat.get(pOntzi);
+		System.out.println(limite+"limite, FLOTA"+pOntzi);
 		Iterator<Ontzi> itr= getIteradoreaO();
 		Ontzi o;
 		boolean inprima=true;
+		System.out.println(pOntzi.getMota()+"mota2");
 		while (itr.hasNext()&& kont< limite) {
 			o= itr.next();
-			System.out.println(o+"mota");
-			System.out.println(pOntzi.getMota()+"mota2");
 			if (o.getMotaBera(pOntzi.getMota())) { //pOntziren eta o-ren egoera bera
 				kont++;
+				System.out.println(kont+"mota2");
 			}
 		} if (kont==limite) {	//jada ontzi nahiko mota horretakoak
-			inprima=false;
+			inprima=false;	
 		}
+		System.out.println(inprima+"mota2");
 		return inprima;
 	}
 	
 	public Ontzi[] lortuOntziPosibleak(){
+		motaHonetakoLimiteaPasa();
 		Iterator<Ontzi> itr= getIteradoreaDesb();
 		Ontzi o;
 		Ontzi[] emaitza= new Ontzi[4];	//gehienez 4 ontzi mota egongo dira
 		int i=0;
 		while (itr.hasNext()) {
 			o=itr.next();
-			if (!motaHonetakoOntzirikBadagoKokatuGabe (o)) {
-				ontziDesb.remove(o);
-			}else {
-				emaitza[i]=o;
-				i++;
-			}
+			emaitza[i]=o;
+			i++;
 		}
 		return emaitza;
+	}
+	
+	private void motaHonetakoLimiteaPasa () {
+		Iterator<Ontzi> itr= getIteradoreaDesb();
+		Ontzi o=null;
+		if (!ontziDesb.isEmpty()) {
+			o= itr.next();
+		}
+		while (motaHonetakoOntzirikInprima(o) && itr.hasNext()) {
+			o=itr.next();
+		} if (!motaHonetakoOntzirikInprima(o)) {//jada badaude ontzi kop max
+			ontziDesb.remove(o);
+		}
 	}
 	
 	public boolean ontziDenakKokatuta () {
 		return ontziDesb.size()==0;
 	}
 
-	
-	public void ontziakKokatu(Ontzi pOntzi) {
-		// TODO metodo hau agian ez da behar
-		gehituOntzi (pOntzi);
-		// era berean kolorea aldatu behar interf graf++
-	}
-	
 	public boolean ontziDenakAurkituta() {
 		return unekoOntziZer.size()==0;
 	}
