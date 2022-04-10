@@ -49,7 +49,7 @@ public class Jokoa {
 			//tiroEman
 			//ukitu badu--> turnoa berea izaten jarraitu
 			//else
-				if (!jokoa.PCTxanda) { //TXANDAK KONTROLATU
+				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
 					jokoa.PCTxanda=false;
 				}else {
 					jokoa.PCTxanda=true;
