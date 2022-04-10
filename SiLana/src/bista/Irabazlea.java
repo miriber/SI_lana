@@ -2,6 +2,8 @@ package bista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -57,5 +59,15 @@ public class Irabazlea extends JFrame {
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.setBounds(167, 147, 97, 25);
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				Tableroa  tab = Tableroa.getNireTableroa();
+				//TODO Hasieratu dena
+			}
+			
+		});
 	}
 }

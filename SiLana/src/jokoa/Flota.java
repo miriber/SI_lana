@@ -12,18 +12,15 @@ public class Flota {
 	//Ez da hobeto OntziZer klasea sortzea?
 	private Map<Ontzi,  Integer> zenbat;
 	private ArrayList<Arma> armamentuZer;
-	//private boolean lehena;
 	
 	public Flota() {
 		dirua=25;
 		unekoOntziZer= new ArrayList<Ontzi>();
 		ontziDesb= new ArrayList<Ontzi>();
-		//zenbat= new HashMap <String, Integer>();
 		zenbat= new HashMap<Ontzi, Integer>();
 		ontziakSortu();
 		armamentuZer= new ArrayList<Arma>();
 		armamentuaGehitu();
-		//lehena=true;
 	}
 	
 	/*private Iterator<String> getIteradoreA(){
@@ -42,12 +39,10 @@ public class Flota {
 		OntziFactory nFact = OntziFactory.getNireOntziFact();
 		Ontzi berria= nFact.createOntzi(4);
 		//hegazkin ontzi bat
-		//zenbat.put(berria.getMota(), 1);
 		zenbat.put(berria, 1);
 		ontziDesb.add(berria);
 		//4 Fragata izango ditugu
 		berria= nFact.createOntzi(1);
-		//zenbat.put(berria.getMota(), 4);
 		zenbat.put(berria, 4);
 		ontziDesb.add(berria);
 		// hiru suntsitzaile
@@ -76,6 +71,9 @@ public class Flota {
 	
 	public void gehituOntzi(Ontzi pOntzi) {
 		unekoOntziZer.add(pOntzi);
+		if (unekoOntziZer.size()==10) {
+			motaHonetakoLimiteaPasa();
+		}
 		System.out.println(unekoOntziZer.size()+" unekoOntziTamaina, FLOTA");
 	}
 	private boolean motaHonetakoOntzirikInprima (Ontzi pOntzi) {
@@ -90,12 +88,12 @@ public class Flota {
 			o= itr.next();
 			if (o.getMotaBera(pOntzi.getMota())) { //pOntziren eta o-ren egoera bera
 				kont++;
-				System.out.println(kont+"mota2");
+				System.out.println(kont+"*******************************************");
 			}
 		} if (kont==limite) {	//jada ontzi nahiko mota horretakoak
 			inprima=false;	
 		}
-		System.out.println(inprima+"mota2");
+		System.out.println(inprima+"mota2---------");
 		return inprima;
 	}
 	
@@ -123,10 +121,12 @@ public class Flota {
 			o=itr.next();
 		} if (!motaHonetakoOntzirikInprima(o)) {//jada badaude ontzi kop max
 			ontziDesb.remove(o);
+			System.out.println("11111111111111111");
 		}
 	}
 	
 	public boolean ontziDenakKokatuta () {
+		System.out.println(ontziDesb.size()+"/////////////////////////");
 		return ontziDesb.size()==0;
 	}
 

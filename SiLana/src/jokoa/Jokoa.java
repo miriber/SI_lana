@@ -36,11 +36,13 @@ public class Jokoa {
 			i=i+1;
 			System.out.println(i);
 		}
+		jokoa.PCTxanda=true;
 		jokoa.jokPC.ontziakKokatu();
 		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
 		jokoa.jok1.aurkariarenTableroaEguneratu();
 		jokoa.jokPC.aurkariarenTableroaEguneratu();
-		//Partida hasi: jok1 hasiko da--> PCTxanda=false
+		//Partida hasi: jok1 hasiko da
+		jokoa.PCTxanda=false;
 		boolean jok1Bukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
 		boolean jokPCBukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
 		while (!jok1Bukatu && !jokPCBukatu) { //PARTIDA NOIZ BUKATU
@@ -59,7 +61,7 @@ public class Jokoa {
 			jokoa.PCTxanda=true;
 		}
 		Irabazlea irabazle= new Irabazlea();
-		//irabazle visible egin behar
+		irabazle.setVisible(true);
 	}
 	
 
