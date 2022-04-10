@@ -25,11 +25,15 @@ public class Tablero {
 	public void ontziaJarri(int x, int y, Ontzi pOntzi, char norabidea) {
 		boolean jadaBesteOntzi=false;
 		int tamaina=pOntzi.getOntziTamaina();
+		System.out.println(pOntzi);
+		System.out.println(x+"X"+y+"y");
+		System.out.println(tamaina+"tamaina, TABLERO ");
+		System.out.println(norabidea);
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
 					System.out.println("X:"+x+"Y:"+y+"i"+i);
-					System.out.println(taula[x+i][y]);
+					System.out.println(taula[x+i][y].getUraDa());
 					//System.out.println(taula[x+i][y].getUraDa()+"ONTZIAJARRI");
 					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
 				} 
@@ -54,7 +58,9 @@ public class Tablero {
 		}else {
 			if (y+tamaina-1<10) {
 				for (int i=0;i<tamaina && !jadaBesteOntzi;i++) {
+					System.out.println(taula[0][10].getUraDa());
 					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
+					System.out.println(jadaBesteOntzi);
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x][y+i].ontziaJarri(pOntzi);
@@ -67,6 +73,7 @@ public class Tablero {
 					// modu random baten gu aukeratu
 				}
 			}else {
+				System.out.println("Matrizetik at");
 				//ERROR: MATRIZETIK AT GELDITU
 			}
 		} //EXCEPTION IGUAL KANPOAN TRATATU BEHAR?? BOOLEAN BAT RETURN?

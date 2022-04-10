@@ -1,51 +1,33 @@
 package jokoa;
 
-import java.util.ArrayList;
-
 public abstract class Jokalari {
 	protected Flota neureFlota ;
 	protected Tablero neureTablero;
 	protected Tablero aurkariarenTableroa;
 	protected static Jokalari nJok=null;
-	private boolean bereTxandaBuk;
 	
 	public  Jokalari() {
 		neureFlota= new Flota();
 		neureTablero= new Tablero();
 		aurkariarenTableroa= new Tablero();
-		bereTxandaBuk=false;
 	}
 	
 	
 	protected void neureOntziakKokatu(int x, int y, char norabidea,Ontzi pOntzi) {
-		// ontziaAukeratu metodotik lortuko dugu tamaina
-		//String norabidea= ontziarenNorabidea
-		//x, y--> Buttonetik atera--> ontziaNonKokatu
-		//pOntzi agian hobe tamaina itzultzen badu Tableroa
 		neureTablero.ontziaJarri(x, y, pOntzi, norabidea);
 		neureFlota.ontziakKokatu(pOntzi);	//behin tableroan jarrita dagoela, unekoZer gehitu pOntzi
 	}
 	
 
 	public abstract void ontziakKokatu();
+	// beharrezkoa da ontziakKokatu() jok1-n?? ez du balio neureOntziakKokatu public jarriz?
 	
-	public Tablero getAurkariarenTablero() {
+	protected Tablero getAurkariarenTablero() {
 		return aurkariarenTableroa;
 	}
 	
-	protected void txandaBuk() {
-		bereTxandaBuk=false;
-	}
+	public abstract void aurkariarenTableroaEguneratu();
 	
-	public void txandaHasi() {
-		bereTxandaBuk=true;
-	}
-	
-	public  abstract void besteJokTxanda();
-	
-	public boolean getTxanda() {
-		return bereTxandaBuk;
-	}
 	
 	public boolean badagoKokatuGabekoOntzirik() {
 		return !neureFlota.ontziDenakKokatuta();
@@ -53,6 +35,10 @@ public abstract class Jokalari {
 
 	public Ontzi[] ontziPosibleakItzuli() {
 		return neureFlota.lortuOntziPosibleak();
+	}
+	
+	public boolean jokalariBatenOntziGuztiakAurkitu() {
+		return neureFlota.ontziDenakAurkituta();
 	}
 	
 }

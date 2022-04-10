@@ -134,13 +134,10 @@ public class Tableroa extends JFrame implements ActionListener {
 	}
 
 	private JButton getBtnNewButton() {
-		System.out.println("TABLEROA"+botoia1);
 		if (botoia1 == null) {
 			botoia1 = new JButton("Partida hasi");
-			System.out.println("TABLEROA"+botoia1);
 			botoia1.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
 				public void actionPerformed(ActionEvent e) { //botoia klikatuz gero, gertatuko dena 
-					System.out.println("TABLEROA"+botoia1);
 					botoia1.setVisible(false);
 					biltegiButton.setVisible(true);
 					flotaKokatuButton.setVisible(true);
@@ -151,7 +148,7 @@ public class Tableroa extends JFrame implements ActionListener {
 			flotaKokatuButton.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					if (jok1.badagoKokatuGabekoOntzirik()) {
+					if (jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
 						JOptionPane.showMessageDialog(flotaKokatuButton, "Ontzia kokatzeko momentua, zeure taulako gelaxka bat aukeratu. Bertan, ontzia kokatuko da.");
 						neureTaulanOntziakKokatu();
 		           } else {
@@ -192,9 +189,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	                        XTextField.setText(Integer.toString(x));	                
 	                        YTextField.setText(Integer.toString(y));            
 	                        klikatutakoX=x;
-	                        System.out.println("x:"+klikatutakoX);
 	                        klikatutakoY=y; 
-	                        System.out.println("y:"+klikatutakoY);
 	                        OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
 	                        erabikitakoOntzi.setVisible(true);
 	                        setVisible (false);

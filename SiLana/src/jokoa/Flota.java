@@ -71,11 +71,9 @@ public class Flota {
 	}
 	
 	private void gehituOntzi(Ontzi pOntzi) {
+		System.out.println(unekoOntziZer.size()+" unekoOntziTamaina, FLOTA");
 		unekoOntziZer.add(pOntzi);
-		Iterator<Ontzi> itr = getIteradoreaO();
-		while (itr.hasNext()) {
-			System.out.println(itr.next());
-		}
+		System.out.println(unekoOntziZer.size()+" unekoOntziTamaina, FLOTA");
 	}
 	private boolean motaHonetakoOntzirikBadagoKokatuGabe (Ontzi pOntzi) {
 		int kont=0;
@@ -103,6 +101,7 @@ public class Flota {
 		int i=0;
 		while (itr.hasNext()) {
 			o=itr.next();
+			System.out.println(o
 			if (!motaHonetakoOntzirikBadagoKokatuGabe (o)) {
 				ontziDesb.remove(o);
 			}else {
@@ -121,6 +120,10 @@ public class Flota {
 	public void ontziakKokatu(Ontzi pOntzi) {
 		// TODO metodo hau agian ez da behar
 		gehituOntzi (pOntzi);
-		// era berean kolorea aldatu behar interf graf
+		// era berean kolorea aldatu behar interf graf++
+	}
+	
+	public boolean ontziDenakAurkituta() {
+		return unekoOntziZer.size()==0;
 	}
 }

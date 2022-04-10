@@ -1,7 +1,5 @@
 package jokoa;
 
-import java.util.ArrayList;
-
 public class Jokalari1 extends Jokalari {
 	
 	private Jokalari1() {
@@ -16,38 +14,24 @@ public class Jokalari1 extends Jokalari {
 	}
 	
 	
-	/*public void ontziakKokatu() {
+	public void ontziakKokatu() {
 		Tableroa tab=Tableroa.getNireTableroa();
-		int x, y;
-		while (badagoKokatuGabekoOntzirik()) {	//ontzi guztiak kokatuta ez dauden bitartean
-			//Tableroan sakatutako gelaxkaren x eta y lortu	
-			x= tab.getTablerotikOntziX();
-			y= tab.getTablerotikOntziY();
-			System.out.println(x+"JOKOLARI1");
-			//Aukeratutako ontzia lortu
-			OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
-			Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
-			System.out.println(pOntzi+"JOKOLARI1");
-			//System.out.println(pOntzi+"NORABIDEA");
-			OntziNorabidea ontziNorab= OntziNorabidea.getNireOntziNorabidea();
-			char orientazioa= ontziNorab.getOrientazioa();
-			System.out.println(orientazioa+"JOKOLARI1");
-			neureOntziakKokatu(x, y, orientazioa, pOntzi);
-		}
+		//Tableroan sakatutako gelaxkaren x eta y lortu	
+		int x=tab.getTablerotikOntziX();
+		int y=tab.getTablerotikOntziY();
+		//Aukeratutako ontzia lortu
+		OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
+		Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
+		//Ontziaren norabidea lortu
+		OntziNorabidea ontziNorab= OntziNorabidea.getNireOntziNorabidea();
+		char orientazioa= ontziNorab.getOrientazioa();
+		neureOntziakKokatu(x, y, orientazioa, pOntzi);
 		//TODO EXCEPTION 
 		
 	}
-	*/
-
-
-	public void besteJokTxanda() {
-		txandaBuk();
-		PC.getNeureJok().txandaHasi();		
-	}
-
 	
-	public void ontziakKokatu() {
-		// TODO Auto-generated method stub
-		//this.neureOntziakKokatu(x, y, norabidea, pOntzi);
+	@Override
+	public void aurkariarenTableroaEguneratu() {
+		aurkariarenTableroa=PC.getNeureJok().getAurkariarenTablero();
 	}
 }

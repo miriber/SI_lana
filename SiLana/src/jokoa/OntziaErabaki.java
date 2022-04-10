@@ -13,7 +13,6 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class OntziaErabaki extends JFrame {
@@ -21,7 +20,7 @@ public class OntziaErabaki extends JFrame {
 	private static OntziaErabaki nOntziaErabaki=null;
 	private JPanel contentPane;
 	private ButtonGroup group;	//horrela JRadioButton bakarra aukeratu ahal da
-	private JButton botoia;
+	//private JButton botoia;
 	private JRadioButton ontzi1,ontzi2,ontzi3,ontzi4;
 	private Ontzi aukeratutakoOntzi;
 	private JTextField txtAukeratuOntziBat;
@@ -102,14 +101,11 @@ public class OntziaErabaki extends JFrame {
 				} else if (ontzi3.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(3);
 				} else {
-					aukeratutakoOntzi=nFact.createOntzi(4);
-					//
-					System.out.println(aukeratutakoOntzi+"aukeratutako ontzi");
+					aukeratutakoOntzi=nFact.createOntzi(4);					
 				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);
 				}else{*/
-				
 				OntziNorabidea norabidea = OntziNorabidea.getNireOntziNorabidea();
 				norabidea.setVisible(true);
 				//}	

@@ -92,24 +92,22 @@ public class OntziNorabidea extends JFrame {
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';	// Bertikala aukeratzen bada
 				}
-				//KENDUTAKOA
+				/*//KENDUTAKOA
 				Tableroa tab=Tableroa.getNireTableroa();	
 				int x= tab.getTablerotikOntziX();
 				int y= tab.getTablerotikOntziY();
-				System.out.println(x+"ONTZIN1");
 				//Aukeratutako ontzia lortu
 				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
-				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
-				System.out.println(pOntzi+"ONTZIN1");
-				System.out.println(orientazioa+"ONTZIN1");
+				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();*/
 				Jokalari jok1= Jokalari1.getNeureJok();
-				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
+				jok1.ontziakKokatu();
+				//jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
 				/*
 				//GEHITUTAKOA
 				
 				jok1.ontziakKokatu();*/
-				/*///ZER UTSI
-				Tableroa tab= Tableroa.getNireTableroa();*/
+				///ZER UTSI
+				Tableroa tab= Tableroa.getNireTableroa();
 				tab.partidaJokatu();
 				setVisible(false);
 			}

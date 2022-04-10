@@ -1,9 +1,6 @@
 package jokoa;
 
-import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class PC extends Jokalari {
 	
@@ -35,14 +32,12 @@ public class PC extends Jokalari {
 			norabidea=norabideAukerak[random.nextInt(2)];
 			Ontzi[] ontziPosibleak=neureFlota.lortuOntziPosibleak();
 			neureOntziakKokatu(x,y,norabidea, ontziPosibleak[0]);
-			aurkariarenTableroa=Jokalari1.getNeureJok().getAurkariarenTablero();
 		}
 	}
 
 	@Override
-	public void besteJokTxanda() {
-		super.txandaBuk();
-		Jokalari1.getNeureJok().txandaHasi();
+	public void aurkariarenTableroaEguneratu() {
+		aurkariarenTableroa=Jokalari1.getNeureJok().getAurkariarenTablero();		
 	}
 	
 }
