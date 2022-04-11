@@ -37,7 +37,7 @@ public class OntziaErabaki extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OntziaErabaki frame = new OntziaErabaki();
+					OntziaErabaki frame = getNireOntziaErabaki();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -94,6 +94,7 @@ public class OntziaErabaki extends JFrame {
 				contentPane.add(ontzi4);
 			}
 		}
+		
 		JButton btnNewButton = new JButton("OK");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,10 +119,12 @@ public class OntziaErabaki extends JFrame {
 			}
 		});
 		btnNewButton.setBounds(145, 205, 97, 25);
-		contentPane.add(btnNewButton);
+		contentPane.add(btnNewButton);				
 	}
 	
 	public Ontzi getAukeraketa() {
 		return aukeratutakoOntzi;
 	}
+	
+	
 }

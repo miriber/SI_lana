@@ -28,7 +28,7 @@ public class Jokoa {
 	public static void main(String args[]) {
 		Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
-		tab.setVisible(true);
+		tab.tableroaIkusi();
 		int i=0;
 		//Ontziak Kokatu
 		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
@@ -60,8 +60,8 @@ public class Jokoa {
 		}else {
 			jokoa.PCTxanda=true;
 		}
-		Irabazlea irabazle= new Irabazlea();
-		irabazle.setVisible(true);
+		//Irabazlea irabazle= new Irabazlea();
+		//irabazle.setVisible(true);
 	}
 	
 

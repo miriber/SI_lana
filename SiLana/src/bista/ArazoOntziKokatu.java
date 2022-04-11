@@ -53,6 +53,7 @@ public class ArazoOntziKokatu extends JFrame {
 		JButton btnNewButton = new JButton("Aceptar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(5, 233, 432, 25);

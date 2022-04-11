@@ -108,6 +108,7 @@ public class Flota {
 			emaitza[i]=o;
 			i++;
 		}
+		System.out.println(i+"TAMAINA DESB");
 		return emaitza;
 	}
 	

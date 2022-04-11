@@ -30,6 +30,7 @@ public abstract class Jokalari {
 	
 	
 	public boolean badagoKokatuGabekoOntzirik() {
+		
 		return !neureFlota.ontziDenakKokatuta();
 	}
 
