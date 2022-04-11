@@ -33,7 +33,7 @@ public class Tableroa extends JFrame implements Observer {
 	private JLabel mezua1;			// zein jokalariren txanda den adieraziko du mezu honek
 	private JLabel mezua2,xKoor, yKoor;
 	private Color kolorea;	
-	private JButton biltegiButton, flotaKokatuButton;
+	private JButton biltegiButton, flotaKokatuButton, tiroButton;
 	private JTextField XTextField, YTextField;
 	private int klikatutakoX, klikatutakoY;
 	private static Tableroa neTableroa= null;
@@ -67,6 +67,11 @@ public class Tableroa extends JFrame implements Observer {
         contentPane.add(flotaKokatuButton);
         flotaKokatuButton.setBounds(250, 600, 150, 50);
         flotaKokatuButton.setVisible(false);
+        
+        tiroButton = new JButton("TiroEgin");
+        contentPane.add(tiroButton);
+        tiroButton.setBounds(250, 600, 150, 50);
+        tiroButton.setVisible(false);
         
 		contentPane.add(getBtnNewButton());
 		getContentPane().setLayout(null); //elem kokapena gure menpe
@@ -159,8 +164,26 @@ public class Tableroa extends JFrame implements Observer {
 						JOptionPane.showMessageDialog(flotaKokatuButton, "Ontzia kokatzeko momentua, zeure taulako gelaxka bat aukeratu. Bertan, ontzia kokatuko da.");
 						neureTaulanOntziakKokatu();
 		           } else {
-		        	   JOptionPane.showMessageDialog(flotaKokatuButton, "Jada zure ontzi guztiak kokatuta daude");
+		        	   flotaKokatuButton.setVisible(false);
+		        	   tiroButton.setVisible(true);
+		        	   //JOptionPane.showMessageDialog(flotaKokatuButton, "Jada zure ontzi guztiak kokatuta daude");
 		           }
+				}
+			});
+			tiroButton.addActionListener(new ActionListener() {  //klik egiten bada botoia jakinarazi
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					aMatrizekoXY(e);
+					ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
+					arm.setVisible(true);
+					setVisible(false);
+					/*boolean jokPCBuk=jok1.jokalariBatenOntziGuztiakAurkitu();
+					boolean jok1Buk= jokPC.jokalariBatenOntziGuztiakAurkitu();
+					//TODO hau jokoan egiten da
+					while (!jokPCBuk && !jok1Buk) {
+						jok1.
+					}
+					tiroButton.setVisible(false);*/
 				}
 			});
 		}

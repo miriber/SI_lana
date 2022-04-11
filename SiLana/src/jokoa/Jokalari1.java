@@ -1,8 +1,10 @@
 package jokoa;
 
+import bista.ArmamentuaAukeratu;
 import bista.OntziNorabidea;
 import bista.OntziaErabaki;
 import bista.Tableroa;
+
 
 public class Jokalari1 extends Jokalari {
 	
@@ -38,4 +40,26 @@ public class Jokalari1 extends Jokalari {
 	public void aurkariarenTableroaEguneratu() {
 		aurkariarenTableroa=PC.getNeureJok().getAurkariarenTablero();
 	}
+
+	@Override
+	public void tiroJaso() {
+		Tableroa tab= Tableroa.getNireTableroa();
+		int x=tab.getTablerotikOntziX();
+		int y=tab.getTablerotikOntziY();
+		ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
+		Arma arma= arm.getAukeratutakoa();
+		Ontzi ontzi = neureTablero.getOntziMota(x,y);	
+		neureTablero.tiroJaso(x,y);
+		if (arma instanceof Bonba) {
+			ontzi.zenbatFaltaKenBat();
+		}else if(arma instanceof Misila){
+			ontzi.zenbatFaltaZero();
+		}
+		ontzi.aldatuEg();	
+		if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+			neureFlota.ontziaKendu(ontzi);				
+		}
+			
+	}
+		
 }
