@@ -1,7 +1,7 @@
 package jokoa;
 
 public class SuntsitzaileOntzi extends Ontzi{
-	public SuntsitzaileOntzi() {
-		super(2,"Suntsitzailea");
+	public SuntsitzaileOntzi(char pNorab) {
+		super(2,"Suntsitzailea",pNorab);
 	}
 }

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import bista.OntziNorabidea;
+
 public class Flota {
 	private int dirua;
 	private ArrayList<Ontzi> unekoOntziZer;
@@ -37,20 +39,22 @@ public class Flota {
 	
 	private void ontziakSortu() {
 		OntziFactory nFact = OntziFactory.getNireOntziFact();
-		Ontzi berria= nFact.createOntzi(4);
+		OntziNorabidea on= OntziNorabidea.getNireOntziNorabidea();
+		char orientazioa=on.getOrientazioa();
+		Ontzi berria= nFact.createOntzi(4, orientazioa);
 		//hegazkin ontzi bat
 		zenbat.put(berria, 1);
 		ontziDesb.add(berria);
 		//4 Fragata izango ditugu
-		berria= nFact.createOntzi(1);
+		berria= nFact.createOntzi(1, orientazioa);
 		zenbat.put(berria, 4);
 		ontziDesb.add(berria);
 		// hiru suntsitzaile
-		berria= nFact.createOntzi(2);
+		berria= nFact.createOntzi(2, orientazioa);
 		zenbat.put(berria, 3);
 		ontziDesb.add(berria);
 		//bi itsaspeko
-		berria= nFact.createOntzi(3);
+		berria= nFact.createOntzi(3, orientazioa);
 		zenbat.put(berria, 2);
 		ontziDesb.add(berria);
 	}
