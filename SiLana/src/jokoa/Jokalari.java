@@ -30,10 +30,9 @@ public abstract class Jokalari {
 	
 	
 	public boolean badagoKokatuGabekoOntzirik() {
-		
 		return !neureFlota.ontziDenakKokatuta();
 	}
-
+	
 	public Ontzi[] ontziPosibleakItzuli() {
 		return neureFlota.lortuOntziPosibleak();
 	}

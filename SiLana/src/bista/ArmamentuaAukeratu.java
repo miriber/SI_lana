@@ -3,6 +3,7 @@ package bista;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,10 +16,11 @@ import java.awt.event.ActionEvent;
 public class ArmamentuaAukeratu extends JFrame {
 
     private JPanel contentPane;
+    private ButtonGroup group;
     private JTextField txtAukeratuArma;
     private JRadioButton bonba,misila;
     private JButton okBotoia;
-
+    private static ArmamentuaAukeratu nArma=null;
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -33,26 +35,28 @@ public class ArmamentuaAukeratu extends JFrame {
         });
     }
 
-    public ArmamentuaAukeratu() {
-
-        initialize();
+    public static ArmamentuaAukeratu() {
+    	if (nArma==null) {
+    		nArma=new ArmamentuaAukeratu();
+    	}
     }
-    private void initialize() {
+    
+    private ArmamentuaAukeratu() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
+		contentPane.setLayout(null);
 
         txtAukeratuArma = new JTextField();
         txtAukeratuArma.setEditable(false);
-        txtAukeratuArma.setText("Aukeratu Arma:");
+        txtAukeratuArma.setText("Aukeratu arma:");
         txtAukeratuArma.setBounds(143, 28, 116, 32);
         contentPane.add(txtAukeratuArma);
         txtAukeratuArma.setColumns(10);
 
-
+        group=new ButtonGroup();
         for (int i = 0; i < 2; i++) {
 
         }
@@ -64,6 +68,7 @@ public class ArmamentuaAukeratu extends JFrame {
             okBotoia = new JButton("ok");
             okBotoia.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                	
                 }
             });
         }

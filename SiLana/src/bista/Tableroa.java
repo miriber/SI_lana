@@ -117,7 +117,6 @@ public class Tableroa extends JFrame implements ActionListener {
 		
 		//jokPC.ontziakKokatu();
 		kolorea= nTableroa[0][0].getBackground();
-		
 	}
 	
 	public static Tableroa getNireTableroa() {
@@ -176,28 +175,10 @@ public class Tableroa extends JFrame implements ActionListener {
 			for (int j=0;j<10;j++) {
 				nTableroa[i][j].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						boolean aurkitu= false;
-	                       int x=0;
-	                       int y=0;
-	                       while(x<=8 && y<=8 && aurkitu==false) {
-	                           if(nTableroa[x][y]==e.getSource()) {
-	                               aurkitu=true;
-	                           }else{
-	                               x++;
-	                               if(x==9) {
-                                    x=0;
-                                    y++;
-	                               }
-	                           }
-	                        }
-	                        XTextField.setText(Integer.toString(x));	                
-	                        YTextField.setText(Integer.toString(y));            
-	                        klikatutakoX=x;
-	                        klikatutakoY=y; 
-	                        OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
-	                        erabikitakoOntzi.setVisible(true);
-	                        
-	                        setVisible (false);
+						nMatrizekoXY(e);
+	                    OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
+	                    erabikitakoOntzi.setVisible(true);
+	                    setVisible (false);
 					}
 	               });
 			}
@@ -209,18 +190,18 @@ public class Tableroa extends JFrame implements ActionListener {
 			for (int j=0;j<10;j++) {
 				nTableroa[i][j].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						matrizekoXY (e);
+						nMatrizekoXY (e);
 					}
 				});
 				aTableroa[i][j].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						matrizekoXY (e);
+						aMatrizekoXY (e);
 					}
 				});
 			}
 		}
 	}
-	private void matrizekoXY(ActionEvent e) {
+	private void aMatrizekoXY(ActionEvent e) {
 		boolean aurkitu= false;
 		int x=0;
 		int y=0;
@@ -237,6 +218,29 @@ public class Tableroa extends JFrame implements ActionListener {
 		}
 		XTextField.setText(Integer.toString(x));
 		YTextField.setText(Integer.toString(y));
+        klikatutakoX=x;
+        klikatutakoY=y; 
+	}
+	
+	private void nMatrizekoXY(ActionEvent e) {
+		boolean aurkitu= false;
+		int x=0;
+		int y=0;
+		while(x<=8 && y<=8 && aurkitu==false) {
+			if(nTableroa[x][y]==e.getSource()) {
+				aurkitu=true;
+			}else{
+				x++;
+				if(x==9) {
+					x=0;
+					y++;
+				}
+			}
+		}
+		XTextField.setText(Integer.toString(x));
+		YTextField.setText(Integer.toString(y));
+        klikatutakoX=x;
+        klikatutakoY=y; 
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
