@@ -60,4 +60,8 @@ public abstract class Ontzi {
 		zenbatFalta --;
 		
 	}
+	
+	public void zenbatFaltaZero() {
+		zenbatFalta = 0;
+	}
 }

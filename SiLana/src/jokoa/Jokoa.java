@@ -1,5 +1,8 @@
 package jokoa;
 
+import bista.Irabazlea;
+import bista.Tableroa;
+
 public class Jokoa {
 	private boolean PCTxanda;
 	private Jokalari jokPC;
@@ -18,17 +21,47 @@ public class Jokoa {
 		}return nJoko;
 	}
 	
+	public boolean getNorIrabazi() {	//Irabazi jFrame erabili
+		return PCTxanda;
+	}
+	
 	public static void main(String args[]) {
-	//	Jokoa jokoa= Jokoa.getNireJoko();
-	//	jokoa.jok1.ontziakKokatu();
-	//	jokoa.jokPC.ontziakKokatu();
+		Jokoa jokoa= Jokoa.getNireJoko();
+		Tableroa tab= Tableroa.getNireTableroa();
+		tab.setVisible(true);
+		int i=0;
+		//Ontziak Kokatu
+		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
+			jokoa.jok1.ontziakKokatu();
+			i=i+1;
+			System.out.println(i);
+		}
+		jokoa.PCTxanda=true;
+		jokoa.jokPC.ontziakKokatu();
+		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
+		jokoa.jok1.aurkariarenTableroaEguneratu();
+		jokoa.jokPC.aurkariarenTableroaEguneratu();
 		//Partida hasi: jok1 hasiko da
-		//boolean jok1Bukatu= jokoa.jok1.
-		//while ()
-		//PARTIDA NOIZ HASTEN DEN
-		//TXANDAK KONTROLATU
-		
-		//PARTIDA NOIZ BUKATU
+		jokoa.PCTxanda=false;
+		boolean jok1Bukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
+		boolean jokPCBukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
+		while (!jok1Bukatu && !jokPCBukatu) { //PARTIDA NOIZ BUKATU
+			//tiroEman
+			//ukitu badu--> turnoa berea izaten jarraitu
+			//else
+				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
+					jokoa.PCTxanda=false;
+				}else {
+					jokoa.PCTxanda=true;
+				}
+		}
+		if (jok1Bukatu) {
+			jokoa.PCTxanda=false;
+		}else {
+			jokoa.PCTxanda=true;
+		}
+		Irabazlea irabazle= new Irabazlea();
+		irabazle.setVisible(true);
 	}
 	
 

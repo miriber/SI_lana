@@ -1,4 +1,4 @@
-package jokoa;
+package bista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import jokoa.Jokalari;
+import jokoa.Jokalari1;
+
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 
@@ -88,28 +92,26 @@ public class OntziNorabidea extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (btn1.isSelected()) {
-					orientazioa='H';
+					orientazioa='H';	//Horizontala
 				}else if (btn2.isSelected()) {
-					orientazioa= 'B';
+					orientazioa= 'B';	// Bertikala aukeratzen bada
 				}
-				//KENDUTAKOA
+				/*//KENDUTAKOA
 				Tableroa tab=Tableroa.getNireTableroa();	
 				int x= tab.getTablerotikOntziX();
 				int y= tab.getTablerotikOntziY();
-				System.out.println(x+"ONTZIN1");
 				//Aukeratutako ontzia lortu
 				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
-				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();
-				System.out.println(pOntzi+"ONTZIN1");
-				System.out.println(orientazioa+"ONTZIN1");
+				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();*/
 				Jokalari jok1= Jokalari1.getNeureJok();
-				jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
+				jok1.ontziakKokatu();
+				//jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
 				/*
 				//GEHITUTAKOA
 				
 				jok1.ontziakKokatu();*/
-				/*///ZER UTSI
-				Tableroa tab= Tableroa.getNireTableroa();*/
+				///ZER UTSI
+				Tableroa tab= Tableroa.getNireTableroa();
 				tab.partidaJokatu();
 				setVisible(false);
 			}

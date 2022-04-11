@@ -24,7 +24,7 @@ public class Gelaxka {
 	}
 	
 	public void tiroJaso() {
-		tiroJaso=false;
+		tiroJaso=true;
 	}
 	
 	public boolean getTiroJaso() {

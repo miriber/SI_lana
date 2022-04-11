@@ -1,53 +1,35 @@
 package jokoa;
 
-import java.util.ArrayList;
-
 public abstract class Jokalari {
 	protected Flota neureFlota ;
 	protected Tablero neureTablero;
 	protected Tablero aurkariarenTableroa;
 	protected static Jokalari nJok=null;
-	private boolean bereTxandaBuk;
 	
-	public  Jokalari() {
+	public Jokalari() {
 		neureFlota= new Flota();
 		neureTablero= new Tablero();
 		aurkariarenTableroa= new Tablero();
-		bereTxandaBuk=false;
 	}
 	
 	
 	protected void neureOntziakKokatu(int x, int y, char norabidea,Ontzi pOntzi) {
-		// ontziaAukeratu metodotik lortuko dugu tamaina
-		//String norabidea= ontziarenNorabidea
-		//x, y--> Buttonetik atera--> ontziaNonKokatu
-		//pOntzi agian hobe tamaina itzultzen badu Tableroa
 		neureTablero.ontziaJarri(x, y, pOntzi, norabidea);
-		neureFlota.ontziakKokatu(pOntzi);
+		neureFlota.gehituOntzi(pOntzi);	//behin tableroan jarrita dagoela, unekoZer gehitu pOntzi
 	}
 	
 
 	public abstract void ontziakKokatu();
+	// beharrezkoa da ontziakKokatu() jok1-n?? ez du balio neureOntziakKokatu public jarriz?
 	
-	public Tablero getAurkariarenTablero() {
+	protected Tablero getAurkariarenTablero() {
 		return aurkariarenTableroa;
 	}
 	
-	protected void txandaBuk() {
-		bereTxandaBuk=false;
-	}
+	public abstract void aurkariarenTableroaEguneratu();
 	
-	public void txandaHasi() {
-		bereTxandaBuk=true;
-	}
 	
-	public  abstract void besteJokTxanda();
-	
-	public boolean getTxanda() {
-		return bereTxandaBuk;
-	}
-	
-	protected boolean badagoKokatuGabekoOntzirik() {
+	public boolean badagoKokatuGabekoOntzirik() {
 		return !neureFlota.ontziDenakKokatuta();
 	}
 
@@ -55,15 +37,25 @@ public abstract class Jokalari {
 		return neureFlota.lortuOntziPosibleak();
 	}
 	
-	public void tiroJaso(int x, int y) {
+	public void tiroJaso(int x, int y, Arma arma) {
 		Ontzi ontzi = neureTablero.getOntziMota(x,y);
-		ontzi.zenbatFaltaKenBat();
-		ontzi.aldatuEg();
 		neureTablero.tiroJaso(x,y);
-		neureFlota.ontziaKendu(ontzi);
+		if (arma instanceof Bonba) {
+			ontzi.zenbatFaltaKenBat();
+			ontzi.aldatuEg();	
+			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+				neureFlota.ontziaKendu(ontzi);				
+			}
+		}else if(arma instanceof Misila){
+			ontzi.zenbatFaltaZero();
+			ontzi.aldatuEg();
+			neureFlota.ontziaKendu(ontzi);
+		}
 		
 	}
 	
-	
+	public boolean jokalariBatenOntziGuztiakAurkitu() {
+		return neureFlota.ontziDenakAurkituta();
+	}
 	
 }

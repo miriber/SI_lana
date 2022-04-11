@@ -1,4 +1,4 @@
-package jokoa;
+package bista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -10,10 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.html.HTMLDocument.Iterator;
+
+import jokoa.Jokalari1;
+import jokoa.Ontzi;
+import jokoa.OntziFactory;
+
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class OntziaErabaki extends JFrame {
@@ -21,7 +25,7 @@ public class OntziaErabaki extends JFrame {
 	private static OntziaErabaki nOntziaErabaki=null;
 	private JPanel contentPane;
 	private ButtonGroup group;	//horrela JRadioButton bakarra aukeratu ahal da
-	private JButton botoia;
+	//private JButton botoia;
 	private JRadioButton ontzi1,ontzi2,ontzi3,ontzi4;
 	private Ontzi aukeratutakoOntzi;
 	private JTextField txtAukeratuOntziBat;
@@ -48,6 +52,7 @@ public class OntziaErabaki extends JFrame {
 		}
 		return nOntziaErabaki;
 	}
+	
 	private OntziaErabaki() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -66,6 +71,7 @@ public class OntziaErabaki extends JFrame {
 		group=new ButtonGroup();
 		Ontzi[] ontziPosibleak=Jokalari1.getNeureJok().ontziPosibleakItzuli();
 		for (int i =0;i<ontziPosibleak.length;i++) {
+			//gelditzen diren ontzi motak agertu
 			if (ontziPosibleak[i].getMotaBera("Fragata")) {
 				ontzi1 = new JRadioButton("Fragata (1)");
 				ontzi1.setBounds(145, 63, 127, 25);
@@ -92,17 +98,15 @@ public class OntziaErabaki extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
+				//gelditzen diren ontzietatik bat aukeratu
 				if (ontzi1.isSelected()) {
-					aukeratutakoOntzi= nFact.createOntzi(1);
-					//System.out.println(aukeratutakoOntzi);
+					aukeratutakoOntzi= nFact.createOntzi(1); // OntziFact erabiliz sortu aukeratutako ontzia
 				} else if (ontzi2.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(2);
 				} else if (ontzi3.isSelected()) {
 					aukeratutakoOntzi=nFact.createOntzi(3);
 				} else {
-					aukeratutakoOntzi=nFact.createOntzi(4);
-					//
-					System.out.println(aukeratutakoOntzi+"aukeratutako ontzi");
+					aukeratutakoOntzi=nFact.createOntzi(4);					
 				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);
