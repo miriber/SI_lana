@@ -118,4 +118,10 @@ public class Flota {
 		gehituOntzi (pOntzi);
 		// era berean kolorea aldatu behar interf graf
 	}
+
+	public void ontziaKendu(Ontzi pOntzi) {
+		unekoOntziZer.remove(pOntzi);
+	}
+
+
 }

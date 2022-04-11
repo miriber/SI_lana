@@ -27,6 +27,7 @@ public abstract class Ontzi {
 		return tamaina;
 	}
 	
+	
 	public boolean getEgoera(Egoera pEgo) {
 		return egoera==pEgo;
 	}
@@ -47,20 +48,16 @@ public abstract class Ontzi {
 		return zenbatFalta==0;
 	}
 	public void aldatuEg() {
-		//boolean jadaKlik;
-		//if (!jadaKlik) {
-			//jadaKlik=true;
-		//FLOTAN EGIN
-			if (egoera==Egoera.UKITU_GABEA) {
-				zenbatFalta--;
-				if (zenbatFalta==0) {
-					egoera=Egoera.HONDORATUTA;
-				}else {
-					egoera=Egoera.UKITUTA;
-				}
-			}else if (egoera==Egoera.UKITUTA) {
-				zenbatFalta--;
-			}
+		if (zenbatFalta==0) {
+			egoera=Egoera.HONDORATUTA;
+			
+		} else {
+			egoera=Egoera.UKITUTA;
+		}
 	}
 	
+	public void zenbatFaltaKenBat() {
+		zenbatFalta --;
+		
+	}
 }

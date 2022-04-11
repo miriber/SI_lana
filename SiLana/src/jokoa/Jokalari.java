@@ -55,4 +55,15 @@ public abstract class Jokalari {
 		return neureFlota.lortuOntziPosibleak();
 	}
 	
+	public void tiroJaso(int x, int y) {
+		Ontzi ontzi = neureTablero.getOntziMota(x,y);
+		ontzi.zenbatFaltaKenBat();
+		ontzi.aldatuEg();
+		neureTablero.tiroJaso(x,y);
+		neureFlota.ontziaKendu(ontzi);
+		
+	}
+	
+	
+	
 }
