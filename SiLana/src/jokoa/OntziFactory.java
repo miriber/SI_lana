@@ -11,12 +11,12 @@ public class OntziFactory {
 		} return nOntziFact;
 	}
 	
-	public Ontzi createOntzi (int mota, char pNorab){
+	public Ontzi createOntzi (int mota /*,char pNorab*/){
 		switch(mota) {
-			case 1: return new FragataOntzi(pNorab);
-			case 2: return new SuntsitzaileOntzi(pNorab);
-			case 3: return new ItsaspekoOntzi(pNorab);
-			case 4: return new HegazkinOntzi(pNorab);
+			case 1: return new FragataOntzi();
+			case 2: return new SuntsitzaileOntzi();
+			case 3: return new ItsaspekoOntzi();
+			case 4: return new HegazkinOntzi();
 			default: return null;
 		}
 	}

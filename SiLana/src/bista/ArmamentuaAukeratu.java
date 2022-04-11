@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import jokoa.Arma;
+import jokoa.Jokalari1;
+import jokoa.OntziFactory;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -21,6 +26,7 @@ public class ArmamentuaAukeratu extends JFrame {
     private JRadioButton bonba,misila;
     private JButton okBotoia;
     private static ArmamentuaAukeratu nArma=null;
+    private Arma aukeratutakoa;
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -35,10 +41,11 @@ public class ArmamentuaAukeratu extends JFrame {
         });
     }
 
-    public static ArmamentuaAukeratu() {
+    public static ArmamentuaAukeratu getNireArmamentua() {
     	if (nArma==null) {
     		nArma=new ArmamentuaAukeratu();
     	}
+    	return nArma;
     }
     
     private ArmamentuaAukeratu() {
@@ -57,21 +64,49 @@ public class ArmamentuaAukeratu extends JFrame {
         txtAukeratuArma.setColumns(10);
 
         group=new ButtonGroup();
-        for (int i = 0; i < 2; i++) {
-
+        Arma[] armaPosibleak= Jokalari1.getNeureJok().armaPosibleakItzuli();
+        for (int i = 0; i < armaPosibleak.length; i++) {
+        	if (armaPosibleak[i].klaseBerekoa("Bonba")) {
+				bonba = new JRadioButton("Bonba");
+				bonba.setBounds(145, 63, 127, 25);
+				group.add(bonba);
+				contentPane.add(bonba);
+			} else if (armaPosibleak[i].klaseBerekoa("Misila")) {
+				misila = new JRadioButton("Misila");
+				misila.setBounds(145, 93, 127, 25);
+				group.add(misila);
+				contentPane.add(misila);
+			} 
         }
-        contentPane.add(getBtnNewButton(), BorderLayout.SOUTH);
+        JButton btnNewButton = new JButton("OK");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Arma[] armaPosibleak= Jokalari1.getNeureJok().armaPosibleakItzuli();
+				boolean armaBera;
+				int i=0;
+				String pArma;
+				if (bonba.isSelected()) {
+					pArma="Bonba";
+				}else {
+					pArma="Misila";
+				}
+				armaBera= armaPosibleak[i].klaseBerekoa(pArma);
+				i++;
+				while(!armaBera) {
+					armaBera= armaPosibleak[i].klaseBerekoa(pArma);
+					i++;
+				} if (armaBera) {
+					aukeratutakoa= armaPosibleak[i];
+				}
+				setVisible(false);
+			}
+		});
+		btnNewButton.setBounds(145, 205, 97, 25);
+		contentPane.add(btnNewButton);		
+    
     }
-
-    private JButton getBtnNewButton() {
-        if (okBotoia == null) {
-            okBotoia = new JButton("ok");
-            okBotoia.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                	
-                }
-            });
-        }
-        return okBotoia;
+    
+    public Arma getAukeratutakoa() {
+    	return aukeratutakoa;
     }
 }

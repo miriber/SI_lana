@@ -37,6 +37,10 @@ public abstract class Jokalari {
 		return neureFlota.lortuOntziPosibleak();
 	}
 	
+	public Arma[] armaPosibleakItzuli() {
+		return neureFlota.lortuArmaPosibleak();
+	}
+	
 	public void tiroJaso(int x, int y, Arma arma) {
 		Ontzi ontzi = neureTablero.getOntziMota(x,y);
 		neureTablero.tiroJaso(x,y);

@@ -25,9 +25,9 @@ public class Flota {
 		armamentuaGehitu();
 	}
 	
-	/*private Iterator<String> getIteradoreA(){
+	private Iterator<Arma> getIteradoreA(){
 		return armamentuZer.iterator();
-	}*/
+	}
 	
 	private Iterator<Ontzi> getIteradoreaO(){
 		return unekoOntziZer.iterator();
@@ -40,21 +40,21 @@ public class Flota {
 	private void ontziakSortu() {
 		OntziFactory nFact = OntziFactory.getNireOntziFact();
 		OntziNorabidea on= OntziNorabidea.getNireOntziNorabidea();
-		char orientazioa=on.getOrientazioa();
-		Ontzi berria= nFact.createOntzi(4, orientazioa);
+		//char orientazioa=on.getOrientazioa();
+		Ontzi berria= nFact.createOntzi(4/*, orientazioa*/);
 		//hegazkin ontzi bat
 		zenbat.put(berria, 1);
 		ontziDesb.add(berria);
 		//4 Fragata izango ditugu
-		berria= nFact.createOntzi(1, orientazioa);
+		berria= nFact.createOntzi(1/*, orientazioa*/);
 		zenbat.put(berria, 4);
 		ontziDesb.add(berria);
 		// hiru suntsitzaile
-		berria= nFact.createOntzi(2, orientazioa);
+		berria= nFact.createOntzi(2/*, orientazioa*/);
 		zenbat.put(berria, 3);
 		ontziDesb.add(berria);
 		//bi itsaspeko
-		berria= nFact.createOntzi(3, orientazioa);
+		berria= nFact.createOntzi(3/*, orientazioa*/);
 		zenbat.put(berria, 2);
 		ontziDesb.add(berria);
 	}
@@ -62,15 +62,40 @@ public class Flota {
 	private void armamentuaGehitu() {
 		Arma a;
 		for (int i=0; i<3; i++) {
-			a=new Radarra();
-			armamentuZer.add(a);
+			//a=new Radarra();
+			//armamentuZer.add(a);
 			a= new Bonba();
 			armamentuZer.add(a);
 			a= new Misila();
 			armamentuZer.add(a);
-			a=new Ezkutua();
-			armamentuZer.add(a);
+			//a=new Ezkutua();
+			//armamentuZer.add(a);
 		}
+	}
+	
+	//public void armamentuaErosi: add
+	
+	public void armamentuaErabili(Arma a) {
+		armamentuZer.remove(a);
+	}
+	
+	public Arma[] lortuArmaPosibleak(){
+		Iterator<Arma> itr = getIteradoreA();
+		Arma a;
+		Arma[] emaitza= new Arma[2];	//gehienez 2 arma mota egongo dira
+		int i=0;
+		if (!armamentuZer.isEmpty()) {
+			emaitza[i]=itr.next();
+			i++;
+		}
+		while (itr.hasNext() && i<2) {
+			a=itr.next();
+			if (a.klaseBerekoa(a.getArma())) {
+				emaitza[i]=a;
+				i++;
+			}
+		}
+		return emaitza;
 	}
 	
 	public void gehituOntzi(Ontzi pOntzi) {

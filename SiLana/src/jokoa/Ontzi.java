@@ -5,13 +5,13 @@ public abstract class Ontzi {
 	private int zenbatFalta; //Hondoratua izan dadin, falta diren gelaxka kopurua adierazten du
 	private Egoera egoera;
 	private String mota;
-	private char norabide;
+//	private char norabide;
 	
-	public Ontzi (int pFalta, String pMota, char pNorabide) {
+	public Ontzi (int pFalta, String pMota/* ,char pNorabide*/) {
 		zenbatFalta=pFalta;
 		egoera=Egoera.UKITU_GABEA;
 		mota=pMota;
-		norabide=pNorabide;
+		//norabide=pNorabide;
 	}
 	
 	//TODO Hau tableroan edo hemen?

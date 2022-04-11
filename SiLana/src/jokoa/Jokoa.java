@@ -47,7 +47,7 @@ public class Jokoa {
 		boolean jokPCBukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
 		while (!jok1Bukatu && !jokPCBukatu) { //PARTIDA NOIZ BUKATU
 			//tiroEman
-			ArmamentuaAukeratu ar= ArmamentuaAukeratu.
+		//	ArmamentuaAukeratu ar= ArmamentuaAukeratu.
 			//ukitu badu--> turnoa berea izaten jarraitu
 			//else
 				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU

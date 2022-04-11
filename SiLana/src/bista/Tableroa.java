@@ -14,13 +14,16 @@ import javax.swing.border.EmptyBorder;
 
 import jokoa.Jokalari;
 import jokoa.Jokalari1;
+import jokoa.Tablero;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 
-public class Tableroa extends JFrame implements ActionListener {
+public class Tableroa extends JFrame implements Observer {
 
 	private JPanel contentPane;
 	private JButton botoia1;		//jokoa hasteko
@@ -49,6 +52,7 @@ public class Tableroa extends JFrame implements ActionListener {
 	}
 	    
 	private Tableroa() {
+		Tablero.getTablero().addObserver(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
@@ -242,11 +246,7 @@ public class Tableroa extends JFrame implements ActionListener {
         klikatutakoX=x;
         klikatutakoY=y; 
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	public int getTablerotikOntziX(){
 	// sakatutako x itzuli, beti ere geure tablerokoa bada eta honako hau ez bdago ontziz okupatuta
@@ -256,6 +256,20 @@ public class Tableroa extends JFrame implements ActionListener {
 	
 	public int getTablerotikOntziY(){
 		return klikatutakoY;
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		Tablero tab =Tablero.getTablero();
+        boolean[][] ura= tab.getUraDa();
+        for (int i = 0; i <10; i++) {
+            for (int j = 0; j < 10; j++) {
+                nTableroa[i][j].setBackground(new Color(255,50,50));
+                if (!ura[i][j]){
+                        nTableroa[i][j].setBackground(new Color(255,50,50));
+                }
+            }
+        }
 	}
 	
 } 

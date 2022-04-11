@@ -1,9 +1,12 @@
 package jokoa;
 
 import bista.ArazoOntziKokatu;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Tablero {
+public class Tablero extends Observable {
 	private Gelaxka[][] taula;
+	private static Tablero tab;
 	
 	//metodo eraikitzaileak 
 	public Tablero() {
@@ -12,6 +15,10 @@ public class Tablero {
 	}
 		
 	//gainerako metodoak
+	public static Tablero getTablero() {
+		tab= new Tablero();
+		return tab;
+	}
 	private void sortuTableroa() {
 		for (int i=0;i<10;i++) {
 			for (int j=0; j<10;j++) {
@@ -96,10 +103,23 @@ public class Tablero {
 				}
 			}
 		} //EXCEPTION IGUAL KANPOAN TRATATU BEHAR?? BOOLEAN BAT RETURN?
+		egoeraAldatu();
 	}
 	
-//	public 
+	public boolean[][] getUraDa(){
+        boolean[][] emaitza= new boolean[10][10];
+        for (int i = 0; i <10; i++) {
+            for (int j = 0; j < 10; j++) {
+                emaitza[i][j]=taula[i][j].getUraDa();
+            }
+        } return emaitza;	
+	}
 	
 	//---------- Observablearekin zerikusia
+	
+	public void egoeraAldatu() {
+        setChanged();
+        notifyObservers();
+    }
 	
 }
