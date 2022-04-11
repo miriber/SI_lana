@@ -43,14 +43,12 @@ public abstract class Jokalari {
 		neureTablero.tiroJaso(x,y);
 		if (arma instanceof Bonba) {
 			ontzi.zenbatFaltaKenBat();
-			ontzi.aldatuEg();	
-			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
-				neureFlota.ontziaKendu(ontzi);				
-			}
 		}else if(arma instanceof Misila){
 			ontzi.zenbatFaltaZero();
-			ontzi.aldatuEg();
-			neureFlota.ontziaKendu(ontzi);
+		}
+		ontzi.aldatuEg();	
+		if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+			neureFlota.ontziaKendu(ontzi);				
 		}
 		
 	}

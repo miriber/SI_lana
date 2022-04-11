@@ -2,8 +2,8 @@ package jokoa;
 
 public class FragataOntzi extends Ontzi{
 	
-	public FragataOntzi() {
-		super(1,"Fragata");
+	public FragataOntzi(char pNorab) {
+		super(1,"Fragata",pNorab);
 	}
 	
 }

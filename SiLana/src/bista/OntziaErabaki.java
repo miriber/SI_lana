@@ -99,15 +99,17 @@ public class OntziaErabaki extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
+				OntziNorabidea on= OntziNorabidea.getNireOntziNorabidea();
+				char orientazioa=on.getOrientazioa();
 				//gelditzen diren ontzietatik bat aukeratu
 				if (ontzi1.isSelected()) {
-					aukeratutakoOntzi= nFact.createOntzi(1); // OntziFact erabiliz sortu aukeratutako ontzia
+					aukeratutakoOntzi= nFact.createOntzi(1, orientazioa); // OntziFact erabiliz sortu aukeratutako ontzia
 				} else if (ontzi2.isSelected()) {
-					aukeratutakoOntzi=nFact.createOntzi(2);
+					aukeratutakoOntzi=nFact.createOntzi(2, orientazioa);
 				} else if (ontzi3.isSelected()) {
-					aukeratutakoOntzi=nFact.createOntzi(3);
+					aukeratutakoOntzi=nFact.createOntzi(3, orientazioa);
 				} else {
-					aukeratutakoOntzi=nFact.createOntzi(4);					
+					aukeratutakoOntzi=nFact.createOntzi(4, orientazioa);					
 				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
 					Tableroa tab= new Tableroa();
 					tab.setVisible(true);
