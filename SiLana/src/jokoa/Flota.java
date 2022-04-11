@@ -134,4 +134,8 @@ public class Flota {
 	public boolean ontziDenakAurkituta() {
 		return unekoOntziZer.size()==0;
 	}
+	
+	public void ontziaKendu(Ontzi pOntzi) {
+		unekoOntziZer.remove(pOntzi);
+	}
 }

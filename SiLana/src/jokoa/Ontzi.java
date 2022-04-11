@@ -27,6 +27,7 @@ public abstract class Ontzi {
 		return tamaina;
 	}
 	
+	
 	public boolean getEgoera(Egoera pEgo) {
 		return egoera==pEgo;
 	}
@@ -47,7 +48,7 @@ public abstract class Ontzi {
 		return zenbatFalta==0;
 	}
 	
-	private void aldatuEg() {
+	public void aldatuEg() {
 		if (zenbatFalta==0) {
 			egoera=Egoera.HONDORATUTA;
 		}else {
@@ -55,4 +56,12 @@ public abstract class Ontzi {
 		}
 	}
 	
+	public void zenbatFaltaKenBat() {
+		zenbatFalta --;
+		
+	}
+	
+	public void zenbatFaltaZero() {
+		zenbatFalta = 0;
+	}
 }

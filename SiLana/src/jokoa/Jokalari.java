@@ -38,6 +38,23 @@ public abstract class Jokalari {
 		return neureFlota.lortuOntziPosibleak();
 	}
 	
+	public void tiroJaso(int x, int y, Arma arma) {
+		Ontzi ontzi = neureTablero.getOntziMota(x,y);
+		neureTablero.tiroJaso(x,y);
+		if (arma instanceof Bonba) {
+			ontzi.zenbatFaltaKenBat();
+			ontzi.aldatuEg();	
+			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+				neureFlota.ontziaKendu(ontzi);				
+			}
+		}else if(arma instanceof Misila){
+			ontzi.zenbatFaltaZero();
+			ontzi.aldatuEg();
+			neureFlota.ontziaKendu(ontzi);
+		}
+		
+	}
+	
 	public boolean jokalariBatenOntziGuztiakAurkitu() {
 		return neureFlota.ontziDenakAurkituta();
 	}

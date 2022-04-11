@@ -20,9 +20,14 @@ public class Tablero {
 		}
 	}
 	
-	public void tiroJaso(int x, int y, Ontzi pOntzi) {
+	public void tiroJaso(int x, int y) {
 		taula[x][y].tiroJaso();
 	}
+	
+	public Ontzi getOntziMota(int x, int y) {
+		return taula[x][y].getOntziMota();
+	}
+	
 	//TODO Exception tratatu behar
 	public void ontziaJarri(int x, int y, Ontzi pOntzi, char norabidea) {
 		boolean jadaBesteOntzi=false;

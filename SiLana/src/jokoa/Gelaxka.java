@@ -35,4 +35,7 @@ public class Gelaxka {
 		return ontziMota==null;
 	}
 	
+	public Ontzi getOntziMota() {
+		return ontziMota;
+	}
 }
