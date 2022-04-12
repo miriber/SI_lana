@@ -51,7 +51,7 @@ public class Jokoa {
 			//ukitu badu--> turnoa berea izaten jarraitu
 			//else
 				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
-					jokoa
+				//	jokoa
 					jokoa.PCTxanda=false;
 				}else {
 					jokoa.jok1.tiroJaso();
