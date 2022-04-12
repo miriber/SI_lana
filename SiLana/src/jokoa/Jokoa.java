@@ -13,6 +13,9 @@ public class Jokoa {
 		PCTxanda=false;
 		jokPC= PC.getNeureJok();
 		jok1=Jokalari1.getNeureJok();
+		System.out.println("JOK1" + jok1);
+		System.out.println("JOKPC" + jokPC);
+		
 	}
 	
 	public static Jokoa getNireJoko() {
@@ -28,15 +31,15 @@ public class Jokoa {
 	public static void main(String args[]) {
 		Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
+		Tablero tab1= Tablero.getTablero();
 		tab.tableroaIkusi();
-		//int i=0;
+		//while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
+		//	jokoa.jok1.ontziakKokatu();
+		//}
+		/*int i=0;
 		//Ontziak Kokatu
-		/*while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
-			jokoa.jok1.ontziakKokatu();
-			i=i+1;
-			System.out.println(i);
-		}*/
-		jokoa.PCTxanda=true;
+		
+		jokooa.PCTxanda=true;
 		jokoa.jokPC.ontziakKokatu();
 		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
 		jokoa.jok1.aurkariarenTableroaEguneratu();
@@ -64,7 +67,7 @@ public class Jokoa {
 			jokoa.PCTxanda=true;
 		}
 		//Irabazlea irabazle= new Irabazlea();
-		//irabazle.setVisible(true);
+		//irabazle.setVisible(true);*/
 	}
 	
 

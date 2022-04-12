@@ -52,8 +52,10 @@ public class Tablero extends Observable {
 		boolean PCtx= jok.getNorIrabazi(); //Noren txanda den ere adierazten du
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
-				for (int i=0;!jadaBesteOntzi && i<tamaina ;i++) {
-					jadaBesteOntzi=!(taula[x+i][y].getUraDa());
+				jadaBesteOntzi = false;
+				int j = 0;
+				while (jadaBesteOntzi & j<tamaina) {
+					jadaBesteOntzi=!(taula[x+j][y].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x+i][y].ontziaJarri(pOntzi);

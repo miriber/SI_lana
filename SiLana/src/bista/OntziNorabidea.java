@@ -104,6 +104,7 @@ public class OntziNorabidea extends JFrame {
 				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
 				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();*/
 				Jokalari jok1= Jokalari1.getNeureJok();
+				System.out.println(jok1+"JOK1 EXISTIZEN DA");
 				jok1.ontziakKokatu();
 				//jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
 				/*

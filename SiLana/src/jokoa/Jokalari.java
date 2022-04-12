@@ -4,7 +4,6 @@ public abstract class Jokalari {
 	protected Flota neureFlota ;
 	protected Tablero neureTablero;
 	protected Tablero aurkariarenTableroa;
-	protected static Jokalari nJok=null;
 	
 	public Jokalari() {
 		neureFlota= new Flota();
@@ -46,5 +45,7 @@ public abstract class Jokalari {
 	public boolean jokalariBatenOntziGuztiakAurkitu() {
 		return neureFlota.ontziDenakAurkituta();
 	}
+	
+	//public 
 	
 }

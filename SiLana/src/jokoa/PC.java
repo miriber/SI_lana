@@ -6,6 +6,7 @@ public class PC extends Jokalari {
 	
 	private Random random;
 	private char[] norabideAukerak;
+	private static PC nJokPC=null;
 	
 
 	private PC() {
@@ -16,10 +17,14 @@ public class PC extends Jokalari {
 	}
 	
 	public static Jokalari getNeureJok() {
-		if (nJok==null) {
-			nJok= new PC();
+		if (nJokPC==null) {
+			nJokPC= new PC();
 		}
-		return nJok;
+		return nJokPC;
+	}
+	
+	public void hasieraketaOndo() {
+		System.out.println();
 	}
 	
 	public void ontziakKokatu() {

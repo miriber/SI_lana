@@ -9,21 +9,26 @@ import bista.Tableroa;
 
 public class Jokalari1 extends Jokalari {
 	
+	private static Jokalari1 nJok1=null;
+	
 	private Jokalari1() {
 		super();
 	}
 	
 	public static Jokalari getNeureJok() {
-		if (nJok==null) {
-			nJok= new Jokalari1();
+		if (nJok1==null) {
+			nJok1= new Jokalari1();
 		}
-		return nJok;
+		return nJok1;
 	}
 	
 	
 	public void ontziakKokatu() {
 		Tableroa tab=Tableroa.getNireTableroa();
 		//Tableroan sakatutako gelaxkaren x eta y lortu	
+		int i=0;
+		System.out.println(i+"oijnjjnnhjn");
+		i++;
 		int x=tab.getTablerotikOntziX();
 		int y=tab.getTablerotikOntziY();
 		//Aukeratutako ontzia lortu
