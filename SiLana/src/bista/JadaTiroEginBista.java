@@ -2,16 +2,16 @@ package bista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 
-public class ArazoOntziKokatu extends JFrame {
+public class JadaTiroEginBista extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField mezua;
@@ -23,7 +23,7 @@ public class ArazoOntziKokatu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ArazoOntziKokatu frame = new ArazoOntziKokatu();
+					JadaTiroEginBista frame = new JadaTiroEginBista();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class ArazoOntziKokatu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ArazoOntziKokatu() {
+	public JadaTiroEginBista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -46,7 +46,7 @@ public class ArazoOntziKokatu extends JFrame {
 		mezua = new JTextField();
 		mezua.setEditable(false);
 		mezua.setBounds(5, 53, 432, 86);
-		mezua.setText("Arazo bat egon da ontzia kokatzeko orduan. Aukeratu beste gelaxka bat.");
+		mezua.setText("Aukeratutako gelaxkari jada tiro egin saio, beste gelaxka bat aukeratu.");
 		contentPane.add(mezua);
 		mezua.setColumns(10);
 		
@@ -54,15 +54,11 @@ public class ArazoOntziKokatu extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Tableroa tab= Tableroa.getNireTableroa();
-				tab.partidaJokatu();	
 			}
 		});
 		btnNewButton.setBounds(5, 233, 432, 25);
 		contentPane.add(btnNewButton);
-		//btnNewButton.addActionListener(new ActionListener() {
 
-		
 	}
 
 }

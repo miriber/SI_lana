@@ -1,6 +1,7 @@
 package jokoa;
 
 import bista.ArmamentuaAukeratu;
+import bista.JadaTiroEginBista;
 import bista.OntziNorabidea;
 import bista.OntziaErabaki;
 import bista.Tableroa;
@@ -42,24 +43,36 @@ public class Jokalari1 extends Jokalari {
 	}
 
 	@Override
-	public void tiroJaso() {
+	public boolean tiroJaso() {
 		Tableroa tab= Tableroa.getNireTableroa();
 		int x=tab.getTablerotikOntziX();
 		int y=tab.getTablerotikOntziY();
+		if (aurkariarenTableroa.tiroJasoDu(x, y)) {
+			JadaTiroEginBista arazoa= new JadaTiroEginBista();
+			arazoa.setVisible(true);
+		}
 		ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
 		Arma arma= arm.getAukeratutakoa();
-		Ontzi ontzi = neureTablero.getOntziMota(x,y);	
-		neureTablero.tiroJaso(x,y);
-		if (arma instanceof Bonba) {
-			ontzi.zenbatFaltaKenBat();
-		}else if(arma instanceof Misila){
-			ontzi.zenbatFaltaZero();
+		Ontzi ontzi = aurkariarenTableroa.getOntziMota(x,y);	
+		boolean turnoPasa=false;
+		aurkariarenTableroa.tiroEman(x,y); //tiroJaso=true, berdin du
+		if (ontzi==null) {
+			turnoPasa=true;
+		}else{
+			if (arma instanceof Bonba) {
+				ontzi.zenbatFaltaKenBat();
+			}else if(arma instanceof Misila){
+				ontzi.zenbatFaltaZero();
+			}
+			ontzi.aldatuEg();
+			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+				neureFlota.ontziaKendu(ontzi);	
+				//TODO Ez da Pc-rena kendu behar?
+			}
 		}
-		ontzi.aldatuEg();	
-		if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
-			neureFlota.ontziaKendu(ontzi);				
-		}
-			
+		return turnoPasa;
 	}
+		
+			
 		
 }

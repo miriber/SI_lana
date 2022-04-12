@@ -41,7 +41,7 @@ public abstract class Jokalari {
 		return neureFlota.lortuArmaPosibleak();
 	}
 	
-	public abstract void tiroJaso();
+	public abstract boolean tiroJaso();
 	
 	public boolean jokalariBatenOntziGuztiakAurkitu() {
 		return neureFlota.ontziDenakAurkituta();

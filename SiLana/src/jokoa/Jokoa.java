@@ -29,13 +29,13 @@ public class Jokoa {
 		Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
 		tab.tableroaIkusi();
-		int i=0;
+		//int i=0;
 		//Ontziak Kokatu
-		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
+		/*while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
 			jokoa.jok1.ontziakKokatu();
 			i=i+1;
 			System.out.println(i);
-		}
+		}*/
 		jokoa.PCTxanda=true;
 		jokoa.jokPC.ontziakKokatu();
 		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
@@ -51,8 +51,10 @@ public class Jokoa {
 			//ukitu badu--> turnoa berea izaten jarraitu
 			//else
 				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
+					jokoa
 					jokoa.PCTxanda=false;
 				}else {
+					jokoa.jok1.tiroJaso();
 					jokoa.PCTxanda=true;
 				}
 		}

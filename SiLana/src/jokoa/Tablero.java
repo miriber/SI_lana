@@ -27,8 +27,12 @@ public class Tablero extends Observable {
 		}
 	}
 	
-	public void tiroJaso(int x, int y) {
+	public void tiroEman(int x, int y) {
 		taula[x][y].tiroJaso();
+	}
+	
+	public boolean tiroJasoDu (int x, int y) {
+		return taula[x][y].getTiroJaso();
 	}
 	
 	public Ontzi getOntziMota(int x, int y) {
