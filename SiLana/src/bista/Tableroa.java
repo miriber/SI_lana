@@ -283,6 +283,7 @@ public class Tableroa extends JFrame implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println("UPDATE-N SARTU DA");
 		Tablero tab =Tablero.getTablero();
         boolean[][] ura= tab.getUraDa();
         for (int i = 0; i <10; i++) {
