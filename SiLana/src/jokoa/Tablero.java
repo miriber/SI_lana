@@ -50,11 +50,10 @@ public class Tablero extends Observable {
 		ArazoOntziKokatu arazo= new ArazoOntziKokatu();
 		Jokoa jok= Jokoa.getNireJoko();
 		boolean PCtx= jok.getNorIrabazi(); //Noren txanda den ere adierazten du
+		int j = 0;
 		if (norabidea=='H'){
 			if (x+tamaina-1<10) {
-				jadaBesteOntzi = false;
-				int j = 0;
-				while (jadaBesteOntzi & j<tamaina) {
+				while (!jadaBesteOntzi & j<tamaina) {
 					jadaBesteOntzi=!(taula[x+j][y].getUraDa());
 				} if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
@@ -84,9 +83,11 @@ public class Tablero extends Observable {
 			}
 		}else {
 			if (y+tamaina-1<10) {
-				for (int i=0; !jadaBesteOntzi && i<tamaina ;i++) {
-					jadaBesteOntzi=!(taula[x][y+i].getUraDa());
-				} if (!jadaBesteOntzi) {
+				while (!jadaBesteOntzi & j<tamaina) {
+					jadaBesteOntzi=!(taula[x+j][y].getUraDa());
+					j++;
+				} 
+				if (!jadaBesteOntzi) {
 					for (int i=0; i<tamaina; i++) {
 						taula[x][y+i].ontziaJarri(pOntzi);
 					}

@@ -26,9 +26,6 @@ public class Jokalari1 extends Jokalari {
 	public void ontziakKokatu() {
 		Tableroa tab=Tableroa.getNireTableroa();
 		//Tableroan sakatutako gelaxkaren x eta y lortu	
-		int i=0;
-		System.out.println(i+"oijnjjnnhjn");
-		i++;
 		int x=tab.getTablerotikOntziX();
 		int y=tab.getTablerotikOntziY();
 		//Aukeratutako ontzia lortu

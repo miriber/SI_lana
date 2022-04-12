@@ -31,7 +31,7 @@ public class Jokoa {
 	}
 	
 	public static void main(String args[]) {
-		Jokoa jokoa= Jokoa.getNireJoko();
+		/*Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
 		Tablero tab1= Tablero.getTablero();
 		ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
@@ -74,7 +74,7 @@ public class Jokoa {
 			jokoa.PCTxanda=true;
 		}
 		Irabazlea irabazle= new Irabazlea();
-		irabazle.setVisible(true);
+		irabazle.setVisible(true);*/
 	}
 	
 

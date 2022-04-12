@@ -32,7 +32,7 @@ public class OntziNorabidea extends JFrame {
 	private JButton botoia;
 	private JRadioButton btn1,btn2;
 	private char orientazioa;
-	private boolean klik;
+//	private boolean klik;
 	private static OntziNorabidea nOntziNorabidea=null;
 	/**
 	 * Launch the application.
@@ -85,7 +85,7 @@ public class OntziNorabidea extends JFrame {
 		txt.setBounds(47, 40, 311, 25);
 		contentPane.add(txt);
 		
-		klik=false;
+	//	klik=false;
 		
 		botoia = new JButton("OK");
 		botoia.setBounds(155, 187, 97, 25);
@@ -99,23 +99,23 @@ public class OntziNorabidea extends JFrame {
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';	// Bertikala aukeratzen bada
 				}
-				klik=true;
-				/*Jokalari jok1= Jokalari1.getNeureJok();
+				//klik=true;
+				Jokalari jok1= Jokalari1.getNeureJok();
 				jok1.ontziakKokatu();
 				Tableroa tab= Tableroa.getNireTableroa();
-				tab.partidaJokatu();*/
+				tab.partidaJokatu();
 				setVisible(false);
 			}
 		});
 
 	}
 	
-	public boolean getKlikEginDa() {
+	/*public boolean getKlikEginDa() {
 		boolean emaitza=klik;
 		if (klik) {
 			klik=false;
 		}return emaitza;
-	}
+	}*/
 	
 	public char getOrientazioa() {
 		return orientazioa;
