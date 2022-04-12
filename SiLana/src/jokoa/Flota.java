@@ -156,7 +156,7 @@ public class Flota {
 	}
 	
 	public boolean ontziDenakKokatuta () {
-		System.out.println(ontziDesb.size()+"/////////////////////////");
+		//System.out.println(ontziDesb.size()+"/////////////////////////");
 		return ontziDesb.size()==0;
 	}
 

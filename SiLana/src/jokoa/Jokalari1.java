@@ -26,9 +26,6 @@ public class Jokalari1 extends Jokalari {
 	public void ontziakKokatu() {
 		Tableroa tab=Tableroa.getNireTableroa();
 		//Tableroan sakatutako gelaxkaren x eta y lortu	
-		int i=0;
-		System.out.println(i+"oijnjjnnhjn");
-		i++;
 		int x=tab.getTablerotikOntziX();
 		int y=tab.getTablerotikOntziY();
 		//Aukeratutako ontzia lortu
@@ -48,7 +45,7 @@ public class Jokalari1 extends Jokalari {
 	}
 
 	@Override
-	public boolean tiroJaso() {
+	public void tiroEgin() {
 		Tableroa tab= Tableroa.getNireTableroa();
 		int x=tab.getTablerotikOntziX();
 		int y=tab.getTablerotikOntziY();
@@ -59,23 +56,13 @@ public class Jokalari1 extends Jokalari {
 		ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
 		Arma arma= arm.getAukeratutakoa();
 		Ontzi ontzi = aurkariarenTableroa.getOntziMota(x,y);	
-		boolean turnoPasa=false;
+		//boolean turnoPasa=false;
 		aurkariarenTableroa.tiroEman(x,y); //tiroJaso=true, berdin du
-		if (ontzi==null) {
-			turnoPasa=true;
-		}else{
-			if (arma instanceof Bonba) {
-				ontzi.zenbatFaltaKenBat();
-			}else if(arma instanceof Misila){
-				ontzi.zenbatFaltaZero();
-			}
-			ontzi.aldatuEg();
-			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
-				neureFlota.ontziaKendu(ontzi);	
-				//TODO Ez da Pc-rena kendu behar?
-			}
-		}
-		return turnoPasa;
+		//if (ontzi==null) {
+			//turnoPasa=true;
+		//}else{
+		ontziaJarri (arma, ontzi);
+		//return turnoPasa;
 	}
 		
 			

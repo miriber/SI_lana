@@ -34,30 +34,28 @@ public class Jokoa {
 		Tablero tab1= Tablero.getTablero();
 		tab.tableroaIkusi();
 		//while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
-		//	jokoa.jok1.ontziakKokatu();
+		jokoa.jok1.ontziakKokatu();
 		//}
-		/*int i=0;
 		//Ontziak Kokatu
 		
-		jokooa.PCTxanda=true;
+		//jokooa.PCTxanda=true;
 		jokoa.jokPC.ontziakKokatu();
 		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
 		jokoa.jok1.aurkariarenTableroaEguneratu();
 		jokoa.jokPC.aurkariarenTableroaEguneratu();
-		//Partida hasi: jok1 hasiko da
-		jokoa.PCTxanda=false;
-		boolean jok1Bukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
-		boolean jokPCBukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
+		//Partida hasi: jok1 hasiko da: jokoa.PCTxanda=false;
+		boolean jokPCBukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
+		boolean jok1Bukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
 		while (!jok1Bukatu && !jokPCBukatu) { //PARTIDA NOIZ BUKATU
 			//tiroEman
 		//	ArmamentuaAukeratu ar= ArmamentuaAukeratu.
 			//ukitu badu--> turnoa berea izaten jarraitu
 			//else
 				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
-				//	jokoa
+					jokoa.jokPC.tiroEgin();
 					jokoa.PCTxanda=false;
 				}else {
-					jokoa.jok1.tiroJaso();
+					jokoa.jok1.tiroEgin();
 					jokoa.PCTxanda=true;
 				}
 		}

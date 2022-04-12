@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import jokoa.Arma;
+import jokoa.Jokalari;
 import jokoa.Jokalari1;
 import jokoa.OntziFactory;
 
@@ -98,6 +99,8 @@ public class ArmamentuaAukeratu extends JFrame {
 				} if (armaBera) {
 					aukeratutakoa= armaPosibleak[i];
 				}
+				Jokalari jok1= Jokalari1.getNeureJok();
+				jok1.tiroEgin();
 				setVisible(false);
 			}
 		});
