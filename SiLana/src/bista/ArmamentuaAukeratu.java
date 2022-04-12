@@ -26,6 +26,7 @@ public class ArmamentuaAukeratu extends JFrame {
     private JRadioButton bonba,misila;
     private JButton okBotoia;
     private static ArmamentuaAukeratu nArma=null;
+    private boolean klik;
     private Arma aukeratutakoa;
     
     public static void main(String[] args) {
@@ -78,6 +79,7 @@ public class ArmamentuaAukeratu extends JFrame {
 				contentPane.add(misila);
 			} 
         }
+        klik=false;
         JButton btnNewButton = new JButton("OK");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,6 +100,7 @@ public class ArmamentuaAukeratu extends JFrame {
 				} if (armaBera) {
 					aukeratutakoa= armaPosibleak[i];
 				}
+				klik=true;
 				setVisible(false);
 			}
 		});
@@ -105,6 +108,13 @@ public class ArmamentuaAukeratu extends JFrame {
 		contentPane.add(btnNewButton);		
     
     }
+    
+	public boolean getKlikEginDa() {
+		boolean emaitza=klik;
+		if (klik) {
+			klik=false;
+		}return emaitza;
+	}
     
     public Arma getAukeratutakoa() {
     	return aukeratutakoa;

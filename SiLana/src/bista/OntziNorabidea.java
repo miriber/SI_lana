@@ -32,6 +32,7 @@ public class OntziNorabidea extends JFrame {
 	private JButton botoia;
 	private JRadioButton btn1,btn2;
 	private char orientazioa;
+	private boolean klik;
 	private static OntziNorabidea nOntziNorabidea=null;
 	/**
 	 * Launch the application.
@@ -84,6 +85,8 @@ public class OntziNorabidea extends JFrame {
 		txt.setBounds(47, 40, 311, 25);
 		contentPane.add(txt);
 		
+		klik=false;
+		
 		botoia = new JButton("OK");
 		botoia.setBounds(155, 187, 97, 25);
 		contentPane.add(botoia);
@@ -96,28 +99,22 @@ public class OntziNorabidea extends JFrame {
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';	// Bertikala aukeratzen bada
 				}
-				/*//KENDUTAKOA
-				Tableroa tab=Tableroa.getNireTableroa();	
-				int x= tab.getTablerotikOntziX();
-				int y= tab.getTablerotikOntziY();
-				//Aukeratutako ontzia lortu
-				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
-				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();*/
-				Jokalari jok1= Jokalari1.getNeureJok();
-				System.out.println(jok1+"JOK1 EXISTIZEN DA");
+				klik=true;
+				/*Jokalari jok1= Jokalari1.getNeureJok();
 				jok1.ontziakKokatu();
-				//jok1.neureOntziakKokatu(x, y, orientazioa, pOntzi);
-				/*
-				//GEHITUTAKOA
-				
-				jok1.ontziakKokatu();*/
-				///ZER UTSI
 				Tableroa tab= Tableroa.getNireTableroa();
-				tab.partidaJokatu();
+				tab.partidaJokatu();*/
 				setVisible(false);
 			}
 		});
 
+	}
+	
+	public boolean getKlikEginDa() {
+		boolean emaitza=klik;
+		if (klik) {
+			klik=false;
+		}return emaitza;
 	}
 	
 	public char getOrientazioa() {

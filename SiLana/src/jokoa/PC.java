@@ -46,7 +46,7 @@ public class PC extends Jokalari {
 	}
 
 	@Override
-	public boolean tiroJaso() {
+	public void tiroEgin() {
 		int x,y;
 		x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
 		y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
@@ -56,24 +56,16 @@ public class PC extends Jokalari {
 			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
 			x=x/10;
 		}
-		boolean txandaPasa = false;
+		//boolean txandaPasa = false;
 		Arma[] armaPosibleak = armaPosibleakItzuli();
 		Arma arma= armaPosibleak [random.nextInt(2)]; //2 arma desb daude: horietatik bat aukeratu aleatorioki
 		Ontzi ontzi = aurkariarenTableroa.getOntziMota(x,y);
-		if (ontzi==null) {
-			txandaPasa=true;
-		}else{
-			if (arma instanceof Bonba) {
-				ontzi.zenbatFaltaKenBat();
-			}else if(arma instanceof Misila){
-				ontzi.zenbatFaltaZero();
-			}
-			ontzi.aldatuEg();	
-			if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
-				neureFlota.ontziaKendu(ontzi);				
-			}
-		}
-		return txandaPasa;
+		//if (ontzi==null) {
+			//txandaPasa=true;
+		//}else{
+		ontziaJarri (arma, ontzi);
+		//}
+		//return txandaPasa;
 	}
 	
 }

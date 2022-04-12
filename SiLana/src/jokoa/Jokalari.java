@@ -40,12 +40,22 @@ public abstract class Jokalari {
 		return neureFlota.lortuArmaPosibleak();
 	}
 	
-	public abstract boolean tiroJaso();
+	public abstract void tiroEgin();
 	
 	public boolean jokalariBatenOntziGuztiakAurkitu() {
 		return neureFlota.ontziDenakAurkituta();
 	}
 	
-	//public 
+	protected void ontziaJarri (Arma arma, Ontzi ontzi) {
+		if (arma instanceof Bonba) {
+			ontzi.zenbatFaltaKenBat();
+		}else if(arma instanceof Misila){
+			ontzi.zenbatFaltaZero();
+		}
+		ontzi.aldatuEg();	
+		if (ontzi.getEgoera(Egoera.HONDORATUTA)) {
+			neureFlota.ontziaKendu(ontzi);				
+		}
+	}
 	
 }

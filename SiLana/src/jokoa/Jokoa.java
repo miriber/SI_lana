@@ -1,6 +1,8 @@
 package jokoa;
 
+import bista.ArmamentuaAukeratu;
 import bista.Irabazlea;
+import bista.OntziNorabidea;
 import bista.Tableroa;
 
 public class Jokoa {
@@ -32,42 +34,47 @@ public class Jokoa {
 		Jokoa jokoa= Jokoa.getNireJoko();
 		Tableroa tab= Tableroa.getNireTableroa();
 		Tablero tab1= Tablero.getTablero();
+		ArmamentuaAukeratu arm= ArmamentuaAukeratu.getNireArmamentua();
 		tab.tableroaIkusi();
-		//while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
-		//	jokoa.jok1.ontziakKokatu();
-		//}
-		/*int i=0;
+		OntziNorabidea on= OntziNorabidea.getNireOntziNorabidea();
+		while (jokoa.jok1.badagoKokatuGabekoOntzirik()) { //ontzi guztiak kokatuta ez dauden bitartean
+			if (on.getKlikEginDa()) {	
+				jokoa.jok1.ontziakKokatu();
+				tab.partidaJokatu();
+			}
+		}
 		//Ontziak Kokatu
-		
-		jokooa.PCTxanda=true;
+		//jokoa.PCTxanda=true;
 		jokoa.jokPC.ontziakKokatu();
 		// behin ontziak kokatuta daudela, aurkariarenTableroaEguneratu
 		jokoa.jok1.aurkariarenTableroaEguneratu();
 		jokoa.jokPC.aurkariarenTableroaEguneratu();
 		//Partida hasi: jok1 hasiko da
-		jokoa.PCTxanda=false;
-		boolean jok1Bukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
-		boolean jokPCBukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
+		//jokoa.PCTxanda=false;
+		boolean jokPCBukatu= !(jokoa.jok1.jokalariBatenOntziGuztiakAurkitu());
+		boolean jok1Bukatu= !(jokoa.jokPC.jokalariBatenOntziGuztiakAurkitu());
 		while (!jok1Bukatu && !jokPCBukatu) { //PARTIDA NOIZ BUKATU
-			//tiroEman
-		//	ArmamentuaAukeratu ar= ArmamentuaAukeratu.
-			//ukitu badu--> turnoa berea izaten jarraitu
+			//ukitu badu--> turnoa berea izaten jarraitu??
 			//else
-				if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
-				//	jokoa
+			if (jokoa.PCTxanda) { //TXANDAK KONTROLATU
+				if (arm.getKlikEginDa()) {
+					jokoa.jokPC.tiroEgin();
 					jokoa.PCTxanda=false;
-				}else {
-					jokoa.jok1.tiroJaso();
+				}		
+			}else {
+				if (arm.getKlikEginDa()) {
+					jokoa.jok1.tiroEgin();
 					jokoa.PCTxanda=true;
 				}
+			}
 		}
 		if (jok1Bukatu) {
 			jokoa.PCTxanda=false;
 		}else {
 			jokoa.PCTxanda=true;
 		}
-		//Irabazlea irabazle= new Irabazlea();
-		//irabazle.setVisible(true);*/
+		Irabazlea irabazle= new Irabazlea();
+		irabazle.setVisible(true);
 	}
 	
 
