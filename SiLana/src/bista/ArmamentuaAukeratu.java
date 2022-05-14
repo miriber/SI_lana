@@ -6,16 +6,22 @@ import java.awt.EventQueue;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import jokoa.Arma;
-import jokoa.Jokalari1;
+import jokoa.Biltegia;
+import jokoa.Jokalari;
+import jokoa.Pertsona;
+import jokoa.Jokoa;
 import jokoa.OntziFactory;
+import jokoa.Tablero;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ArmamentuaAukeratu extends JFrame {
@@ -23,17 +29,16 @@ public class ArmamentuaAukeratu extends JFrame {
     private JPanel contentPane;
     private ButtonGroup group;
     private JTextField txtAukeratuArma;
-    private JRadioButton bonba,misila;
+    private JRadioButton bonba,misila,ezkutua, radarra;
     private JButton okBotoia;
     private static ArmamentuaAukeratu nArma=null;
-   // private boolean klik;
     private Arma aukeratutakoa;
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    ArmamentuaAukeratu frame = new ArmamentuaAukeratu();
+                    ArmamentuaAukeratu frame = new ArmamentuaAukeratu(false);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -42,14 +47,14 @@ public class ArmamentuaAukeratu extends JFrame {
         });
     }
 
-    public static ArmamentuaAukeratu getNireArmamentua() {
+    public static ArmamentuaAukeratu getNireArmamentua(boolean biltegia) {
     	if (nArma==null) {
-    		nArma=new ArmamentuaAukeratu();
+    		nArma=new ArmamentuaAukeratu(biltegia);
     	}
     	return nArma;
     }
     
-    private ArmamentuaAukeratu() {
+    private ArmamentuaAukeratu(boolean biltegia) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -65,56 +70,125 @@ public class ArmamentuaAukeratu extends JFrame {
         txtAukeratuArma.setColumns(10);
 
         group=new ButtonGroup();
-        Arma[] armaPosibleak= Jokalari1.getNeureJok().armaPosibleakItzuli();
-        for (int i = 0; i < armaPosibleak.length; i++) {
-        	if (armaPosibleak[i].klaseBerekoa("Bonba")) {
-				bonba = new JRadioButton("Bonba");
-				bonba.setBounds(145, 63, 127, 25);
-				group.add(bonba);
-				contentPane.add(bonba);
-			} else if (armaPosibleak[i].klaseBerekoa("Misila")) {
-				misila = new JRadioButton("Misila");
-				misila.setBounds(145, 93, 127, 25);
-				group.add(misila);
-				contentPane.add(misila);
-			} 
+        Jokalari jokPerts= Pertsona.getNeureJok();
+        ArrayList<String> armaPosibleak= Pertsona.getNeureJok().armaPosibleMotakItzuli();
+       // if (!biltegia) {
+      /*  }else {
+        	int momentukoDiru=jokPerts.getDiru();
+        	armaPosibleak= Biltegia.getNireBiltegia().diruHorrekinArmaPosibleak(momentukoDiru);
+        }*/
+        if (armaPosibleak.contains("Bonba")) {
+        	bonba = new JRadioButton("Bonba");
+        	bonba.setBounds(145, 63, 127, 25);
+			group.add(bonba);
+			contentPane.add(bonba);
         }
-       // klik=false;
-        JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+        if (armaPosibleak.contains("Misila")) {
+			misila = new JRadioButton("Misila");
+			misila.setBounds(145, 93, 127, 25);
+			group.add(misila);
+			contentPane.add(misila); 
+        }
+        if (armaPosibleak.contains("Radarra")) {
+			radarra = new JRadioButton("Radarra");
+			radarra.setBounds(145, 123, 127, 25);
+			group.add(radarra);
+			contentPane.add(radarra);
+        }
+        if (armaPosibleak.contains("Ezkutua")) {
+			ezkutua = new JRadioButton("Ezkutua");
+			ezkutua.setBounds(145, 153, 127, 25);
+			group.add(ezkutua);
+			contentPane.add(ezkutua);
+        }
+        JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Arma[] armaPosibleak= Jokalari1.getNeureJok().armaPosibleakItzuli();
-				boolean armaBera;
+				ArrayList<Arma> armaPosibleak= Pertsona.getNeureJok().armaPosibleakItzuli();
+				//System.out.print(armaPosibleak);
+				Jokoa jok=Jokoa.getNireJoko();
+				boolean armaBera = false, armaAukeratu=true;
 				int i=0;
-				String pArma;
+				String pArma="";
 				if (bonba.isSelected()) {
 					pArma="Bonba";
-				}else {
+				}else if (misila.isSelected()){
 					pArma="Misila";
+				}else if (ezkutua.isSelected()){
+					pArma="Ezkutua";
+				}else if (radarra.isSelected()){
+					pArma="Radarra";
 				}
-				armaBera= armaPosibleak[i].klaseBerekoa(pArma);
-				i++;
-				while(!armaBera) {
-					armaBera= armaPosibleak[i].klaseBerekoa(pArma);
-					i++;
-				} if (armaBera) {
-					aukeratutakoa= armaPosibleak[i];
+				else {
+					armaAukeratu=false;
+					JOptionPane.showMessageDialog(btnOK, "Arma bat aukeratu behar duzu.");
 				}
-		//		klik=true;
-				setVisible(false);
+				System.out.println("ArmamentuAukeratu-->pARMA: " + pArma);
+				if (armaAukeratu) {
+					while(!armaBera && i< armaPosibleak.size()) {
+						System.out.println("ARMA BERA: " + armaBera);
+						System.out.println(armaPosibleak.get(i));
+						armaBera= armaPosibleak.get(i).klaseBerekoa(pArma);
+						System.out.println("ARMA BERA: " + armaBera);
+						System.out.println(i+"I-REN BALIOA");
+						if (!armaBera) {
+							i++;
+							System.out.println("KONT"+i);
+						}
+					} 
+					group.clearSelection();
+					System.out.println("PARMA: "+pArma);
+					if (armaBera) {
+						System.out.println(i+"I-REN BALIOA");
+						aukeratutakoa= armaPosibleak.get(i);
+					}
+					System.out.println("AUKERATUTAKOA"+aukeratutakoa);
+					group.clearSelection();
+					
+					if (!jok.PCTxandaDa()&& !biltegia) {
+						jokPerts.tiroEgin();
+						if(pArma.equals("Ezkutua")) {
+							JOptionPane.showMessageDialog(btnOK, "Ezkutua jarri egin da");
+						}
+					}
+					if (!jok.PCTxandaDa()&& biltegia) {
+						jokPerts.erosiArma();
+					}
+					if (!jok.PCTxandaDa()) {
+						TableroaBista tab= TableroaBista.getNireTableroa();
+						tab.partidaJokatu();
+						setVisible(false);
+					}
+				}
+				
+					
 			}
 		});
-		btnNewButton.setBounds(145, 205, 97, 25);
-		contentPane.add(btnNewButton);		
-    
+		btnOK.setBounds(145, 205, 97, 25);
+		contentPane.add(btnOK);		
     }
     
-	/*public boolean getKlikEginDa() {
-		boolean emaitza=klik;
-		if (klik) {
-			klik=false;
-		}return emaitza;
-	}*/
+	public void eguneratuLista(boolean biltegia) {
+		ArrayList<String> armaPosibleak;
+		if (!biltegia) {
+        	armaPosibleak= Pertsona.getNeureJok().armaPosibleMotakItzuli();
+        }else {
+        	int momentukoDiru=Pertsona.getNeureJok().getDiru();
+        	armaPosibleak= Biltegia.getNireBiltegia().diruHorrekinArmaPosibleak(momentukoDiru);
+        }
+		if (!armaPosibleak.contains("Bonba")) {
+			contentPane.remove(bonba);
+		}
+		if (!armaPosibleak.contains("Misila")) {
+			contentPane.remove(misila);
+		}
+		if (!armaPosibleak.contains("Ezkutua")) {
+			contentPane.remove(ezkutua);
+		}
+		if (!armaPosibleak.contains("Radarra")) {
+			contentPane.remove(radarra);
+		}
+	}
     
     public Arma getAukeratutakoa() {
     	return aukeratutakoa;

@@ -6,18 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.html.HTMLDocument.Iterator;
 
-import jokoa.Jokalari1;
+import jokoa.Jokalari;
+import jokoa.Pertsona;
 import jokoa.Ontzi;
 import jokoa.OntziFactory;
 
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class OntziaErabaki extends JFrame {
@@ -25,15 +27,15 @@ public class OntziaErabaki extends JFrame {
 	private static OntziaErabaki nOntziaErabaki=null;
 	private JPanel contentPane;
 	private ButtonGroup group;	//horrela JRadioButton bakarra aukeratu ahal da
-	//private JButton botoia;
 	private JRadioButton ontzi1,ontzi2,ontzi3,ontzi4;
 	private Ontzi aukeratutakoOntzi;
-	private JTextField txtAukeratuOntziBat;
+	private JTextField txtAukeratuOntziBat;	
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		System.out.println("ontziaErabaki --> main");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,6 +49,7 @@ public class OntziaErabaki extends JFrame {
 	}
 
 	public static OntziaErabaki getNireOntziaErabaki() {
+		System.out.println("ontziaErabaki --> getNireOntziaErabaki");
 		if (nOntziaErabaki==null) {
 			nOntziaErabaki=new OntziaErabaki();
 		}
@@ -69,60 +72,131 @@ public class OntziaErabaki extends JFrame {
 		txtAukeratuOntziBat.setColumns(10);
 		
 		group=new ButtonGroup();
-		Ontzi[] ontziPosibleak=Jokalari1.getNeureJok().ontziPosibleakItzuli();
-		for (int i =0;i<ontziPosibleak.length;i++) {
+		ArrayList<Ontzi> ontziPosibleak=Pertsona.getNeureJok().ontziPosibleakItzuli();
+		int zenbatGelditu;
+		Ontzi pOntzi;
+		for (int i =0;i<ontziPosibleak.size();i++) {
 			//gelditzen diren ontzi motak agertu
-			if (ontziPosibleak[i].getMotaBera("Fragata")) {
-				ontzi1 = new JRadioButton("Fragata (1)");
+			pOntzi=ontziPosibleak.get(i);
+			System.out.println(pOntzi);
+			zenbatGelditu=Pertsona.getNeureJok().ontziKop(pOntzi);
+			if (pOntzi.getMotaBera("Fragata")) {
+				ontzi1 = new JRadioButton("Fragata ("+zenbatGelditu+")");
 				ontzi1.setBounds(145, 63, 127, 25);
 				group.add(ontzi1);
 				contentPane.add(ontzi1);
-			} else if (ontziPosibleak[i].getMotaBera("Suntsitzailea")) {
-				ontzi2 = new JRadioButton("Suntsitzailea (2)");
+			} else if (pOntzi.getMotaBera("Suntsitzailea")) {
+				ontzi2 = new JRadioButton("Suntsitzailea ("+zenbatGelditu+")");
 				ontzi2.setBounds(145, 93, 127, 25);
 				group.add(ontzi2);
 				contentPane.add(ontzi2);
-			} else if (ontziPosibleak[i].getMotaBera("Itsaspekoa")) {
-				ontzi3 = new JRadioButton("Itsaspekoa (3)");
+			} else if (pOntzi.getMotaBera("Itsaspekoa")) {
+				ontzi3 = new JRadioButton("Itsaspekoa("+zenbatGelditu+")");
 				ontzi3.setBounds(145, 123, 127, 25);
 				group.add(ontzi3);
 				contentPane.add(ontzi3);
-			} else if (ontziPosibleak[i].getMotaBera("Hegazkina")) {
-				ontzi4 = new JRadioButton("Hegazkina (4)");;
+			} else if (pOntzi.getMotaBera("Hegazkina")) {
+				ontzi4 = new JRadioButton("Hegazkina ("+zenbatGelditu+")");
 				ontzi4.setBounds(145, 159, 127, 25);
 				group.add(ontzi4);
 				contentPane.add(ontzi4);
 			}
 		}
 		
-		JButton btnNewButton = new JButton("OK");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnOK = new JButton("OK");
+		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				OntziFactory nFact = OntziFactory.getNireOntziFact();
+				//ArrayList<Ontzi> ontziPosibleak=Pertsona.getNeureJok().ontziPosibleakItzuli();
+				boolean ontziaJarri = true;
+				String ontzia = "";
 				//gelditzen diren ontzietatik bat aukeratu
 				if (ontzi1.isSelected()) {
+					System.out.println("SE METEE EN ONTZI1");
+					ontzia = "Fragata";
 					aukeratutakoOntzi= nFact.createOntzi(1); // OntziFact erabiliz sortu aukeratutako ontzia
 				} else if (ontzi2.isSelected()) {
+					System.out.println("SE METEE EN ONTZI2");
+					ontzia = "Suntsitzailea";
 					aukeratutakoOntzi=nFact.createOntzi(2);
 				} else if (ontzi3.isSelected()) {
+					System.out.println("SE METEE EN ONTZI3");
+					ontzia = "Itsaspekoa";
 					aukeratutakoOntzi=nFact.createOntzi(3);
+				} else if (ontzi4.isSelected()) {
+					System.out.println("SE METEE EN ONTZI4");
+					ontzia = "Hegazkina";
+					aukeratutakoOntzi=nFact.createOntzi(4);
 				} else {
-					aukeratutakoOntzi=nFact.createOntzi(4);					
-				}/* if (aukeratutakoOntzi.getMotaBera("Fragata")) {
-					Tableroa tab= new Tableroa();
-					tab.setVisible(true);
-				}else{*/
-				OntziNorabidea norabidea = OntziNorabidea.getNireOntziNorabidea();
-				norabidea.setVisible(true);
-				//}	
-				setVisible(false);
+					System.out.println("TODO OK");
+					//elmensajito tope wapo bien refacherito
+					ontziaJarri = false;
+					JOptionPane.showMessageDialog(btnOK, "Ontzi bat aukeratu behar duzu.");
+				}
+				group.clearSelection();
+				if (ontziaJarri) {
+					OntziNorabidea norabidea = OntziNorabidea.getNireOntziNorabidea();
+					if (!ontzia.equals("Fragata")) {
+						norabidea.setVisible(true);
+						
+					} else {
+						norabidea.setOrientazioa('H');
+						Jokalari jok1= Pertsona.getNeureJok();
+						jok1.ontziakKokatu();
+						TableroaBista tab= TableroaBista.getNireTableroa();
+						tab.partidaJokatu();
+					}
+					setVisible(false);					
+				}
+				
 			}
 		});
-		btnNewButton.setBounds(145, 205, 97, 25);
-		contentPane.add(btnNewButton);				
+		btnOK.setBounds(145, 205, 97, 25);
+		contentPane.add(btnOK);				
+	}
+	
+	public void eguneratuLista() {	
+		if (aukeratutakoOntzi!=null) {
+			int zenbatGelditu=Pertsona.getNeureJok().ontziKop(aukeratutakoOntzi);
+			if (aukeratutakoOntzi.getMotaBera("Fragata")) {
+				contentPane.remove(ontzi1);
+			}else if (aukeratutakoOntzi.getMotaBera("Suntsitzailea")) {
+				contentPane.remove(ontzi2);
+			}else if (aukeratutakoOntzi.getMotaBera("Itsaspekoa")) {
+				contentPane.remove(ontzi3);
+			}else if (aukeratutakoOntzi.getMotaBera("Hegazkina")) {
+				contentPane.remove(ontzi4);
+			}
+			if (zenbatGelditu!=0) {
+				if (aukeratutakoOntzi.getMotaBera("Fragata")) {
+					ontzi1 = new JRadioButton("Fragata ("+zenbatGelditu+")");
+					ontzi1.setBounds(145, 63, 127, 25);
+					group.add(ontzi1);
+					contentPane.add(ontzi1);
+				} else if (aukeratutakoOntzi.getMotaBera("Suntsitzailea")) {
+					ontzi2 = new JRadioButton("Suntsitzailea ("+zenbatGelditu+")");
+					ontzi2.setBounds(145, 93, 127, 25);
+					group.add(ontzi2);
+					contentPane.add(ontzi2);
+				} else if (aukeratutakoOntzi.getMotaBera("Itsaspekoa")) {
+					ontzi3 = new JRadioButton("Itsaspekoa("+zenbatGelditu+")");
+					ontzi3.setBounds(145, 123, 127, 25);
+					group.add(ontzi3);
+					contentPane.add(ontzi3);
+				} else if (aukeratutakoOntzi.getMotaBera("Hegazkina")) {
+					ontzi4 = new JRadioButton("Hegazkina ("+zenbatGelditu+")");
+					ontzi4.setBounds(145, 159, 127, 25);
+					group.add(ontzi4);
+					contentPane.add(ontzi4);
+				}
+			}
+			
+			
+		}
 	}
 	
 	public Ontzi getAukeraketa() {
+		System.out.println("ontziaErabaki --> getAukeraketa");
 		return aukeratutakoOntzi;
 	}
 	

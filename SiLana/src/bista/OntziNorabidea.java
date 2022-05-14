@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import jokoa.Jokalari;
-import jokoa.Jokalari1;
+import jokoa.Pertsona;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class OntziNorabidea extends JFrame {
 
@@ -32,7 +33,6 @@ public class OntziNorabidea extends JFrame {
 	private JButton botoia;
 	private JRadioButton btn1,btn2;
 	private char orientazioa;
-//	private boolean klik;
 	private static OntziNorabidea nOntziNorabidea=null;
 	/**
 	 * Launch the application.
@@ -85,8 +85,6 @@ public class OntziNorabidea extends JFrame {
 		txt.setBounds(47, 40, 311, 25);
 		contentPane.add(txt);
 		
-	//	klik=false;
-		
 		botoia = new JButton("OK");
 		botoia.setBounds(155, 187, 97, 25);
 		contentPane.add(botoia);
@@ -94,31 +92,41 @@ public class OntziNorabidea extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				boolean aukeratuta = true;
 				if (btn1.isSelected()) {
 					orientazioa='H';	//Horizontala
 				}else if (btn2.isSelected()) {
 					orientazioa= 'B';	// Bertikala aukeratzen bada
+				} else {
+					aukeratuta = false;
+					JOptionPane.showMessageDialog(botoia, "Norabide bat aukeratu behar duzu.");
 				}
-				//klik=true;
-				Jokalari jok1= Jokalari1.getNeureJok();
-				jok1.ontziakKokatu();
-				Tableroa tab= Tableroa.getNireTableroa();
-				tab.partidaJokatu();
-				setVisible(false);
+				/*//KENDUTAKOA
+				Tableroa tab=Tableroa.getNireTableroa();	
+				int x= tab.getTablerotikOntziX();
+				int y= tab.getTablerotikOntziY();
+				//Aukeratutako ontzia lortu
+				OntziaErabaki erabikitakoOntzi= OntziaErabaki.getNireOntziaErabaki();
+				Ontzi pOntzi= erabikitakoOntzi.getAukeraketa();*/
+				if (aukeratuta) {
+					Jokalari jok1= Pertsona.getNeureJok();
+					jok1.ontziakKokatu();
+					TableroaBista tab= TableroaBista.getNireTableroa();
+					tab.partidaJokatu();
+					setVisible(false);
+				}
+				
 			}
 		});
 
 	}
 	
-	/*public boolean getKlikEginDa() {
-		boolean emaitza=klik;
-		if (klik) {
-			klik=false;
-		}return emaitza;
-	}*/
-	
 	public char getOrientazioa() {
 		return orientazioa;
+	}
+
+	public void setOrientazioa(char o) {
+		orientazioa = o;
 	}
 			
 	

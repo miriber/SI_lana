@@ -49,7 +49,7 @@ public class Irabazlea extends JFrame {
 		mezua.setEditable(false);
 		mezua.setBounds(133, 61, 170, 40);
 		Jokoa jok= Jokoa.getNireJoko();
-		if (!jok.getNorIrabazi()) {		//Irabazlea PC den esaten du
+		if (!jok.PCTxandaDa()) {		//Irabazlea PC den esaten du
 			mezua.setText("Zorioonak! Irabazlea zara!");
 		}else {
 			mezua.setText("PC izan da garaile. Berriro jokatu nahi?");
@@ -64,7 +64,7 @@ public class Irabazlea extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				Tableroa  tab = Tableroa.getNireTableroa();
+				TableroaBista  tab = TableroaBista.getNireTableroa();
 				//TODO Hasieratu dena
 			}
 			

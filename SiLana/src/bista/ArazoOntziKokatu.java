@@ -20,6 +20,7 @@ public class ArazoOntziKokatu extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		System.out.println("arazoOntziKokatu --> main");
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -54,7 +55,7 @@ public class ArazoOntziKokatu extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Tableroa tab= Tableroa.getNireTableroa();
+				TableroaBista tab= TableroaBista.getNireTableroa();
 				tab.partidaJokatu();	
 			}
 		});
