@@ -4,25 +4,26 @@ public abstract class Arma {
 	
 	private String a1;
 	
+	//Metodo eraikitzailea
 	public Arma(String pArma) {
 		a1=pArma;
 	}
 	
-	public boolean klaseBerekoa(String pArma) {
-		boolean emaitza=false;
-		if (this instanceof Bonba) {
-			if (pArma.equals("Bonba")) {
-				emaitza=true;
-			}
-		}else {
-			if (pArma.equals("Misila")) {
-				emaitza=true;
-			}
-		}
-		return emaitza;
-	}
+	//Gainerako metodoak
+	public abstract boolean klaseBerekoa(String pArma);
 	
 	public String getArma() {
 		return a1;
+	}
+	public abstract void tiroArma(int x, int y);
+	
+	//TODO metodo hau hemen??
+	public Tablero getAurkariarenTab() {
+		//Aurkariaren tableroa itzuliko du
+		Tablero unekoTab=PC.getNeureJok().getNeureTablero();
+		if (Jokoa.getNireJoko().PCTxandaDa()) {
+			unekoTab=Pertsona.getNeureJok().getNeureTablero();
+		}
+		return unekoTab;
 	}
 }

@@ -1,7 +1,7 @@
 package jokoa;
 
-public class Bonba extends Arma {
-	public Bonba() {
+public class Ukitu_gabea extends Arma {
+	public Ukitu_gabea() {
 		super("Bonba");
 	}
 	

@@ -1,6 +1,11 @@
 package jokoa;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import bista.ArmamentuaAukeratu;
+import bista.JadaTiroEginBista;
+import bista.TableroaBista;
 
 public class PC extends Jokalari {
 	
@@ -11,12 +16,15 @@ public class PC extends Jokalari {
 
 	private PC() {
 		super();
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		neureTablero = Tablero.getTableroPC();
 		random= new Random();
 		norabideAukerak="HB".toCharArray(); //H--> Horizontala
 							//B--> Bertikala
 	}
 	
 	public static Jokalari getNeureJok() {
+		System.out.println("pc --> getNeureJok");
 		if (nJokPC==null) {
 			nJokPC= new PC();
 		}
@@ -24,48 +32,56 @@ public class PC extends Jokalari {
 	}
 	
 	public void hasieraketaOndo() {
+		System.out.println("pc --> hasieraketaOndo");
 		System.out.println();
 	}
 	
-	public void ontziakKokatu() {
+	/*public void ontziakKokatu() {
+		System.out.println("pc --> ontziakKokatu");
 		int x,y;
 		char norabidea;
 		while (badagoKokatuGabekoOntzirik()) {
-			x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
-			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
-			x=x/10;
-			norabidea=norabideAukerak[random.nextInt(2)];
+			x = random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
+			y = x%10; //hondarra ateratzeko, honek y-ren balioa emango du
+			x = x/10;
+			norabidea = norabideAukerak[random.nextInt(2)];
 			Ontzi[] ontziPosibleak=super.ontziPosibleakItzuli();
 			neureOntziakKokatu(x,y,norabidea, ontziPosibleak[0]);	
 		}
-	}
-
-	@Override
-	public void aurkariarenTableroaEguneratu() {
-		aurkariarenTableroa=Jokalari1.getNeureJok().getAurkariarenTablero();		
+	}*/
+	
+	public void ontziakKokatu() {
+		super.aleatorioOntziakKokatu();
 	}
 
 	@Override
 	public void tiroEgin() {
-		int x,y;
-		x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
-		y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
-		x=x/10;
-		while (aurkariarenTableroa.tiroJasoDu(x, y)) {	//gelaxka honi jada tiro egin zaio
-			x=random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
-			y= x%10; //hondarra ateratzeko, honek y-ren balioa emango du
-			x=x/10;
+		System.out.println("pc --> tiroEgin");
+		TableroaBista tabBista = TableroaBista.getNireTableroa();
+		Tablero aurkariTab = Pertsona.getNeureJok().getNeureTablero();
+		int x = random.nextInt(100);	//matrizeko buttonak 0-tik 100-ra arteko balioak izango balute moduan jokatu
+		int y = x%10; //hondarra ateratzeko, honek y-ren balioa emango du
+		x = x/10;
+		System.out.println("X: "+x+", Y: "+y);
+		if (aurkariTab.tiroJasoDu(x, y)) {
+			tiroEgin();
+		} else {
+			ArrayList<Arma> armamentua= PC.getNeureJok().armaPosibleakItzuli();
+			Arma arma = armamentua.get(random.nextInt(armamentua.size()));
+			//Ontzi ontzi = aurkariTab.getOntziMota(x,y);	
+			//boolean turnoPasa=false;
+			aurkariTab.tiroEman(x,y, arma);
 		}
-		//boolean txandaPasa = false;
-		Arma[] armaPosibleak = armaPosibleakItzuli();
-		Arma arma= armaPosibleak [random.nextInt(2)]; //2 arma desb daude: horietatik bat aukeratu aleatorioki
-		Ontzi ontzi = aurkariarenTableroa.getOntziMota(x,y);
-		//if (ontzi==null) {
-			//txandaPasa=true;
-		//}else{
-		ontziaJarri (arma, ontzi);
-		//}
-		//return txandaPasa;
 	}
+
+	@Override
+	public void erosiArma() {
+		ArrayList <Arma> armaPos=Biltegia.getNireBiltegia().lortuDiruHorrekinArmaPosibleak(neureFlota.getDirua());
+		int zenbAlt=random.nextInt(armaPos.size());
+		Biltegia.getNireBiltegia().armaErosi(armaPos.get(zenbAlt));
+		neureFlota.gehituArma(armaPos.get(zenbAlt));
+	}
+
+
 	
 }

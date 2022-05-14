@@ -1,7 +1,7 @@
 package jokoa;
 
-public class Bonba extends Arma {
-	public Bonba() {
+public class Ezkutuarekin extends Arma {
+	public Ezkutuarekin() {
 		super("Bonba");
 	}
 	
